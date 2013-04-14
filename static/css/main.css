@@ -8,13 +8,8 @@ html {
   background: url(/static/img/back.png) repeat center top;
 }
 
-.text_shadow {
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 1.0);
-}
-
-.shadow {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
-}
+.text_shadow { text-shadow: 0 -1px 1px rgba(0, 0, 0, 1.0); }
+.shadow { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075); }
 
 .bordered {  
   border: 1px solid #DADADA;
@@ -26,9 +21,7 @@ html {
   margin-right: auto;
 }
 
-.white {
-  color: #ffffff;
-}
+.white { color: #ffffff; }
 
 .padbig { margin: 30px; }
 .padmedium { margin: 20px; }
@@ -46,16 +39,11 @@ html {
   width: 100%;
 }
 
-#title {
-}
-
-#headline {
-}
-
 #container {
   width:642px;
   background: url(/static/img/inner.png) repeat center top;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   text-align:left;
 }
 
