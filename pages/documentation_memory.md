@@ -1,8 +1,7 @@
-
 Memory Management
 -----------------
 
-Memory management is hard. Very hard when combined with a lack of rich stack types. Very very hard when combined with a whole load of high level concepts. libCello gives you a few options, which where possible, the standard library is agnostic too. You can use what you think is best.
+Memory management is hard. Very hard when combined with a lack of rich stack types. Very very hard when combined with a whole load of high level concepts. Cello gives you a few options, which where possible, the standard library is agnostic too. You can use what you think is best.
 
 __Destructive Operations__ - Most of the standard library uses destructive operations and expects the user to make a copy if they exlicity want one.
 
