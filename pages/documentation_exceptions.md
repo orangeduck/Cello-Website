@@ -1,8 +1,7 @@
-
 Exceptions
 ----------
 
-Cello provides a kind of exception handling to deal with errors.
+Cello provides exception handling to deal with errors. The semantics and syntax are essentially as you would expect.
 
     local var DivideByZeroError = Singleton(DivideByZeroError);
 
@@ -41,6 +40,6 @@ One can also catch multiple objects and then write conditional code based on eac
       print("Got Exception: %$\n", e);
     }
 
-Throwing an exception will jump the program control to the innermost `catch` block. If it is not handled here it is passed on to an outer block. To catch an exception one must put a reference to the thrown object. Any object can be thrown and caught as an Exception in Cello so users can create their own Exception types or find other applications for the semantics. The thrown message will be preserved internally, but be careful of throwing stack memory which may become invalidated when jumping to the new location.
+Throwing an exception will jump the program control to the innermost `catch` block. If it is not handled here it is passed on to an outer block. To catch an exception one must put the thrown object. Any object can be thrown and caught as an Exception in Cello so users can create their own Exception types or find other applications for the semantics. The thrown message will be preserved internally, but be careful of throwing stack memory which may become invalidated when jumping to the new location.
 
 [Back](/documentation)

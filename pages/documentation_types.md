@@ -2,11 +2,13 @@
 Classes
 -------
 
-A Class is a TypeClass, also known as an Interface. These are defined to allow overloaded or generic functions.
+A __Class__ in Cello is a _typeclass_ - better known as an _interface_.
 
-They are defined as follows.
+These are defined to allow for overloaded or generic functions which can work on multiple data types.
 
-In the header...
+This is an abstract understanding, but they can be understood in real terms too. A __Class__ is simply a data structure consisting of a bunch of function pointers (or even other things) which a __Type__ must fill out when it _implements_. 
+
+They are defined in header files as follows...
 
     /** Vector - vector operations */
 
@@ -18,7 +20,9 @@ In the header...
     float dot(var self, var obj);
     float length(var self);
 
-And in the source file...
+This shows a `Vector` class with two functions `dot` and `length`.
+
+To access the implemented versions of these function pointers one must use `type_class` on an __Type__ object, specifying the __Class__. It is done in the source file as follows...
 
     float dot(var self, var obj) {
       Vector* ivector = type_class(type_of(self), Vector);
@@ -36,11 +40,13 @@ And in the source file...
 Types
 -----
 
-A Type is an structure which implemenents a number of Classes.
+A __Type__ is an object which _implements_ a number of __Classes__.
 
-They typically have an associated data object. They can be defined as follows.
+Typically __Types__ have an associated data object. This data object should be named `TypeData` and __must__ start with a `var` entry which specifies the __Type__.
 
-In the header...
+The practical realisation of a __Type__ is that it is a list of pointers to __Classes__ which `type_class` can then look up.
+
+In the header a __Type__  `Vec2` can be defined as follows...
 
     global var Vec2;
 
@@ -66,7 +72,7 @@ In the header...
     instance(Vec2, Eq) = { Vec2_Eq };
     instance(Vec2, Vector) = { Vec2_Dot, Vec2_Length };
 
-And in the source file...
+In the source file we can use some macros to aid construction of the __Type__ object.
 
     var Vec2 = methods {
       methods_begin(Vec2),
@@ -118,5 +124,7 @@ And in the source file...
       return sqrt(v->x * v->x + v->y * v->y);
     }
 
+    
+And this is all it takes to program a __Class__ and a __Type__!
     
 [Back](/documentation)

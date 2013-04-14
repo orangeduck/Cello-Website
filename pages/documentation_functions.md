@@ -1,7 +1,9 @@
-Functional Tools
-----------------
+First Class Functions
+---------------------
 
-Cello provides some functional looks using `lambda` statements:
+Cello provides first class function objects. Along with this there are some functional looks using `lambda` statements.
+
+An overview is given below but users are encouraged to refer to `Lambda.h` to get the specifics on the behaviour of many `lambda` macros.
 
 
     #include "Cello.h"

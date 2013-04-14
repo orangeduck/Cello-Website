@@ -1,12 +1,12 @@
 _Cello_ is a _GNU99_ C _library_ which brings higher level programming to C.
 
-* __Interfaces__ allows data types to implement functionality
+* __Interfaces__ allows for structured design
 * __Duck Typing__ allows for overloaded functions
 * __Exceptions__ ease error handling
 * __Constructors/Destructors__ ease memory management
 * __Syntactic Sugar__ increases readability
 
-.
+Example:
 
     /* Example libCello Program */
 
@@ -30,16 +30,15 @@ _Cello_ is a _GNU99_ C _library_ which brings higher level programming to C.
       }
       
       /* Heap objects destroyed with "delete" */
-      delete(items);
-      
+      delete(items); 
     }
       
-Documentation
--------------
+Quickstart
+----------
 
-For more examples please take a look at the documentation:
+For more examples please take a look at the quickstart documentation section:
 
-* <a href="/documentation/types">Data and Types</a>
+* <a href="/documentation/types">Type and Classes</a>
 * <a href="/documentation/functions">First Class Functions</a>
 * <a href="/documentation/memory">Memory Management</a>
 * <a href="/documentation/exceptions">Exceptions</a>
@@ -51,7 +50,6 @@ The high level stucture of Cello projects is inspired by _Haskell_, while the sy
 
 Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all Cello is just a fun experiment to see what C would look like when Hacked to it's limits.
 
-.
       
     /* Another Example Cello Program */
 
@@ -91,12 +89,16 @@ Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is fo
       }
       
       delete(prices);
-      
     }
 
-Contact
--------
+Contributions
+-------------
 
-Please send any queries to `contact@theorangeduck.com`
+Cello is licensed under BSD3.
 
-All work is licensed under BSD3
+Contributions are welcomed via [github](https://github.com/orangeduck/libCello).
+
+For queries please visit the IRC channel `#libcello` on Freenode. 
+
+Or send them to `contact@theorangeduck.com`.
+
