@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   
   <head>
-	  <title>libCello</title>
+	  <title>Cello &bull; High Level Programming C</title>
 	
 	  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	  <meta name="description" content="libCello Official Website" />
@@ -11,14 +11,47 @@
 	  <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
 	  <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
 	  <link rel="stylesheet" href="/static/css/code.css" type="text/css" />
-	  <link rel="icon" type="image/png" href="/static/img/libcello_icon.png" />
+	  <link rel="icon" type="image/png" href="/static/img/favicon.png" />
 	
+	  <script type="text/javascript" src="/static/js/jquery.js"></script>
 	  <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+	  <script type="text/javascript" src="/static/js/rainbow.js"></script>
+	  <script type="text/javascript" src="/static/js/libcello.js"></script>
 	
   </head>
 
   <body>
-      {{ content }}
+    <div id="all">
+      <div id="container" class="shadow bordered center">
+        <div id="splash" class="shadow bordered center">
+          <div class="padbig">
+            
+            
+            <h1 id="title" class="text_shadow white"> Cello </h1>
+            <p id="headline" class="lead text_shadow white"> Higher level programming in C</p>
+            
+            <button class="btn btn-large btn-success left" style="margin-top:70px;" type="button">Download Latest Version<br/><small>libCello-0.9.tar.gz</small></button>
+
+            
+          </div>
+        </div>
+        
+        <div id="content" class="padbig">
+          
+          <ul id="navcontainer" class="nav">
+            <li><a href="/home"><button class="btn btn-success left"  type="button" style="width:150px">Home</button></a></li>
+            <li><a href="/documentation"><button class="btn btn-success left"  type="button" style="width:150px;margin-left:70px;">Documentation</button></a></li>
+            <li><a target="blank" href="https://github.com/orangeduck/libCello"><button class="btn btn-success right" type="button" style="width:150px">Contribute</button></a></li>
+          </ul>
+          
+          <hr/>
+        
+          {{ content }}
+        
+        </div>
+        
+      </div>
+    </div>
   </body>
 
 </html>
