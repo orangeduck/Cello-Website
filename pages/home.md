@@ -5,6 +5,7 @@ _Cello_ is a _GNU99_ C _library_ which brings higher level programming to C.
 * __Exceptions__ ease error handling
 * __Constructors/Destructors__ ease memory management
 * __Syntactic Sugar__ increases readability
+* __C Code__ means excellent performance and integration
 
 Example:
 
@@ -38,19 +39,18 @@ Quickstart
 
 For more examples please take a look at the quickstart documentation section:
 
-* <a href="/documentation/types">Type and Classes</a>
-* <a href="/documentation/functions">First Class Functions</a>
-* <a href="/documentation/memory">Memory Management</a>
-* <a href="/documentation/exceptions">Exceptions</a>
-      
-Inspiration
------------
+* [Containers and Collections](/documentation/containers)
+* [Type and Classes](/documentation/types)
+* [Exceptions](/documentation/exceptions)
+* [First Class Functions](/documentation/functions)
+* [Memory Management](/documentation/memory)
 
-The high level stucture of Cello projects is inspired by _Haskell_, while the syntax and semantics are inspired by _Python_ and _Obj-C_. Cello isn't about _Object Orientation_ in C, but I hope that with Cello I've turned C into something of a _dynamic_ and _powerful_ functional language which it may have once been.
+Or some articles about the creation:
 
-Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all Cello is just a fun experiment to see what C would look like when Hacked to it's limits.
+* [Hacking C to it's limits](/documentation/hacking)
 
-      
+Or a longer example:
+
     /* Another Example Cello Program */
 
     #include "Cello.h"
@@ -90,6 +90,13 @@ Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is fo
       
       delete(prices);
     }
+
+Inspiration
+-----------
+
+The high level stucture of Cello projects is inspired by _Haskell_, while the syntax and semantics are inspired by _Python_ and _Obj-C_. Cello isn't about _Object Orientation_ in C, but I hope that with Cello I've turned C into something of a _dynamic_ and _powerful_ functional language which it may have once been.
+
+Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all Cello is just a fun experiment to see what C would look like when Hacked to it's limits.
 
 Contributions
 -------------

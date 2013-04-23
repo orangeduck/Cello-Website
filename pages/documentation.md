@@ -2,10 +2,15 @@ Contents
 --------
 
 * QuickStart
-    * <a href="/documentation/types">Types and Classes</a>
-    * <a href="/documentation/functions">First Class Functions</a>
-    * <a href="/documentation/memory">Memory Management</a>
-    * <a href="/documentation/exceptions">Exceptions</a>  
+    * [Containers and Collections](/documentation/containers)
+    * [Type and Classes](/documentation/types)
+    * [Exceptions](/documentation/exceptions)
+    * [First Class Functions](/documentation/functions)
+    * [Memory Management](/documentation/memory)
+    
+    
+* Articles
+    * [Hacking C to it's limits](/documentation/hacking)
     
     
 * Reference

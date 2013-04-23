@@ -7,7 +7,7 @@ Cello provides exception handling to deal with errors. The semantics and syntax 
 
     local int try_divide(int x, int y) {
       if (y == 0) {
-        throw(DivideByZeroError, "Division By Zero (%i / %i)", x, y);
+        throw(DivideByZeroError, "%i / %i", $(Int, x), $(Int, y));
       } else {
         return x / y;
       }
@@ -35,7 +35,7 @@ One can also catch multiple objects and then write conditional code based on eac
     }
 
     try {
-      do_some_other_word();
+      do_some_other_work();
     } catch (e) {
       print("Got Exception: %$\n", e);
     }

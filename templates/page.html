@@ -24,27 +24,28 @@
     <div id="all">
       <div id="container" class="shadow bordered center">
         <div id="splash" class="shadow bordered center">
-          <div class="padbig">
+          <div class="padbig">         
             
+            <h1 id="title" class="text_shadow white" style="margin-left:30px;"> Cello </h1>          
             
-            <h1 id="title" class="text_shadow white"> Cello </h1>
-            <p id="headline" class="lead text_shadow white"> <img src="/static/img/bass_clef.png" alt="bass clef" style="margin-right:10px"/> Higher level programming in C</p>
+            <p id="headline" class="lead text_shadow white">
+              <img src="/static/img/bass_clef.png" alt="bass clef" style="margin-right:10px"/>
+              Higher level programming in C
+              <img src="/static/img/bass_clef_flip.png" alt="bass clef flip" style="margin-left:10px"/> 
+            </p>
             
-            <a target="blank" href="/static/libcello-0.9.tar.gz"><button class="btn btn-large btn-success left" style="margin-top:70px;" type="button">Download Latest Version<br/><small>libcello-0.9.tar.gz</small></button></a>
-
+              <ul class="nobull right" style="margin-top:-20px;">
+                <li><a href="/home"><button class="btn btn-success padsmall" type="button" style="width:150px">Home</button></a></li>
+                <li><a href="/documentation"><button class="btn btn-success padsmall"  type="button" style="width:150px;">Documentation</button></a></li>
+                <li><a target="blank" href="https://github.com/orangeduck/libCello"><button class="btn btn-success padsmall" type="button" style="width:150px">Contribute</button></a></li>
+              </ul>
+            
+            <a target="blank" href="/static/libcello-0.9.tar.gz"><button class="btn btn-large btn-success left" style="margin-top:55px;" type="button">Download Latest Version<br/><small>libcello-0.9.tar.gz</small></button></a>
             
           </div>
         </div>
         
         <div id="content" class="padbig">
-          
-          <ul id="navcontainer" class="nav">
-            <li><a href="/home"><button class="btn btn-success left"  type="button" style="width:150px">Home</button></a></li>
-            <li><a href="/documentation"><button class="btn btn-success left"  type="button" style="width:150px;margin-left:70px;">Documentation</button></a></li>
-            <li><a target="blank" href="https://github.com/orangeduck/libCello"><button class="btn btn-success right" type="button" style="width:150px">Contribute</button></a></li>
-          </ul>
-          
-          <hr/>
         
           {{ content }}
         

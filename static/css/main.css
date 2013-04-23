@@ -1,18 +1,30 @@
 
+h1 {
+  font-family: 'Garamond', 'Georgia', serif;
+  margin-top:50px;
+}
+
 h2 {
+  font-family: 'Garamond', 'Georgia', serif;
   margin-top:50px;
   line-height: 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 html {
   background: url(/static/img/back.png) repeat center top;
 }
 
-.text_shadow { text-shadow: 0 -1px 1px rgba(0, 0, 0, 1.0); }
-.shadow { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075); }
+pre {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border: 2px solid #5BB75B;
+}
+
+.text_shadow { text-shadow: 0 1px 2px rgba(0, 0, 0, 1.0); }
+.shadow { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
 
 .bordered {  
-  border: 1px solid #DADADA;
+  border: 2px solid #5BB75B;
   border-radius: 6px 6px 6px 6px;
 }
 
@@ -21,11 +33,16 @@ html {
   margin-right: auto;
 }
 
+.nobull {
+  list-style-type: none;
+}
+
 .white { color: #ffffff; }
 
-.padbig { margin: 30px; }
+.padbig    { margin: 30px; }
 .padmedium { margin: 20px; }
-.padright { margin-right: 50px; }
+.padsmall  { margin: 10px; }
+.padright  { margin-right: 50px; }
 
 .right { float: right; }
 .left { float:left; }
@@ -40,7 +57,7 @@ html {
 }
 
 #container {
-  width:642px;
+  width:644px;
   background: url(/static/img/inner.png) repeat center top;
   margin-top: 30px;
   margin-bottom: 30px;

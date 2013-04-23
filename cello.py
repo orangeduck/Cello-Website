@@ -15,7 +15,7 @@ def index(page="home", section=None):
     
     if not (page in ["home", "documentation"]): page = "home"
     if (page     in ["documentation"] and 
-        section in ["functions", "types", "memory", "exceptions"]):
+        section in ["types", "containers", "functions", "memory", "exceptions", "hacking"]):
         section = "_"+section
     else:
         section = ""
@@ -24,6 +24,7 @@ def index(page="home", section=None):
     content = markdown.markdown(content)
     content = content.replace("<pre><code>", "<pre><code data-language=\"libcello\">")
     content = content.replace("</h2>", "</h2><hr/>")
+    content = content.replace("</h1>", "</h1><hr/>")
     content = Markup(content)
                                                                        
     return render_template('page.html', content=content)

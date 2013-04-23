@@ -223,7 +223,8 @@ textarea {
 
 body {
   margin: 0;
-  font-family: 'Garamond', 'Georgia', serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: 'Garamond', 'Georgia', serif;*/
   font-size: 14px;
   line-height: 20px;
   color: #333333;
