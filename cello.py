@@ -13,7 +13,7 @@ app.root_path = os.path.dirname(__file__)
 @app.route('/<page>/<section>')
 def index(page="home", section=None):
     
-    if not (page in ["home", "documentation"]): page = "home"
+    if not (page in ["home", "documentation", "contribute"]): page = "home"
     if (page     in ["documentation"] and 
         section in ["types", "containers", "functions", "memory", "exceptions", "hacking"]):
         section = "_"+section

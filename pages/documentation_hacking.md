@@ -1,11 +1,11 @@
+Overview
+========
+
 I started libCello (then called C+) as a fun experiment to play around with the various implementations of _Object Orientation in C_. Most had some fun features and cool tricks but tended to break down around about the time of inheritence. Assertions began to pile up, syntax became horrible, or the programmer had to do too many things manually. Several based around message passing relied too heavily on error-prone strings.
 
 One thing I did notice is that essentially they begin to resemble the C backend to scripting languages such as Python.
 
 I wondered if by making different or simplified assumptions it would allow for nicer syntax, cleaner semantics and fewer manual steps for the programmer. I thought I might be able to create scripting language like semantics, but with the performance and frontend of C.
-
-Overview
-========
 
 libCello consists of some global changes and a number of cute hacks. The global changes are not too original, but combined with the cute hacks create a library that is fairly comfortable to use.
 

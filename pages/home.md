@@ -1,13 +1,18 @@
-_Cello_ is a _GNU99_ C _library_ which brings higher level programming to C.
+__Cello__ is a _GNU99_ C _library_ which brings higher level programming to C.
 
-* __Interfaces__ allows for structured design
-* __Duck Typing__ allows for overloaded functions
-* __Exceptions__ ease error handling
-* __Constructors/Destructors__ ease memory management
-* __Syntactic Sugar__ increases readability
-* __C Code__ means excellent performance and integration
+<blockquote>
 
-Example:
+<ul>
+<li> <strong>Interfaces</strong> allow for structured design </li>
+<li> <strong>Duck Typing</strong> allows for simpler functions </li>
+<li> <strong>Exceptions</strong> control error handling </li>
+<li> <strong>Constructors/Destructors</strong> aid memory management </li>
+<li> <strong>Syntactic Sugar</strong> increases readability </li>
+<li> <strong>C Library</strong> means excellent performance and integration </li>
+</ul>
+
+</blockquote>
+
 
     /* Example libCello Program */
 
