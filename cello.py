@@ -19,7 +19,7 @@ def index(page="home", section=None):
     
     if not (page in ["home", "documentation", "contribute"]): page = "home"
     if (page     in ["documentation"] and 
-        section in ["types", "containers", "functions", "memory", "exceptions", "hacking"]):
+        section in ["types", "containers", "functions", "memory", "exceptions", "hacking", "comparison"]):
         section = "_"+section
     else:
         section = ""
