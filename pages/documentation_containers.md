@@ -22,6 +22,8 @@ Because these containers must allocate and deallocate space (calling deconstruct
     show(x);
     delete(x);
 
+When new items are added to containers the contents of the argument are copied to the existing memory location using `assign`.
+
 Examples of Containers are:
 
 * `Array` - A dynamically sized sequence data structure.
@@ -31,7 +33,7 @@ Examples of Containers are:
 Collections
 -----------
 
-Collections are data structures containing pointers to objects. They are not responsible for the allocation or deletion of the objects pointed to inside and simply provide a way of grouping or associating certain existing objects.
+Collections are data structures containing pointers to objects. They are not responsible for the allocation or deallocation of the objects pointed to inside and simply provide a way of grouping or associating certain existing objects.
 
 Because they are not responsible for allocation they can contain several differing types but it is the user's responsibility to ensure operations remain valid across all types inside (for example to ensure `Eq` makes sense when comparing a `Int` and an `String`).
     

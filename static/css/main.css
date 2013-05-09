@@ -52,7 +52,7 @@ pre {
 }
 
 #all {
-  background: url(/static/img/back_splash.png) no-repeat center top;
+  /*background: url(/static/img/back_splash.png) no-repeat center top;*/
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: center; 

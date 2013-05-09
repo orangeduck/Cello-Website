@@ -10,16 +10,23 @@ I am always looking for contributions. Here are some easy ways you can help:
 
 #### Writing Tests
 
-Some sections of Cello are fairly spare on tests. This is a great way to ensure there are no bugs in the project and to aid understanding.
+Some sections of Cello are fairly spare on tests. Writing some tests may be boring but it is a great way to learn how to use libCello effectively while also contributing to the project.
 
 
 #### Benchmarking
 
-I'm dying to get some benchmarking results but haven't had the time to write them. The comparisons don't have to be complex at first. Anything is a good start.
+I'm dying to get some benchmarking results but haven't had the time to set up a system. Any comparison is a good start so I'm not looking for anything too complex at first.
 
 
 #### Library Contributions
 
-There are still lots of potential additions to the standard library including data structures such as _Sets_, _Linked Lists_, _Generators_ or things like _Sockets_ and _Regular Expressions_.
+There are still lots of potential additions to the standard library including things such as
+  
+  * Sets
+  * Linked Lists
+  * Generators
+  * Sockets
+  * Regular Expressions
+  * Threads
+  * _Anything else_
 
-All of these and anything else that can be thought of would be welcome additions.

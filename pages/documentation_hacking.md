@@ -11,7 +11,6 @@ libCello consists of some global changes and a number of cute hacks. The global 
 
 I've tried to make this article short so have skipped somewhat on the nitty gritty details. Anyone interested is encouraged to send me an e-mail or take a peek at the source code!
 
-The first global change is to make the concept of a _type_ a runtime construct.
 
 Types
 -----
@@ -75,6 +74,16 @@ Typeclasses
 To know if a certain operation (such as ordering) makes sense on a certain type we need to get the programmer to tell us. This is where typeclasses come in. Also known as interfaces; these let the programmer give a specification of the behaviour of a Type under a certain operation. Perhaps suprisingly they can be used to express almost all higher level concepts.
 
 In libCello a typeclass is just a struct, usually containing a bunch of function pointers. Types can then make instances of these, and point to them in their metadata entries.
+  
+  
+    typedef struct {
+      var (*iter_start)(var);
+      var (*iter_end)(var);
+      var (*iter_next)(var, var);
+    } Iter;
+
+    static Iter ListIter = { List_Iter_Start, List_Iter_End, List_Iter_Next };
+
 
 Early on I decided typeclasses were going to be the core of what is inside a Type. This simplified things exceptionally compared to many _message passing_ or _Object Oriented_ systems in C which have elaborate metadata structures.
 
@@ -102,7 +111,7 @@ Tricks
 The Dollar
 ----------
 
-`$` or clef as I like to think of it, is what allows programmers to declare simple _rich_ objects on the stack. This is super important in reducing the mental overhead of using libCello, as cleaning up hundreds of heap allocated objects quickly gets out of hand.
+`$` or clef as I like to think of it, is what allows programmers to declare simple _rich_ objects on the stack. This is super important in reducing the mental overhead of using libCello, as cleaning up hundreds of heap allocated objects manually quickly gets out of hand.
 
 The macro is fairly simple and uses a struct initialization trick C programmers have used for decades. It just wraps a literal struct declaration in a single element array - to get a pointer to it.
 

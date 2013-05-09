@@ -4,7 +4,7 @@ __Cello__ is a _GNU99_ C _library_ which brings higher level programming to C.
 
 <ul>
 <li> <strong>Interfaces</strong> allow for structured design </li>
-<li> <strong>Duck Typing</strong> allows for simpler functions </li>
+<li> <strong>Duck Typing</strong> allows for generic functions </li>
 <li> <strong>Exceptions</strong> control error handling </li>
 <li> <strong>Constructors/Destructors</strong> aid memory management </li>
 <li> <strong>Syntactic Sugar</strong> increases readability </li>
@@ -84,8 +84,12 @@ Or a longer example:
           var key = cast(at(args, 0), String);
           var val = cast(get(prices, key), Int);
           
-          print_to(file, 0, "%$ :: %$\n", key, val);
-          
+          try {
+            print_to(file, 0, "%$ :: %$\n", key, val);
+          } catch (e in IOError) {
+            println("Could not write to file - got %$", e)
+          }
+
           return None;
         };
         
