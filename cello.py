@@ -10,17 +10,52 @@ import markdown
 app = Flask(__name__)
 app.root_path = os.path.dirname(__file__)
 
-cache = MemcachedCache(['127.0.0.1:11211'])
-
+try:
+    cache = MemcachedCache(['127.0.0.1:11211'])
+except RuntimeError:
+    
+    class FakeCache:
+        def get(self, k): return None
+        def set(self, k, v, **kwargs): return None
+        
+    cache = FakeCache()
+    
 @app.route('/')
 @app.route('/<page>')
 @app.route('/<page>/<section>')
 def index(page="home", section=None):
     
-    if not (page in ["home", "documentation", "contribute"]): page = "home"
+    if not (page in ["home", "documentation", "contribute", "reference"]): page = "home"
+    
     if (page     in ["documentation"] and 
-        section in ["types", "containers", "functions", "memory", "exceptions", "hacking", "comparison"]):
+        section  in 
+        ["types", "containers", "functions", 
+        "memory", "exceptions", "hacking", 
+        "comparison"]):
+        
         section = "_"+section
+        
+    elif (page     in ["reference"] and
+        
+        section  in
+        ["array", "bool", "char", "dictionary", 
+         "file", "function", "list", "map",
+         "none", "int", "real", "pool", "reference",
+         "string", "table", "tree", "type"] or
+         
+         section in 
+         ["format", "show", "call", "num", "retain",
+          "new", "assign", "copy", "eq", "ord", "hash", 
+          "collection", "sort", "reverse", "append",
+          "iter", "push", "at", "dict", "aschar", "asstr",
+          "aslong", "asdouble", "with", "stream", "serialize"] or
+          
+          section in [
+           "exception", "lambda", "value"]):
+        
+        
+        section = "_"+section
+        
     else:
         section = ""
     
