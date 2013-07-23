@@ -7,20 +7,44 @@ from werkzeug.contrib.cache import MemcachedCache
 import os
 import markdown
 
+from doc.cello_classes import cello_classes
+from doc.cello_types import cello_types
+
 app = Flask(__name__)
 app.root_path = os.path.dirname(__file__)
 
-cache = MemcachedCache(['127.0.0.1:11211'])
-
+try:
+    cache = MemcachedCache(['127.0.0.1:11211'])
+except RuntimeError:
+    
+    class FakeCache:
+        def get(self, k): return None
+        def set(self, k, v, **kwargs): return None
+        
+    cache = FakeCache()
+    
 @app.route('/')
 @app.route('/<page>')
 @app.route('/<page>/<section>')
 def index(page="home", section=None):
     
-    if not (page in ["home", "documentation", "contribute"]): page = "home"
-    if (page     in ["documentation"] and 
-        section in ["types", "containers", "functions", "memory", "exceptions", "hacking", "comparison"]):
+    if not (page in ["home", "documentation", "contribute", "reference"]): page = "home"
+    
+    if (page in ["documentation"] and 
+        section  in 
+        ["types", "containers", "functions", 
+        "memory", "exceptions", "hacking", 
+        "comparison", "installation", "celloworld"]):
+        
         section = "_"+section
+        
+    elif (page in ["reference"] and
+        
+        section in map(lambda k: k.lower(), cello_classes.keys()) or
+        section in map(lambda k: k.lower(), cello_types.keys()) or
+        section in ["exception", "lambda", "value"]):
+        section = "_"+section
+        
     else:
         section = ""
     

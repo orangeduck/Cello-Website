@@ -1,4 +1,3 @@
- 
 Cello vs C++ vs ObjC
 --------------------
 
@@ -65,4 +64,4 @@ __Cello Cons__
 * No Apple / OS X Libraries
 * More difficult memory management
 
-
+[Back](/documentation)

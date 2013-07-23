@@ -1,11 +1,9 @@
 
 h1 {
-  font-family: 'Garamond', 'Georgia', serif;
   margin-top:50px;
 }
 
 h2 {
-  font-family: 'Garamond', 'Georgia', serif;
   margin-top: 70px;
   line-height: 10px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -17,14 +15,22 @@ html {
 
 pre {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  border: 2px solid #5BB75B;
+  border: 2px solid #689052;
+}
+
+a {
+  color: #689052;
+}
+ 
+code {
+  color: #82372f;
 }
 
 .text_shadow { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
 .shadow { box-shadow: 0 0px 1px rgba(0, 0, 0, 0.5); }
 
 .bordered {  
-  border: 1px solid #5BB75B;
+  border: 1px solid #689052;
   border-radius: 6px 6px 6px 6px;
 }
 
