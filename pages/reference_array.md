@@ -1,5 +1,6 @@
 Array
 -----
+__Sequential Container__
 
 Array is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It is a [Container](/documentation/containers) meaning it allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
 
@@ -9,28 +10,31 @@ Elements are ordered linearly. Elements are accessed by their position in this s
 
 The equivalent C++ construct to this type is [std::vector](http://www.cplusplus.com/reference/vector/vector/)
 
+
 ### Implements
 
-* <span style="width:75px; float:left;">[New](reference/new)</span> `new`, `delete`, `construct`, `destruct`
-* <span style="width:75px; float:left;">[Assign](reference/assign)</span> `assign`
-* <span style="width:75px; float:left;">[Copy](reference/copy)</span> `copy`
-* <span style="width:75px; float:left;">[Eq](reference/eq)</span> `eq`, `neq`
-* <span style="width:75px; float:left;">[Collection](reference/collection)</span> `len`, `clear`. `contains`, `discard`, `is_empty`
-* <span style="width:75px; float:left;">[Push](reference/push)</span> `push`, `push_at`, `pop`, `pop_at`
-* <span style="width:75px; float:left;">[At](reference/at)</span> `at`, `set`
-* <span style="width:75px; float:left;">[Iter](reference/iter)</span> `iter_start`, `iter_next`, `iter_end`
-* <span style="width:75px; float:left;">[Reverse](reference/reverse)</span> `reverse`
-* <span style="width:75px; float:left;">[Sort](reference/sort)</span> `sort`
-* <span style="width:75px; float:left;">[Append](reference/append)</span> `append`
-* <span style="width:75px; float:left;">[Show](reference/show)</span> `show`, `look`, `print`, `scan`
+* <span style="width:75px; float:left;">[New](new)</span> `new` `delete` `construct` `destruct`
+* <span style="width:75px; float:left;">[Assign](assign)</span> `assign`
+* <span style="width:75px; float:left;">[Copy](copy)</span> `copy`
+* <span style="width:75px; float:left;">[Eq](eq)</span> `eq` `neq` `if_eq` `if_neq`
+* <span style="width:75px; float:left;">[Collection](collection)</span> `len` `clear` `contains` `discard`
+* <span style="width:75px; float:left;">[Push](push)</span> `push` `pop` `push_at` `pop_at`
+* <span style="width:75px; float:left;">[At](at)</span> `at` `set`
+* <span style="width:75px; float:left;">[Iter](iter)</span> `foreach` `iter_start` `iter_end` `iter_next`
+* <span style="width:75px; float:left;">[Reverse](reverse)</span> `reverse`
+* <span style="width:75px; float:left;">[Sort](sort)</span> `sort`
+* <span style="width:75px; float:left;">[Append](append)</span> `append`
+* <span style="width:75px; float:left;">[Show](show)</span> `show` `print` `look` `scan`
+
 
 ### See Also
 
-* <span style="width:75px; float:left;">[List](reference/list)</span> _Sequential Collection_
-* <span style="width:75px; float:left;">[Table](reference/table)</span> _Hashtable Container_
-* <span style="width:75px; float:left;">[Tree](reference/tree)</span> _Binary Tree Container_
-* <span style="width:75px; float:left;">[Dictionary](reference/dictionary)</span> _Hashtable Collection_
-* <span style="width:75px; float:left;">[Map](reference/map)</span> _Binary Tree Collection_
+* <span style="width:75px; float:left;">[List](list)</span> _Sequential Collection_
+* <span style="width:75px; float:left;">[Table](table)</span> _Hashtable Container_
+* <span style="width:75px; float:left;">[Tree](tree)</span> _Binary Tree Container_
+* <span style="width:75px; float:left;">[Dictionary](dictionary)</span> _Hashtable Collection_
+* <span style="width:75px; float:left;">[Map](map)</span> _Binary Tree Collection_
+
 
 ### Examples
 

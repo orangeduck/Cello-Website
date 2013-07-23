@@ -1,5 +1,6 @@
 Bool
 ----
+__Boolean Truth Value__
 
 Bool is a Cello wrapper of a standard C bool. It is defined as follows.
 
@@ -10,22 +11,24 @@ These evaluate to true and false correctly in `if` statements and can be returne
 
 There is no data object for Bool. This is because they are hard coded into `type_of`.
 
+
 ### Implements
 
-* <span style="width:75px; float:left;">[Eq](reference/eq)</span> `eq`, `neq`
-* <span style="width:75px; float:left;">[Ord](reference/ord)</span> `gt`, `lt`, `ge`, `le`
-* <span style="width:75px; float:left;">[Hash](reference/hash)</span> `hash`
-* <span style="width:75px; float:left;">[AsChar](reference/aschar)</span> `as_char`
-* <span style="width:75px; float:left;">[AsLong](reference/aslong)</span> `as_long`
-* <span style="width:75px; float:left;">[AsDouble](reference/asdouble)</span> `as_double`
-* <span style="width:75px; float:left;">[AsStr](reference/asstr)</span> `as_str`
-* <span style="width:75px; float:left;">[Show](reference/show)</span> `show`, `look`, `print`, `scan`
+* <span style="width:75px; float:left;">[Eq](eq)</span> `eq` `neq` `if_eq` `if_neq`
+* <span style="width:75px; float:left;">[Ord](ord)</span> `gt` `lt` `ge` `le`
+* <span style="width:75px; float:left;">[Hash](hash)</span> `hash`
+* <span style="width:75px; float:left;">[AsChar](aschar)</span> `as_char`
+* <span style="width:75px; float:left;">[AsLong](aslong)</span> `as_long`
+* <span style="width:75px; float:left;">[AsDouble](asdouble)</span> `as_double`
+* <span style="width:75px; float:left;">[AsStr](asstr)</span> `as_str`
+* <span style="width:75px; float:left;">[Show](show)</span> `show` `print` `look` `scan`
+
 
 ### See Also
 
-* <span style="width:75px; float:left;">[None](reference/none)</span> _Empty Value_
-* <span style="width:75px; float:left;">[Char](reference/char)</span> _Character Value_
-* <span style="width:75px; float:left;">[Int](reference/int)</span> _Interger Value_
+* <span style="width:75px; float:left;">[None](none)</span> _Empty Value_
+* <span style="width:75px; float:left;">[Int](int)</span> _Basic Integer Type_
+
 
 ### Examples
 

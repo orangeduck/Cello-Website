@@ -1,8 +1,8 @@
-Char
-----
-__Basic Character Type__
+Int
+---
+__Basic Integer Type__
 
-Char is a wrapper for the native C char type.
+Coming Soon...
 
 
 ### Implements
@@ -13,34 +13,22 @@ Char is a wrapper for the native C char type.
 * <span style="width:75px; float:left;">[Eq](eq)</span> `eq` `neq` `if_eq` `if_neq`
 * <span style="width:75px; float:left;">[Ord](ord)</span> `gt` `lt` `ge` `le`
 * <span style="width:75px; float:left;">[Hash](hash)</span> `hash`
-* <span style="width:75px; float:left;">[AsChar](aschar)</span> `as_char`
+* <span style="width:75px; float:left;">[AsLong](aslong)</span> `as_long`
+* <span style="width:75px; float:left;">[AsDouble](asdouble)</span> `as_double`
+* <span style="width:75px; float:left;">[Num](num)</span> `add` `sub` `mul` `div` `negate` `absolute`
 * <span style="width:75px; float:left;">[Serialize](serialize)</span> `serial_read` `serial_write`
 * <span style="width:75px; float:left;">[Show](show)</span> `show` `print` `look` `scan`
 
 
 ### See Also
 
-* <span style="width:75px; float:left;">[String](string)</span> _Basic String Type_
-* <span style="width:75px; float:left;">[Int](int)</span> _Basic Integer Type_
+* <span style="width:75px; float:left;">[Real](real)</span> _Basic Float Point Type_
+* <span style="width:75px; float:left;">[Bool](bool)</span> _Boolean Truth Value_
+* <span style="width:75px; float:left;">[Char](char)</span> _Basic Character Type_
 
 
 ### Examples
 
-__Properties__
-
-    var x = $(Char, 'a');
-    var y = new(Char, 'b');
-    var z = copy(x);
-    
-    show(eq(x, z)); /* True */
-    show(gt(y, x)); /* True */
-    
-    assign(y, x);
-    
-    show(y) /* a */
-    
-    delete(y)
-    delete(z);
-    
+Coming Soon...
 
 [Back](/documentation)

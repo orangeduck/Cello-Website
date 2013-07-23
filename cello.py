@@ -7,6 +7,9 @@ from werkzeug.contrib.cache import MemcachedCache
 import os
 import markdown
 
+from doc.cello_classes import cello_classes
+from doc.cello_types import cello_types
+
 app = Flask(__name__)
 app.root_path = os.path.dirname(__file__)
 
@@ -27,33 +30,19 @@ def index(page="home", section=None):
     
     if not (page in ["home", "documentation", "contribute", "reference"]): page = "home"
     
-    if (page     in ["documentation"] and 
+    if (page in ["documentation"] and 
         section  in 
         ["types", "containers", "functions", 
         "memory", "exceptions", "hacking", 
-        "comparison"]):
+        "comparison", "installation", "celloworld"]):
         
         section = "_"+section
         
-    elif (page     in ["reference"] and
+    elif (page in ["reference"] and
         
-        section  in
-        ["array", "bool", "char", "dictionary", 
-         "file", "function", "list", "map",
-         "none", "int", "real", "pool", "reference",
-         "string", "table", "tree", "type"] or
-         
-         section in 
-         ["format", "show", "call", "num", "retain",
-          "new", "assign", "copy", "eq", "ord", "hash", 
-          "collection", "sort", "reverse", "append",
-          "iter", "push", "at", "dict", "aschar", "asstr",
-          "aslong", "asdouble", "with", "stream", "serialize"] or
-          
-          section in [
-           "exception", "lambda", "value"]):
-        
-        
+        section in map(lambda k: k.lower(), cello_classes.keys()) or
+        section in map(lambda k: k.lower(), cello_types.keys()) or
+        section in ["exception", "lambda", "value"]):
         section = "_"+section
         
     else:

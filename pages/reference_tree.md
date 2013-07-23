@@ -1,8 +1,8 @@
-Dictionary
-----------
-__Hashtable Collection__
+Tree
+----
+__Binary Tree Container__
 
-Dictionary is hashtable data structure mapping hashable keys to objects. It is a [Collection](/documentation/collection) meaning it does not allocate storage for the objects inside of it. Instead it only stored references to the objects. This means both keys and values inside must be stored and managed by the programmer for the duration of the Dictionary's life.
+Coming Soon...
 
 
 ### Implements
@@ -19,9 +19,9 @@ Dictionary is hashtable data structure mapping hashable keys to objects. It is a
 
 ### See Also
 
-* <span style="width:75px; float:left;">[Table](table)</span> _Hashtable Container_
 * <span style="width:75px; float:left;">[Map](map)</span> _Binary Tree Collection_
-* <span style="width:75px; float:left;">[Tree](tree)</span> _Binary Tree Container_
+* <span style="width:75px; float:left;">[Table](table)</span> _Hashtable Container_
+* <span style="width:75px; float:left;">[Dictionary](dictionary)</span> _Hashtable Collection_
 
 
 ### Examples
