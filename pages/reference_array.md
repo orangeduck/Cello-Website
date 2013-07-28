@@ -2,7 +2,7 @@ Array
 -----
 __Sequential Container__
 
-Array is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It is a [Container](/documentation/containers) meaning it allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
+Array is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It is a [Container](containers) meaning it allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
 
 Elements are copied in an Array using `assign` which means the type much implement the [Assign](reference/assign) class.
 
