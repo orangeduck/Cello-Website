@@ -5,6 +5,17 @@ __Order can be reversed__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[List](list)</span> _Sequential Collection_

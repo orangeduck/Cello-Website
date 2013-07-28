@@ -25,15 +25,11 @@ This shows a `Vector` class with two functions `dot` and `length`.
 To access the implemented versions of these function pointers one must use `type_class` on an __Type__ object, specifying the __Class__. It is done in the source file as follows...
 
     float dot(var self, var obj) {
-      Vector* ivector = type_class(type_of(self), Vector);
-      assert(ivector->dot);
-      return ivector->dot(self, obj);
+      return type_class_method(type_of(self), Vector, dot, self, obj);
     }
 
     float length(var self) {
-      Vector* ivector = type_class(type_of(self), Vector);
-      assert(ivector->length);
-      return ivector->length(self);
+      return type_class_method(type_of(self), Vector, length, self);
     }
 
 

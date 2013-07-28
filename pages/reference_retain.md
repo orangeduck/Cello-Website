@@ -5,6 +5,17 @@ __Can be used for reference counting__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Pool](pool)</span> _Reference Counting Pool_

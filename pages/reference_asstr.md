@@ -5,6 +5,17 @@ __Representable as C char*__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[None](none)</span> _Empty Value_

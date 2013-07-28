@@ -5,6 +5,17 @@ __Elements can be directly accessed and set__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Reference](reference)</span> _Basic Reference Type_

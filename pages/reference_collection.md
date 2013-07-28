@@ -5,6 +5,17 @@ __Treatable as several objects__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Map](map)</span> _Binary Tree Collection_

@@ -2,7 +2,12 @@ Type
 ----
 __Metadata Type Object__
 
-Coming Soon...
+`Type` is one of the most important Types in Cello. It provides metadata about an object including which classes it implements. One can get the type of an object using the `type_of` function.
+
+To see if a type implements a class `type_implements` can be used. To call a function of a class, implemented `type_class_method` can be used.
+
+`cast` can be used to do runtime type checking. It checks a given object has a certain type and if so returns the given object.
+
 
 
 ### Implements
@@ -18,6 +23,24 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+    
+    var t = type_of($(Int, 5));
+    show(t); /* Int */
+    
+    show(type_implements(t, New)); /* True */
+    show(type_implements(t, Eq));  /* True */
+    show(type_implements(t, Ord)); /* True */
+    
+    show(type_class_method(t, Eq, eq, $(Int, 5), $(Int, 6))); /* False */
+    
+    
+__Casting__
+    
+    var x = $(Int, 10);
+    
+    var xs = cast(x, Int); /* Success */
+    var xf = cast(x, Real); /* Throws Exception */
+
 
 [Back](/documentation)

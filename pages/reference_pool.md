@@ -2,7 +2,9 @@ Pool
 ----
 __Reference Counting Pool__
 
-Coming Soon...
+Pool provides a method for reference counting of Cello objects via `retain` and `release`. It stores a reference count for any objects included in it and will perform destruction on those objects when their reference count reaches zero.
+
+This is designed to aid in memory management.
 
 
 ### Implements
@@ -21,6 +23,32 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    var p = new(Pool);
+    
+    lambda(table_fill, args) {
+        var t = at(args, 0);
+        put(t, $(String, "First"),  $(Real, 0.0));
+        put(t, $(String, "Second"), $(Real, 0.1));
+        put(t, $(String, "Third"),  $(Real, 5.7));
+        release(p, t);
+        return None
+    };
+    
+    lambda(table_process, args) {
+        var t = at(args, 0);
+        put(t, $(String, "First"), $(Real, -0.65));
+        release(p, t);
+        return None;
+    };
+
+    var x = retain(p, new(Table, String, Real));
+
+    call(table_fill, retain(p, x));
+    call(table_process, retain(p, x));
+
+    release(p, x);
+
 
 [Back](/documentation)

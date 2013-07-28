@@ -1,3 +1,4 @@
+import os
 
 from cello_classes import cello_classes
 from cello_types import cello_types
@@ -107,10 +108,29 @@ for _, c in sorted(cello_classes.iteritems()):
     f.write("__" + c["tag"] + "__\n")
     f.write(c["description"])
     
+    f.write("\n\n### Methods\n\n")
+    
+    f.write("-------------------------------\n\n")
+    
+    for m in c["methods"]:
+        
+        for l in m["code"]:
+            f.write("    " + l + "\n")
+        f.write("\n" + m["description"] + "\n")
+        f.write("\n* __Parameters__\n")
+        for p, d in m["parameters"]:
+            f.write("    * `%s` %s\n" % (p, d))
+        f.write("* __Returns__ " + m["return"] + "\n\n------------------------------- \n\n")
+    
+
+    f.write("\n### Signature\n\n")
+    
+    f.write(c["signature"] + "\n\n")    
+    
     def funcs_list(funcs):
         return " ".join(["`"+fu+"`" for fu in filter(None, funcs.split(" "))])
     
-    f.write("\n\n### Implementers\n\n")
+    f.write("### Implementers\n\n")
     implementers = [t for t in cello_types.values() if c["name"] in t["implements"].split(" ")]
     implementers_links = ['* <span style="width:75px; float:left;">[%s](%s)</span> _%s_'
         % (t["name"], t["link"], t["tag"]) 
@@ -134,4 +154,4 @@ for _, c in sorted(cello_classes.iteritems()):
     
     f.close()
 
-    
+os.system("cp output/* ../pages/")

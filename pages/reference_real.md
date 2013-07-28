@@ -2,7 +2,7 @@ Real
 ----
 __Basic Float Point Type__
 
-Coming Soon...
+Basic wrapper of standard C `double`.
 
 
 ### Implements
@@ -27,6 +27,32 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    var r0 = $(Real, 1.0);
+    var r1 = new(Real, 24.313);
+    var r2 = copy(r0);
+    
+    show(r0); /* 1.0 */
+    show(r1); /* 24.313 */
+    show(r2); /* 1.0 */
+    
+    delete(r1);
+    delete(r2);
+    
+__Maths__
+    
+    var r0 = $(Real, 0.0);
+    
+    show(r0); /* 0 */
+    
+    add(r0, $(Real, 10.1)); /* 10.1 */
+    mul(r0, $(Real, 3.5));  /* 35.35 */
+    div(r0, $(Real, 2.0));  /* 17.675 */
+    
+    if_gt(r0, $(Real, 11.1)) {
+        print("%f is greater than 11.1!", i0);
+    }
+    
 
 [Back](/documentation)

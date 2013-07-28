@@ -23,7 +23,7 @@ An overview is given below but users are encouraged to refer to `Lambda.h` to ge
         
         /* Always must return */
         return None; 
-      }
+      };
       
       /* Functions called with "call" */
       call(hello_name, $(String, "Bob"));
@@ -43,7 +43,7 @@ An overview is given below but users are encouraged to refer to `Lambda.h` to ge
         int snd = as_long(cast(at(args, 1), Int));
         println("%i + %i = %i", $(Int, fst), $(Int, snd), $(Int, fst+snd));
         return None;
-      }
+      };
       
       /*
       ** Notice arguments to "call" in curried form.

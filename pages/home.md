@@ -3,12 +3,12 @@ __Cello__ is a _GNU99_ C _library_ which brings higher level programming to C.
 <blockquote>
 
 <ul>
-<li> <strong>Interfaces</strong> allow for structured design </li>
-<li> <strong>Duck Typing</strong> allows for generic functions </li>
-<li> <strong>Exceptions</strong> control error handling </li>
-<li> <strong>Constructors/Destructors</strong> aid memory management </li>
-<li> <strong>Syntactic Sugar</strong> increases readability </li>
-<li> <strong>C Library</strong> means excellent performance and integration </li>
+  <li> <strong>Interfaces</strong> allow for structured design </li>
+  <li> <strong>Duck Typing</strong> allows for generic functions </li>
+  <li> <strong>Exceptions</strong> control error handling </li>
+  <li> <strong>Constructors/Destructors</strong> aid memory management </li>
+  <li> <strong>Syntactic Sugar</strong> increases readability </li>
+  <li> <strong>C Library</strong> means excellent performance and integration </li>
 </ul>
 
 </blockquote>
@@ -26,7 +26,7 @@ __Cello__ is a _GNU99_ C _library_ which brings higher level programming to C.
       var string_item = $(String, "Hello");
 
       /* Heap objects are created using "new" */
-      var items = new(List, 3, int_item, float_item, string_item);
+      var items = new(Array, 3, int_item, float_item, string_item);
       
       /* Collections can be looped over */
       foreach (item in items) {

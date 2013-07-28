@@ -2,7 +2,7 @@ Int
 ---
 __Basic Integer Type__
 
-Coming Soon...
+Basic wrapper of standard C `long`.
 
 
 ### Implements
@@ -29,6 +29,32 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    var i0 = $(Int, 1);
+    var i1 = new(Int, 24313);
+    var i2 = copy(i0);
+    
+    show(i0); /* 1 */
+    show(i1); /* 24313 */
+    show(i2); /* 1 */
+    
+    delete(i1);
+    delete(i2);
+    
+__Maths__
+    
+    var i0 = $(Int, 0);
+    
+    show(i0); /* 0 */
+    
+    add(i0, $(Int, 10)); /* 10 */
+    mul(i0, $(Int, 3));  /* 30 */
+    div(i0, $(Int, 2));  /* 15 */
+    
+    if_gt(i0, $(Int, 10)) {
+        print("%i is greater than 10!", i0);
+    }
+    
 
 [Back](/documentation)

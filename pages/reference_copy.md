@@ -5,6 +5,17 @@ __Copyable__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Function](function)</span> _High Level Function_

@@ -2,7 +2,13 @@ Map
 ---
 __Binary Tree Collection__
 
-Coming Soon...
+Map is a binary tree data structure mapping keys to values. It is a [Collection](/documentation/containers) meaning it does not allocate storage for either the keys or the values places into it and it is not responsible for their destruction.
+
+Key objects must implement `Ord` and `Eq` and as with `List` this implementation must be meaningful across all key types added to the map.
+
+Maps provide O(log n) operation speeds for deletion, insertion and retrival making them a balanced overall data structure.
+
+The equivalent C++ construct to this type is a [std::map](http://www.cplusplus.com/reference/map/map/) of pointers.
 
 
 ### Implements
@@ -26,6 +32,23 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Creation__
+
+    var prices = new(Map);
+    var k0 = new(String, "Apple");
+    var k1 = new(String, "Banana");
+    var v0 = new(Int, 10);
+    var v1 = new(Int, 20);
+    
+    put(prices, k0, v0);
+    put(prices, k1, v1);
+    
+    foreach(k in prices) {
+        println("The Price of %s is %i", k, get(prices, k));
+    }
+    
+    delete(prices);
+    delete(k0); delete(k1);
+    delete(v0); delete(v1);
 
 [Back](/documentation)

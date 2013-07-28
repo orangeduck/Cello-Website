@@ -2,7 +2,11 @@ None
 ----
 __Empty Value__
 
-Coming Soon...
+`None` is a direct alias of `False` and is used idomatically in Cello code to represent a NULL, Empty or Non-Value. As None is just an alias of `False` it will evaluate to false in `if` blocks.
+
+`None` shouldn't be confused with `Undefined` - which is used instead to represent an Errorous or Unspecified value. For example putting `None` into a `List` is perfectly valid but `Undefined` is not.
+
+Also provided is `Some`, an alias to `True`. This can be used idomatically to indicate a single unspecified value.
 
 
 ### Implements
@@ -25,6 +29,17 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+    
+    if (len(self) == 0) return None;
+
+    var best = at(self, 0);
+    foreach(item in self) {
+        if_lt(item, best) {
+            best = item;
+        }
+    }
+
+    return best;
 
 [Back](/documentation)

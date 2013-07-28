@@ -2,7 +2,7 @@ Thread
 ------
 __Concurrent Processes__
 
-Coming Soon...
+A basic Thread primative. These can be constructed with some `Function` type and then called with a number of arguments.
 
 
 ### Implements
@@ -23,6 +23,17 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    lambda(f, args) {
+        println("Hello from thread %$!", current(Thread));
+        return None;
+    };
+    
+    var t = new(Thread, f);    
+    call(t, None);
+    join(t);
+    
+    delete(t);
 
 [Back](/documentation)

@@ -2,7 +2,9 @@ Reference
 ---------
 __Basic Reference Type__
 
-Coming Soon...
+Reference is a basic type providing a level of indirection to an object. It can be used like a pointer to store only references in contains such as Array or Table.
+
+It can also be used in conjunction with `With` to declare object lifetimes. Or a number of other tricks. A reference is _dereferenced_ using `at(r, 0)` and assigned using `set(r, 0, x)`.
 
 
 ### Implements
@@ -24,6 +26,36 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Single Lifetime__
+
+    with(liferef in $(Reference, new(String, "Life is long"))) {
+        println("This reference is: %$", liferef);
+        println("This string is alive: '%s'", at(liferef,0));
+    }
+
+    print("Now it has been cleared up!
+");
+
+__Many Lifetimes__
+
+    with(liferef0 in $(Reference, new(String, "Life is long")))
+    with(liferef1 in $(Reference, new(String, "Life is Beautiful")))
+    with(liferef2 in $(Reference, new(String, "Life is Grand"))) {
+        println("%s :: %s :: %s", at(liferef0,0), at(liferef1,0), at(liferef2,0));
+    }
+
+__Lambda Indirection__
+
+    /*
+    ** Reference can be used to set 
+    ** an otherwise read-only variable 
+    ** inside a closure.
+    */
+    var in_func = $(Reference, False);
+    
+    lambda(f, args) {
+      set(in_func, 0, True);
+      return None;
+    };
 
 [Back](/documentation)

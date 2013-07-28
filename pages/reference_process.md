@@ -5,6 +5,17 @@ __Program Like__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Thread](thread)</span> _Concurrent Processes_

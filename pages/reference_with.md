@@ -5,6 +5,17 @@ __Can be entered and exited__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Reference](reference)</span> _Basic Reference Type_

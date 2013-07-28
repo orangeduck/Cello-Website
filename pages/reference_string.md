@@ -2,7 +2,11 @@ String
 ------
 __Basic String Type__
 
-Coming Soon...
+String provides a basic wrapper for the C `char*` type.
+
+As well as wrapping the C string type it can also provide a number of other operations such as concatination and reversal for strings allocated on the heap. For these it will dynamically reallocate more memory if required making it significantly easier on mental overhead than C strings.
+
+One must be careful when using strings not to attempt to modify strings allocated on the stack - as this will usually throw a bad error.
 
 
 ### Implements
@@ -28,6 +32,36 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Creation__
+    
+    /* Stack String must not be edited */
+    var s0 = $(String, "Hello");
+    
+    /* Heap String can be freely edited */
+    var s1 = new(String, "There");
+    append(s1, $(String, " There"));
+    
+    delete(s1);
+    
+__Manipulation__
+
+    var s0 = new(String, "Balloons");
+    
+    show($(Int, len(s0))); /* 8 */
+    show(contains(s0, $(String, "Ball")));     /* True */
+    show(contains(s0, $(String, "oon")));      /* True */
+    show(contains(s0, $(String, "Balloons"))); /* True */
+    show(contains(s0, $(Char, 'l')));          /* True */
+    
+    discard(s0, $(String, "oons"));
+    
+    show(eq(s0, $(String, "Ball"))); /* True */
+    
+    clear(s0);
+    
+    show($(Int, len(s0))); /* 0 */
+    show(eq(s0, s0, $(String, ""))); /* True */
+    
+    delete(s0);
 
 [Back](/documentation)

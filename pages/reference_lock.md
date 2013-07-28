@@ -5,6 +5,17 @@ __Exclusive Resource__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Mutex](mutex)</span> _Mutual Exclusion Lock_

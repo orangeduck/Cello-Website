@@ -5,6 +5,17 @@ __Convertible to Serial Form__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[Real](real)</span> _Basic Float Point Type_

@@ -5,6 +5,17 @@ __Elements can be added to end__
 Coming Soon...
 
 
+### Methods
+
+-------------------------------
+
+
+### Signature
+
+
+Coming Soon...
+
+
 ### Implementers
 
 * <span style="width:75px; float:left;">[List](list)</span> _Sequential Collection_

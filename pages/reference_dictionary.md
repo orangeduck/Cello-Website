@@ -2,7 +2,10 @@ Dictionary
 ----------
 __Hashtable Collection__
 
-Dictionary is hashtable data structure mapping hashable keys to objects. It is a [Collection](/documentation/collection) meaning it does not allocate storage for the objects inside of it. Instead it only stored references to the objects. This means both keys and values inside must be stored and managed by the programmer for the duration of the Dictionary's life.
+Dictionary is hashtable data structure mapping hashable keys to values. It is a [Collection](/documentation/containers) meaning it does not allocate storage for the keys or values inside of it. Instead it only stored references to these objects. This means both keys and values inside must be stored and managed by the programmer for the duration of the Dictionary's life.
+
+As it is a Hashtable Dictionary provides O(1) performance for element access in the best case and O(n) in the worst.
+
 
 
 ### Implements
@@ -26,6 +29,23 @@ Dictionary is hashtable data structure mapping hashable keys to objects. It is a
 
 ### Examples
 
-Coming Soon...
+__Usage__
+    
+    var prices = new(Dictionary);
+    var k0 = new(String, "Apple");
+    var k1 = new(String, "Banana");
+    var v0 = new(Int, 10);
+    var v1 = new(Int, 20);
+    
+    put(prices, k0, v0);
+    put(prices, k1, v1);
+    
+    foreach(k in prices) {
+        println("The Price of %s is %i", k, get(prices, k));
+    }
+    
+    delete(prices);
+    delete(k0); delete(k1);
+    delete(v0); delete(v1);
 
 [Back](/documentation)
