@@ -44,7 +44,7 @@ __Cello Cons__
 
 I don't have nearly as much experience in ObjC but I can tell you that it is fairly similar to Cello when it comes to internals. The major difference is in the syntax and type checking ability.
 
-Objective C, like Cello, has a runtime system built over the top of the normal workings. It also does dynamic function calling via a message passing type interface. But the ObjC type system is both runtime and compile time. It does compile time type checking to ensure objects recieve valid messages. This can make some setup quite laborious and difficult. I find Objective C often requires quite large amounts of boilerplate and that the Apple libraries are full of Object Oriented style design patterns. Finally Objective C's syntax is famously ugly and complicated.
+Objective C, like Cello, has a runtime system built over the top of the normal workings. It also does dynamic function calling via a message passing type interface. The ObjC type system is both runtime and compile time giving it the advantage of being able to do compile time type checking to ensure objects recieve valid messages. This adds valuable type checking but can sometimes make some task laborious. I find Objective C often requires some boilerplate and that the Apple libraries are full of Object Oriented style design patterns. Objective C's syntax is generally regarded ugly and complicated but overall it is an interesting and powerful language.
 
 If you prefer OO style design, with patterns and boxes, and like to have types checked at compile time, then Objective C definitely offers you more. But if you primarily like the dynamic nature of Objective C but wished it was more flexible then Cello may appeal.
 
@@ -55,7 +55,7 @@ __Cello Pros__
 * Modern Standard Library
 * Composition based design
 * Exceptions instead of Error Codes
-* First Class Functions
+* Functions instead of Delegates
 
 
 __Cello Cons__

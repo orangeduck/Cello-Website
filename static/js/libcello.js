@@ -69,14 +69,14 @@ Rainbow.extend('libcello', [
     },
     {
       'name':'entity.class',
-      'pattern': /\b(Int|Real|Bool|Type|True|False|String|List|Array|Some|None|Undefined|Table|File|Map|Tree|Function|Dictionary|Char|NULL|Reference|Pool|Singleton|TypeError|ValueError|ClassError|IndexOutOfBoundsError|KeyError|OutOfMemoryError|IOError|FormatError|ProgramAbortedError|DivisionByZeroError|IllegalInstructionError|ProgramInterruptedError|SegmentationError|ProgramTerminationError|Vec2)(?=\(|\b)/g
+      'pattern': /\b(Int|Real|Bool|Type|True|False|String|List|Array|Some|None|Undefined|Table|File|Map|Tree|Function|Dictionary|Char|NULL|Reference|Pool|Singleton|TypeError|ValueError|ClassError|IndexOutOfBoundsError|KeyError|OutOfMemoryError|IOError|FormatError|ProgramAbortedError|DivisionByZeroError|IllegalInstructionError|ProgramInterruptedError|SegmentationError|ProgramTerminationError|Vec2|Thread|Mutex)(?=\(|\b)/g
     },
     {
       'name':'entity.function',
-      'pattern':/\b(lit|cast|new|delete|allocate|deallocate|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|contains|discard|is_empty|sort|maximum|minimum|reverse|iter_start|iter_end|iter_next|hash|push|push_at|push_back|push_front|pop|pop_at|pop_back|pop_front|at|set|get|put|as_char|as_str|as_long|as_double|enter_with|exit_with|open|close|seek|tell|flush|eof|read|write|parse_read|parse_write|type_class|type_implements|type_of|add|sub|mul|divide|negate|absolute|map|new_map|new_filter|new_foldl|new_foldr|new_sum|new_product|call_with|call|call_with_ptr|release|retain|assert|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_va|print_to_va|look|look_from|scan|scanln|scan_from|scan_va|scan_from_va)(?=\(|\b)/g
+      'pattern':/\b(lit|cast|new|delete|allocate|deallocate|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|contains|discard|is_empty|sort|maximum|minimum|reverse|iter_start|iter_end|iter_next|hash|push|push_at|push_back|push_front|pop|pop_at|pop_back|pop_front|at|set|get|put|as_char|as_str|as_long|as_double|enter_with|exit_with|open|close|seek|tell|flush|eof|read|write|parse_read|parse_write|type_class|type_class_method|type_implements|type_of|add|sub|mul|divide|negate|absolute|map|new_map|new_filter|new_foldl|new_foldr|new_sum|new_product|call_with|call|call_with_ptr|release|retain|assert|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_va|print_to_va|look|look_from|scan|scanln|scan_from|scan_va|scan_from_va|current|join|terminate|lock|unlock|lock_try)(?=\(|\b)/g
     },
     {
       'name':'support.class',
-      'pattern':/\b(New|Assign|Copy|Eq|Ord|Hash|Serialize|AsLong|AsDouble|AsStr|AsChar|Num|Collection|Reverse|Iter|Push|At|Dict|With|Stream|Call|Retain|Sort|Append|Show|Format|Vector)(?=\(|\b)/g
+      'pattern':/\b(New|Assign|Copy|Eq|Ord|Hash|Serialize|AsLong|AsDouble|AsStr|AsChar|Num|Collection|Reverse|Iter|Push|At|Dict|With|Stream|Call|Retain|Sort|Append|Show|Format|Vector|Process|Lock)(?=\(|\b)/g
     }
 ], true);

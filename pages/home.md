@@ -76,7 +76,7 @@ Or a longer example:
       }
       
       /* "with" automatically closes file at end of scope. */
-      with (file in open($(File, NULL), "prices.bin", "wb"))) {
+      with (file in open($(File, NULL), "prices.bin", "wb")) {
       
         /* First class function object */
         lambda(write_pair, args) {
@@ -88,7 +88,7 @@ Or a longer example:
           try {
             print_to(file, 0, "%$ :: %$\n", key, val);
           } catch (e in IOError) {
-            println("Could not write to file - got %$", e)
+            println("Could not write to file - got %$", e);
           }
 
           return None;
@@ -106,7 +106,7 @@ Inspiration
 
 The high level stucture of Cello projects is inspired by _Haskell_, while the syntax and semantics are inspired by _Python_ and _Obj-C_. Cello isn't about _Object Orientation_ in C, but I hope that with Cello I've turned C into something of a _dynamic_ and _powerful_ functional language which it may have once been.
 
-Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all Cello is just a fun experiment to see what C would look like when Hacked to it's limits.
+Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all Cello is just a fun experiment to see what C would look like when hacked to its limits.
 
 Contributions
 -------------

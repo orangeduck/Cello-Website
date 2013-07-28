@@ -130,12 +130,12 @@ Foreach
 With typeclasses `foreach` was fairly trivial to implement. We make an `Iter` typeclass which has functions `iter_start`, `iter_end` and `iter_next` and then any object which can implement those supports iteration via foreach:
 
     #define foreach(x, xs) \
-      for(var x = iter_start(xs); x = iter_next(xs); x != iter_end(xs))
+      for(var x = iter_start(xs); x != iter_end(xs); x = iter_next(xs))
 
 With
 ----
 
-The idea behind `with` is almost identical to `foreach`. We have `with_enter` and `with_exit` functions implemented by the `With` typeclass then use a single iteration of a `for` loop to use them.
+The idea behind `with` is almost identical to `foreach`. We have `enter_with` and `exit_with` functions implemented by the `With` typeclass then use a single iteration of a `for` loop to use them.
 
     #define with(x, y) \
       for(var x = enter_for(y); not (x is Undefined); x = exit_for(x))
@@ -151,9 +151,9 @@ GNU99 C has a great feature that lets you define functions inside functions. The
 If we assume the same type for all lambda statements, with arguments rolled into a list, we can create macro that declares a function inside the current function and wraps it in a rich object.
 
     #define lambda(name, args) \
-      auto var __LambdaPlus_##name(var); \
-      var name = $(Function, __LambdaPlus_##name); \
-      var __LambdaPlus_##name(var args)
+      auto var __LambdaCello_##name(var); \
+      var name = $(Function, __LambdaCello_##name); \
+      var __LambdaCello_##name(var args)
 
       
 GNU99 C also allows for use of the `auto` keyword to do forward declaration. Again not a win for portability but a powerful addition to the language.
@@ -171,9 +171,9 @@ In the end I forumulated something that worked.
       if (!setjmp(__exc_buffers[__exc_depth]))   
 
     #define catch(x, ...) \
-      else { __exc_active = true; } __exc_depth++; \
+      else { __exc_active = true; } __exc_depth--; \
       for (var x = __exc_catch(NULL, ##__VA_ARGS__, Undefined); x != Undefined; x = Undefined)
-    
+      
     #define throw(e) __exc_throw(e)
 
 

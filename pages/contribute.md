@@ -26,7 +26,7 @@ There are still lots of potential additions to the standard library including th
   * Linked Lists
   * Generators
   * Sockets
+  * JSON
   * Regular Expressions
-  * Threads
   * _Anything else_
 
