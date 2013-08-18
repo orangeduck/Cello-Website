@@ -2,19 +2,33 @@ Copy
 ----
 __Copyable__
 
-Coming Soon...
+The `Copy` class allows for a user to make a copy of an object. This copy must be deleted by the user.
+
+By convention `copy` means a deep copy. That is a copy that also copies all inner components of the object.
 
 
 ### Methods
 
 -------------------------------
 
+    var copy(var obj);
+
+Make a copy of an object.
+
+* __Parameters__
+    * `obj` Object to copy
+* __Returns__ Copy of Object
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      var (*copy)(var);
+    } Copy;
+    
 
 ### Implementers
 
@@ -42,6 +56,16 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+    
+    var x = new(String, "Hello");
+    var y = copy(x);
+    
+    show(x); /* Hello */
+    show(y); /* Hello */
+    show(x is y); /* False */
+    
+    delete(x);
+    delete(y);
 
 [Back](/documentation)

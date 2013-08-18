@@ -20,7 +20,7 @@ Contents
 * [Containers and Collections](/documentation/containers)
 * [Type and Classes](/documentation/types)
 * [Exceptions](/documentation/exceptions)
-* [First Class Functions](/documentation/functions)
+* [Lambdas](/documentation/functions)
 * [Memory Management](/documentation/memory)
     
 ### Articles
@@ -33,21 +33,21 @@ Contents
 * __Types__
 """
 +
-"".join(["""    * <span style="width:100px; float:left;">[%s](reference/%s)</span> _%s_\n""" % (t["name"], t["link"], t["tag"]) for _, t in sorted(cello_types.iteritems())])
+"".join(["""    * <span style="width:100px; float:left;">[%s](/reference/%s)</span> _%s_\n""" % (t["name"], t["link"], t["tag"]) for _, t in sorted(cello_types.iteritems())])
 +
 """
 
 * __Classes__
 """
 +
-"".join(["""    * <span style="width:100px; float:left;">[%s](reference/%s)</span> _%s_\n""" % (c["name"], c["link"], c["tag"]) for _, c in sorted(cello_classes.iteritems())])
+"".join(["""    * <span style="width:100px; float:left;">[%s](/reference/%s)</span> _%s_\n""" % (c["name"], c["link"], c["tag"]) for _, c in sorted(cello_classes.iteritems())])
 +
 """
     
 * __Other__
-    * [Exception](reference/exception)
-    * [Lambda](reference/lambda)
-    * [Value](reference/value)
+    * [Exceptions](/documentation/exceptions)
+    * [Lambda](/documentation/functions)
+    * [Values](/documentation/values)
 """
 )
 

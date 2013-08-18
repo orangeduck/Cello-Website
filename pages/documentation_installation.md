@@ -20,9 +20,9 @@ In this form it is not ready to use but first needs to be __compiled__ and then 
 2. Compile
 ----------
 
-To compile Cello requires a GNU99 compatible C compiler. In almost always means `gcc`.
+To compile Cello requires a GNU99 compatible C compiler. This almost always means `gcc`.
 
-* __On Linux__ `gcc` can be installed via the system package manager. For example `apt-get install gcc`.
+* __On Linux__ `gcc` can be installed via the system package manager. For example if you are using Ubuntu enter `apt-get install gcc` into a terminal.
 * __On Mac__ XCode needs to be installed along with the command line tools. This will install a version of `gcc` using the `clang` compiler suite.
 * __On Windows__ [MinGW64](http://mingw-w64.sourceforge.net/) or [Cygwin](http://www.cygwin.com/) needs to be downloaded and installed. Either of these provide a version of the `gcc` compiler. 
 
@@ -32,11 +32,11 @@ To check you have `gcc` installed open a terminal and type:
       gcc (rubenvb-4.7.2-release) 4.7.2
       ...
 
-Once this is the case, browse to the directory in which you unzipped the source distribution and run the following:
+You should see something similar to the above. Once this is the case, browse to the directory in which you unzipped the source distribution and run the following:
     
     $ ls
-      INSTALL.md  Makefile   demos    libCello.a    tests
-      LICENSE.md  README.md  include  libCello.dll  src   
+      INSTALL.md  Makefile   demos    tests
+      LICENSE.md  README.md  include  src   
     $ make
       ...
     

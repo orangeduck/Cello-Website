@@ -2,19 +2,31 @@ AsChar
 ------
 __Representable as C char__
 
-Coming Soon...
+The `AsChar` class allows a user to represent an object as a C `char`. It is used by the native type wrapper `Char`.
 
 
 ### Methods
 
 -------------------------------
 
+    char as_char(var self);
+
+represent object as C `char`
+
+* __Parameters__
+    * `self` object to represent
+* __Returns__ C `char` representation of object
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      char (*as_char)(var);
+    } AsChar;
+    
 
 ### Implementers
 
@@ -30,6 +42,10 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    putc(as_char($(Char, 'a'))); /* a */
+    putc(as_char($(Char, 'b'))); /* b */
+    
 
 [Back](/documentation)

@@ -2,19 +2,31 @@ Sort
 ----
 __Elements can be sorted__
 
-Coming Soon...
+The `Sort` class provides an interface for sorting an object, typically a collection. Note that in general this means `Ord` needs to be defined across the items in the collection.
 
 
 ### Methods
 
 -------------------------------
 
+    void sort(var self);
+
+Sort an object
+
+* __Parameters__
+    * `self` object to be sorted
+* __Returns__ None
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      void (*sort)(var);
+    } Sort;
+    
 
 ### Implementers
 
@@ -31,6 +43,14 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    var x = new(Array, Real, 4, $(Real, 5.2), $(Real, 7.1), $(Real, 2.2), $(Real, 1.1));
+    
+    show(x); /* <'Array' At 0x0000000000414603 [5.2, 7.1, 2.2, 1.1]> */
+    sort(x);
+    show(x); /* <'Array' At 0x0000000000414603 [1.1, 2.2, 5.2, 7.1]> */
+    
+    delete(x);
 
 [Back](/documentation)

@@ -2,19 +2,98 @@ Collection
 ----------
 __Treatable as several objects__
 
-Coming Soon...
+The `Collection` class provides an interface for treating data structures as a container or collection of other objects. It provides methods to check the number of items in a collection. It also provides methods to check if a container has an object inside and to discard this object if it does.
+
+Note that the `contains` method uses the `Eq` type class to test for containment. Therefore it does not test for actual exact objects but any two objects that are equal.
 
 
 ### Methods
 
 -------------------------------
 
+    int len(var self);
+
+Give the length of a collection.
+
+* __Parameters__
+    * `self` Collection
+* __Returns__ Length of Collection
+
+------------------------------- 
+
+    void clear(var self);
+
+Remove all items from a Collection.
+
+* __Parameters__
+    * `self` Collection
+* __Returns__ None
+
+------------------------------- 
+
+    var contains(var col, val obj);
+
+Check if a Collection contains an Object.
+
+* __Parameters__
+    * `self` Collection
+    * `obj` Object
+* __Returns__ Containment truth value
+
+------------------------------- 
+
+    void discard(var self, var obj);
+
+Remove an object from a Collection.
+
+* __Parameters__
+    * `self` Collection
+    * `obj` Object
+* __Returns__ None
+
+------------------------------- 
+
+    var is_empty(var self);
+
+Check if a collection is empty.
+
+* __Parameters__
+    * `self` Collection
+* __Returns__ Empty truth value
+
+------------------------------- 
+
+    var maximum(var self);
+
+Return the largest item in a collection.
+
+* __Parameters__
+    * `self` Collection
+* __Returns__ Largest Item
+
+------------------------------- 
+
+    var minimum(var self);
+
+Return the smallest item in a collection.
+
+* __Parameters__
+    * `self` Collection
+* __Returns__ Smallest Item
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      int (*len)(var);
+      void (*clear)(var);
+      var (*contains)(var, var);
+      void (*discard)(var, var);
+    } Collection;
+    
 
 ### Implementers
 
@@ -41,6 +120,26 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+    var x = new(List, 3, $(Int, 1), $(Real, 2.0), $(String, "Hello"));
+
+    show(len(x)); /* 3 */
+    show(contains(x, $(Int, 1)));          /* True */
+    show(contains(x, $(Real, 2.0)));       /* True */
+    show(contains(x, $(String, "Hello"))); /* True */
+
+    discard(x, $(Real, 2.0));
+
+    show(len(x)); /* 2 */
+    show(contains(x, $(Int, 1)));          /* True */
+    show(contains(x, $(String, "Hello"))); /* True */
+    show(contains(x, $(Real, 2.0)));       /* False */
+
+    clear(x);
+
+    show(len(x));      /* 0 */
+    show(is_empty(x)); /* True */
+
+    delete(x);
 
 [Back](/documentation)

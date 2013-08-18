@@ -2,19 +2,32 @@ Append
 ------
 __Elements can be added to end__
 
-Coming Soon...
+The `Append` class provides an interface for appending an object to another, this is typically a collection.
 
 
 ### Methods
 
 -------------------------------
 
+    void append(var self, var obj);
+
+Append an object to another
+
+* __Parameters__
+    * `self` object to be appended to
+    * `obj` object to be append
+* __Returns__ None
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      void (*append)(var, var);
+    } Append;
+    
 
 ### Implementers
 
@@ -32,6 +45,12 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+    var x = new(Array, Real, 2, $(Real, 9.9), $(Real, 2.8));
+    
+    show(x); /* <'Array' At 0x0000000000414603 [9.9, 2.8]> */
+    append(x, $(Real, 2.5));
+    show(x); /* <'Array' At 0x0000000000414603 [9.9, 2.8, 2.5]> */
+    
+    delete(x);
 
 [Back](/documentation)

@@ -591,7 +591,6 @@ __Usage__
     call(table_process, retain(p, x));
 
     release(p, x);
-
 """        
     ),
 
@@ -601,7 +600,7 @@ __Usage__
         related = "Pool",
         description = 
 """
-Reference is a basic type providing a level of indirection to an object. It can be used like a pointer to store only references in contains such as Array or Table.
+Reference is a basic type providing a level of indirection to an object. It can be used like a pointer to store only references in containers such as `Array` or `Table`.
 
 It can also be used in conjunction with `With` to declare object lifetimes. Or a number of other tricks. A reference is _dereferenced_ using `at(r, 0)` and assigned using `set(r, 0, x)`.
 """,
@@ -614,7 +613,7 @@ __Single Lifetime__
         println("This string is alive: '%s'", at(liferef,0));
     }
 
-    print("Now it has been cleared up!\n");
+    print("Now it has been cleared up!\\n");
 
 __Many Lifetimes__
 

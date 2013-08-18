@@ -2,19 +2,79 @@ Ord
 ---
 __Comparable for Ordering__
 
-Coming Soon...
+The `Ord` class provides an ordering relationship between objects of a certain type. This allows for one to test if some object is considered _Greater Than_ or _Less Than_ another.
+
+The compliments of these are also provided in `le` and `ge`.
+
+Similarly to the `Eq` class macros are provided to allow for testing like an `if` statement
+
+    #define if_lt(X,Y) if(lt(X,Y))
+    #define if_gt(X,Y) if(gt(X,Y))
+    #define if_le(X,Y) if(le(X,Y))
+    #define if_ge(X,Y) if(ge(X,Y))
+
+Ordering is required for some standard containers and collections.
+
+Strings are ordered in alphabetical order.
 
 
 ### Methods
 
 -------------------------------
 
+    var gt(var self, var obj);
+
+Test if one object is greater than other.
+
+* __Parameters__
+    * `self` First Object
+    * `obj` Second Object
+* __Returns__ Equality Truth Value
+
+------------------------------- 
+
+    var lt(var self, var obj);
+
+Test if one object is less than other.
+
+* __Parameters__
+    * `self` First Object
+    * `obj` Second Object
+* __Returns__ Equality Truth Value
+
+------------------------------- 
+
+    var ge(var self, var obj);
+
+Test if one object is not less than other.
+
+* __Parameters__
+    * `self` First Object
+    * `obj` Second Object
+* __Returns__ Equality Truth Value
+
+------------------------------- 
+
+    var le(var self, var obj);
+
+Test if one object is not greater than other.
+
+* __Parameters__
+    * `self` First Object
+    * `obj` Second Object
+* __Returns__ Equality Truth Value
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      var (*gt)(var,var);
+      var (*lt)(var,var);
+    } Ord;
+    
 
 ### Implementers
 
@@ -33,6 +93,25 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    show(  gt($(Int, 15), $(Int, 3 )) ); /* True */
+    show(  lt($(Int, 70), $(Int, 81)) ); /* True */
+    show(  lt($(Int, 71), $(Int, 71)) ); /* False */
+    show(  ge($(Int, 78), $(Int, 71)) ); /* True */
+    show(  gt($(Int, 32), $(Int, 32)) ); /* False */
+    show(  le($(Int, 21), $(Int, 32)) ); /* True */
+    
+__Macros__
+
+    var x = $(String, "Daniel");
+    var y = $(String, "Holden");
+    
+    if_gt(x, y) {
+        println("Last Name First");
+    } else {
+        println("First Name First");
+    }
+
 
 [Back](/documentation)

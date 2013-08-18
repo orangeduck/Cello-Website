@@ -26,7 +26,7 @@ __Cello__ is a _GNU99_ C _library_ which brings higher level programming to C.
       var string_item = $(String, "Hello");
 
       /* Heap objects are created using "new" */
-      var items = new(Array, 3, int_item, float_item, string_item);
+      var items = new(List, 3, int_item, float_item, string_item);
       
       /* Collections can be looped over */
       foreach (item in items) {

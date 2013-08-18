@@ -2,19 +2,31 @@ AsLong
 ------
 __Representable as C long__
 
-Coming Soon...
+The `AsLong` class allows a user to represent an object as a C `long`. It is used by the native type wrapper `Int`.
 
 
 ### Methods
 
 -------------------------------
 
+    long as_long(var self);
+
+represent object as C `long`
+
+* __Parameters__
+    * `self` object to represent
+* __Returns__ C `long` representation of object
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      long (*as_long)(var);
+    } AsLong;
+    
 
 ### Implementers
 
@@ -32,6 +44,11 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    printf("%li", as_long($(Int, 5)));    /* 5 */
+    printf("%li", as_long($(Real, 5.6))); /* 5 */
+    printf("%li", as_long($(Real, 5.5))); /* 5 */
+    printf("%li", as_long($(Real, 5.4))); /* 5 */
 
 [Back](/documentation)

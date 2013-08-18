@@ -2,19 +2,87 @@ New
 ---
 __Constructable on the Heap__
 
-Coming Soon...
+The `New` class provides a method to implement dynamic (heap) memory allocation for certain object types as well as _constructor_ and _destructor_ functions to be called just after an object's memory space has been allocated and just before it's memory allocation is freed. To implement this class you must also give the memory size of the data object to allocated.
+
+The `new` function uses C variable arguments to provide a method of passing arguments to an object's constructor. Unfortunately the exact type and order of these arguments cannot be checked by the compiler so it is up to the users to refer to the documentation to see how a certain type of object is correctly constructed. Incorrect construction will simply crash the program.
 
 
 ### Methods
 
 -------------------------------
 
+    var new(var type, ...);
+
+Create a new object of a certain type on the heap.
+
+* __Parameters__
+    * `type` Type to create
+    * `...` Arguments to be passed to constructor
+* __Returns__ New Object
+
+------------------------------- 
+
+    void delete(var obj);
+
+Delete an object created on the heap.
+
+* __Parameters__
+    * `obj` Object to delete
+* __Returns__ None
+
+------------------------------- 
+
+    var allocate(var type);
+
+Allocate space for an object of a certain type.
+
+* __Parameters__
+    * `type` Type to allocate space for
+* __Returns__ Blank object of certain type
+
+------------------------------- 
+
+    void deallocate(var obj);
+
+Free the space allocated by a certain object.
+
+* __Parameters__
+    * `obj` Object to free the memory for
+* __Returns__ None
+
+------------------------------- 
+
+    var construct(var obj, ...);
+
+Call the constructor of an object.
+
+* __Parameters__
+    * `obj` Object to call constructor on
+    * `...` Arguments to be passed to constructor
+* __Returns__ Newly Constructed Object
+
+------------------------------- 
+
+    var destruct(var obj);
+
+Call the destructor of an object.
+
+* __Parameters__
+    * `obj` Object to call destructor on
+* __Returns__ Newly Destructed Object
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      size_t size;
+      var (*construct)(var, va_list*);
+      var (*destruct)(var);
+    } New;
+    
 
 ### Implementers
 
@@ -45,6 +113,27 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    var x = new(Int, 1);
+    
+    show(x); /* 1 */
+    show(type_of(x)) /* Int */
+    
+    delete(x);
+    
+    var y = $(Real, 0.0);  
+    
+    show(y); /* 0.0 */
+    construct(y, 1.0);
+    show(y); /* 1.0 */
+    
+    var z = allocate(String);
+    construct(z, "Hello");
+    
+    show(z); /* Hello */
+    z = destruct(z);
+    deallocate(z);
+    
 
 [Back](/documentation)

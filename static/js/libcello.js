@@ -65,7 +65,7 @@ Rainbow.extend('libcello', [
     },
     {
       'name':'keyword',
-      'pattern': /\b(var|is|not|and|or|elif|else|foreach|with|try|catch|throw|if|if_eq|if_neq|if_gt|if_lt|if_ge |if_le|typedef|for|while|switch|case|break|do|return|sizeof|as|void|unsigned|const|char|short|int|long |bool|float|double|size_t|true|false|va_list\*|void\*|char\*|char\*\*|var\*|FILE\*|va_list|bool|struct |union|static|extern|volatile|module|class|data|instance|methods|methods_begin|method|methods_end| |lambda|lambda_id|lambda_const|lambda_compose|lambda_flip|lambda_partial|lambda_partial_l |lambda_partial_r|lambda_void|lambda_uncurry|lambda_void_uncurry|lambda_pipe|lambda_method_pipe|local|global|in|enum)(?=\(|\b)/g
+      'pattern': /\b(var|val|is|not|and|or|elif|else|foreach|with|try|catch|throw|if|if_eq|if_neq|if_gt|if_lt|if_ge |if_le|typedef|for|while|switch|case|break|do|return|sizeof|as|void|unsigned|const|char|short|int|long |bool|float|double|size_t|true|false|va_list\*|void\*|char\*|char\*\*|var\*|FILE\*|va_list|bool|struct |union|static|extern|volatile|module|class|data|instance|methods|methods_begin|method|methods_end| |lambda|lambda_id|lambda_const|lambda_compose|lambda_flip|lambda_partial|lambda_partial_l |lambda_partial_r|lambda_void|lambda_uncurry|lambda_void_uncurry|lambda_pipe|lambda_method_pipe|local|global|in|enum)(?=\(|\b)/g
     },
     {
       'name':'entity.class',
@@ -73,7 +73,7 @@ Rainbow.extend('libcello', [
     },
     {
       'name':'entity.function',
-      'pattern':/\b(lit|cast|new|delete|allocate|deallocate|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|contains|discard|is_empty|sort|maximum|minimum|reverse|iter_start|iter_end|iter_next|hash|push|push_at|push_back|push_front|pop|pop_at|pop_back|pop_front|at|set|get|put|as_char|as_str|as_long|as_double|enter_with|exit_with|open|close|seek|tell|flush|eof|read|write|parse_read|parse_write|type_class|type_class_method|type_implements|type_of|add|sub|mul|divide|negate|absolute|map|new_map|new_filter|new_foldl|new_foldr|new_sum|new_product|call_with|call|call_with_ptr|release|retain|assert|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_va|print_to_va|look|look_from|scan|scanln|scan_from|scan_va|scan_from_va|current|join|terminate|lock|unlock|lock_try)(?=\(|\b)/g
+      'pattern':/\b(lit|cast|new|delete|allocate|deallocate|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|contains|discard|is_empty|sort|maximum|minimum|reverse|iter_start|iter_end|iter_next|hash|push|push_at|push_back|push_front|pop|pop_at|pop_back|pop_front|at|set|get|put|as_char|as_str|as_long|as_double|enter_with|exit_with|stream_open|stream_close|stream_seek|stream_tell|stream_flush|stream_eof|stream_read|stream_write|serial_read|serial_write|type_class|type_class_method|type_implements|type_of|add|sub|mul|divide|negate|absolute|map|new_map|new_filter|new_foldl|new_foldr|new_sum|new_product|call_with|call|call_with_ptr|release|retain|assert|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_va|print_to_va|look|look_from|scan|scanln|scan_from|scan_va|scan_from_va|current|join|terminate|lock|unlock|lock_try|append)(?=\(|\b)/g
     },
     {
       'name':'support.class',

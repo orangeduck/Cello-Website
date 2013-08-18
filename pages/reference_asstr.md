@@ -2,19 +2,31 @@ AsStr
 -----
 __Representable as C char*__
 
-Coming Soon...
+The `AsStr` class allows a user to represent an object as a C `char*`. It is used by the native type wrapper `String`.
 
 
 ### Methods
 
 -------------------------------
 
+    const char* as_str(var self);
+
+represent object as C `char*`
+
+* __Parameters__
+    * `self` object to represent
+* __Returns__ C `char*` representation of object
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      const char* (*as_str)(var);
+    } AsStr;
+    
 
 ### Implementers
 
@@ -31,6 +43,10 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    puts(as_str($(String, "Hello"))); /* Hello */
+    puts(as_str($(String, "There"))); /* There */
+    
 
 [Back](/documentation)

@@ -2,19 +2,35 @@ Hash
 ----
 __Hashable to a long__
 
-Coming Soon...
+The `Hash` class provides a way to convert an object into a long integer value. This value must remain the same for objects which are equal but should be evenly distributed for objects which are not equal.
+
+A default implementation of `Hash` is provided for all type using the memory location cast to a long integer.
+
+This is used by the Hashtable like objects such as `Table` and `Dictionary`.
 
 
 ### Methods
 
 -------------------------------
 
+    long hash(var obj);
+
+Hash an object to a long integer value.
+
+* __Parameters__
+    * `self` Object
+* __Returns__ Object Hash
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      long (*hash)(var);
+    } Hash;    
+    
 
 ### Implementers
 
@@ -34,6 +50,14 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+
+    long x = hash($(Int, 1  )); /* 1   */
+    long y = hash($(Int, 123)); /* 123 */
+    long z = hash($(Int, 123)); /* 123 */
+    
+    long a = hash($(String, "Hello"));  /* 511 */
+    long b = hash($(String, "There"));  /* 515 */
+    long c = hash($(String, "People")); /* 629 */
 
 [Back](/documentation)

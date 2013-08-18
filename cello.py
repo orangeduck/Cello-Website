@@ -32,17 +32,17 @@ def index(page="home", section=None):
     
     if (page in ["documentation"] and 
         section  in 
-        ["types", "containers", "functions", 
+        ["types", "containers", "functions",
         "memory", "exceptions", "hacking", 
-        "comparison", "installation", "celloworld"]):
+        "comparison", "installation", "celloworld",
+        "values"]):
         
         section = "_"+section
         
     elif (page in ["reference"] and
         
         section in map(lambda k: k.lower(), cello_classes.keys()) or
-        section in map(lambda k: k.lower(), cello_types.keys()) or
-        section in ["exception", "lambda", "value"]):
+        section in map(lambda k: k.lower(), cello_types.keys())):
         section = "_"+section
         
     else:

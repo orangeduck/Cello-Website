@@ -2,19 +2,53 @@ Process
 -------
 __Program Like__
 
-Coming Soon...
+The `Process` class provides an abstraction on functions related to multiple processes such as Threading.
 
 
 ### Methods
 
 -------------------------------
 
+    var current(var type);
+
+return the current process.
+
+* __Parameters__
+    * `type` type implementing Progress of which to get the current
+* __Returns__ None
+
+------------------------------- 
+
+    void join(var self);
+
+join another process.
+
+* __Parameters__
+    * `self` process to join with
+* __Returns__ None
+
+------------------------------- 
+
+    void terminate(var self);
+
+terminate another process.
+
+* __Parameters__
+    * `self` process to terminate
+* __Returns__ None
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      var  (*current)(void);
+      void (*join)(var);
+      void (*terminate)(var);
+    } Process;
+    
 
 ### Implementers
 
@@ -29,6 +63,20 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage__
+    
+    lambda(thread_hello, args) {
+        println("Hello from %$!", current(Thread));
+    };
+    
+    var t = new(Thread, thread_hello);
+    call(t, None);
+    
+    println("Waiting for %$...", t);
+    join(t);
+    
+    println("And Hello from %$!", current(Thread));
+    
+    delete(t);
 
 [Back](/documentation)

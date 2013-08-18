@@ -2,19 +2,34 @@ Assign
 ------
 __Assignable to__
 
-Coming Soon...
+The `Assign` class lets one assign a value from one object to another. This essentially means copying the contents of `obj` into `self`.
+
+This class is important to implement as it is used extensively by contains to give allocated space values. Also for this reason one should not assume anything about the state of `self` (for example it may not have been constructed).
 
 
 ### Methods
 
 -------------------------------
 
+    void assign(var self, var obj);
+
+Assign the value of one object to another.
+
+* __Parameters__
+    * `self` Object to get assigned to
+    * `obj` Object to assign
+* __Returns__ None
+
+------------------------------- 
+
 
 ### Signature
 
 
-Coming Soon...
-
+    class {
+      void (*assign)(var, var);
+    } Assign;    
+    
 
 ### Implementers
 
@@ -42,6 +57,37 @@ Coming Soon...
 
 ### Examples
 
-Coming Soon...
+__Usage 1__
+
+    var x = new(Int, 10);
+    var y = new(Int, 20);
+    
+    show(x); /* 10 */
+    show(y); /* 20 */
+
+    assign(x, y);
+    
+    show(x); /* 20 */
+    show(y); /* 20 */
+    
+    delete(x);
+    delete(y);
+
+
+__Usage 2__
+
+    var x = new(String, "Hello");
+    var y = new(String, "There");
+    
+    show(x); /* Hello */
+    show(y); /* There */
+    
+    assign(x, y);
+    
+    show(x); /* There */
+    show(y); /* There */
+    
+    delete(x);
+    delete(y);
 
 [Back](/documentation)
