@@ -1,5 +1,4 @@
 
-
 Contents
 --------
 
@@ -18,7 +17,7 @@ Contents
     
 ### Articles
 
-* [Hacking C to it's limits](/documentation/hacking)
+* [Hacking C to its limits](/documentation/hacking)
 * [Cello vs C++ vs ObjC](/documentation/comparison)
     
 ### Reference
