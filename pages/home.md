@@ -52,7 +52,7 @@ For more examples please take a look at the quickstart documentation section:
 
 Or some articles about the creation:
 
-* [Hacking C to it's limits](/documentation/hacking)
+* [Hacking C to its limits](/documentation/hacking)
 * [Cello vs C++ vs ObjC](/documentation/comparison)
 
 Or a longer example:
