@@ -167,17 +167,20 @@ Anyone who has looked will know there are a rather large number of implementatio
 In the end I forumulated something that worked.
 
     #define try \
-      __exc_depth++; __exc_active = false; \
-      if (!setjmp(__exc_buffers[__exc_depth]))   
+      Exception_Inc(); \ 
+      Exception_Deactivate(); \
+      if (!setjmp(Exception_Buffer()))
 
     #define catch(x, ...) \
-      else { __exc_active = true; } __exc_depth--; \
-      for (var x = __exc_catch(NULL, ##__VA_ARGS__, Undefined); x != Undefined; x = Undefined)
-      
-    #define throw(e) __exc_throw(e)
+      else { Exception_Activate(); } \
+      Exception_Dec(); \
+      for (var x = Exception_Catch(var_list_new(__VA_ARGS__)); x != Undefined; x = Undefined)
+
+    #define throw(e, fmt, ...) \ 
+      Exception_Throw(e, fmt, __FILE__, __func__, __LINE__, var_list_new(__VA_ARGS__))
 
 
-Where `__exc_throw` essentially just calls `longjmp` on the topmost jump location and `__exc_catch` deals with the catching logic or returns `Undefined` when an exception is not active.
+Where `Exception_Throw` essentially just calls `longjmp` on the topmost jump location and `Exception_Catch` deals with the catching logic or returns `Undefined` when an exception is not active.
 
 
 True/False
