@@ -1,6 +1,6 @@
 libCello Website
 ================
 
-Basic Flask site with some basic tools for generating documentation.
+Basic Flask site with some python scripts used for generating the reference documentation.
 
-Contributions welcome.
+Contributions/Corrections welcome.
