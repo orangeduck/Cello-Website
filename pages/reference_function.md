@@ -42,7 +42,7 @@ __Mapping__
         return None;
     };
 
-    var names = new(Array, 3, 
+    var names = new(Array, 
     $(String, "Dan"), 
     $(String, "Robert"), 
     $(String, "Chris"));

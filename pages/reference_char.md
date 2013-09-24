@@ -29,7 +29,7 @@ Char is a wrapper for the native C char type.
 __Properties__
 
     var x = $(Char, 'a');
-    var y = new(Char, 'b');
+    var y = new(Char, $(Char, 'b'));
     var z = copy(x);
     
     show(eq(x, z)); /* True */

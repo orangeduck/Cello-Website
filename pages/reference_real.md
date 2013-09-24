@@ -30,7 +30,7 @@ Basic wrapper of standard C `double`.
 __Usage__
 
     var r0 = $(Real, 1.0);
-    var r1 = new(Real, 24.313);
+    var r1 = new(Real, $(Real, 24.313));
     var r2 = copy(r0);
     
     show(r0); /* 1.0 */

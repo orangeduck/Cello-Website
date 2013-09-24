@@ -32,10 +32,10 @@ As it is a Hashtable Dictionary provides O(1) performance for element access in 
 __Usage__
     
     var prices = new(Dictionary);
-    var k0 = new(String, "Apple");
-    var k1 = new(String, "Banana");
-    var v0 = new(Int, 10);
-    var v1 = new(Int, 20);
+    var k0 = new(String, $(String, "Apple"));
+    var k1 = new(String, $(String, "Banana"));
+    var v0 = new(Int, $(Int, 10));
+    var v1 = new(Int, $(Int, 20));
     
     put(prices, k0, v0);
     put(prices, k1, v1);

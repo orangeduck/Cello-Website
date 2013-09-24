@@ -64,7 +64,7 @@ __Usage__
     var snd = $(Real, 2.0);
     var trd = $(String, "Hello");
 
-    var x = new(List, 3, fst, snd, trd);
+    var x = new(List, fst, snd, trd);
 
     show(at(x, 0)); /* 1 */
     show(at(x, 1)); /* 2.0 */

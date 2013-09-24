@@ -6,7 +6,7 @@ Show is the standard class used to convert objects to, and from, a String repres
 
 The `print`, `println` and `print_to` functions provide a mechanism for writing formatted strings. To do this they provide a new format specifier `%$` which uses an object's `Show` functionality to write to String. All objects which don't support `Show` can still be shown via a default implementation. 
 
-All the `Show` methods which are variable arguments should only be passed `var` type objects and should never be passed native C types. To print native C types wrap them in Cello types using `$` (see examples below).
+All the `Show` methods which are variable arguments only take `var` type objects and should never be passed native C types. To print native C types wrap them in Cello types using `$` (see examples below).
 
 Standard format specifiers such as `%f` and `%d` will call functions such as `as_double` and `as_long` on their passed in arguments to convert to a C type before performing the standard C formatting behaviour.
 
@@ -33,8 +33,9 @@ Writes an Object
     int print(const char* fmt, ...);
     int println(const char* fmt, ...);
     int print_to(var out, int pos, const char* fmt, ...);
-    int print_va(const char* fmt, va_list va);
-    int print_to_va(var out, int pos, const char* fmt, va_list va);
+    int print_vl(const char* fmt, var_list vl);
+    int println_vl(const char* fmt, var_list vl);
+    int print_to_vl(var out, int pos, const char* fmt, var_list vl);
 
 Use a format string to write several objects
 
@@ -63,8 +64,9 @@ Reads an Object
     int scan(const char* fmt, ...);
     int scanln(const char* fmt, ...);
     int scan_from(var input, int pos, const char* fmt, ...);
-    int scan_va(const char* fmt, va_list va);
-    int scan_from_va(var input, int pos, const char* fmt, va_list va);
+    int scan_vl(const char* fmt, var_list vl);
+    int scanln_vl(const char* fmt, var_list vl);
+    int scan_from_vl(var input, int pos, const char* fmt, var_list vl);
 
 Use a format string to read several objects
 
@@ -133,9 +135,9 @@ __String Scanning__
     
     var input = $(String, "1 and 52 then 78");
     
-    var i0 = new(Int, 0);
-    var i1 = new(Int, 0);
-    var i2 = new(Int, 0);
+    var i0 = new(Int, $(Int, 0));
+    var i1 = new(Int, $(Int, 0));
+    var i2 = new(Int, $(Int, 0));
     
     scan_from(input, 0, "%i and %i then %i", i0, i1, i2);
     
@@ -144,7 +146,7 @@ __String Scanning__
     
 __String Writing__
 
-    var greeting = new(String, "");
+    var greeting = new(String, $(String, ""));
     print_to(greeting, 0, "Hello %s %s, %s?", $(String, "Mr"), $(String, "Johnson"), $(String, "how are you?"));
     
     /* Hello Mr Johnson, how are you? */

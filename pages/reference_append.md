@@ -45,7 +45,7 @@ Append an object to another
 
 ### Examples
 
-    var x = new(Array, Real, 2, $(Real, 9.9), $(Real, 2.8));
+    var x = new(Array, Real, $(Real, 9.9), $(Real, 2.8));
     
     show(x); /* <'Array' At 0x0000000000414603 [9.9, 2.8]> */
     append(x, $(Real, 2.5));

@@ -31,7 +31,7 @@ __Usage__
     };
     
     var t = new(Thread, f);    
-    call(t, None);
+    call(t);
     join(t);
     
     delete(t);

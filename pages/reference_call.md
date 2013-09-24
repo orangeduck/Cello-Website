@@ -11,9 +11,8 @@ Use the `call` macro to call in uncurried form, passing the arguments directly t
 
 -------------------------------
 
-    #define call(x, ...) call_with_ptr(x, (var[]){ __VA_ARGS__, (var)-1 })
-    var call_with_ptr(var self, var* args);
-    var call_with(var self, var args);
+    #define call(x, ...) call_vl(x, var_list_new(__VA_ARGS__))
+    var call_vl(var self, var_list vl);var call_with(var self, var args);
 
 Call a function with some arguments
 
@@ -67,7 +66,7 @@ __Multiple Arguments__
 
     call(add_print, $(Int, 10), $(Int, 21));
     
-    var args = new(List, 2, $(Int, 10), $(Int, 21));
+    var args = new(List, $(Int, 10), $(Int, 21));
     call_with(add_print, args);
     delete(args);
     
@@ -79,7 +78,7 @@ __Threads__
     };
     
     var t = new(Thread, f);    
-    call(t, None);
+    call(t);
     join(t);
     
     delete(t);

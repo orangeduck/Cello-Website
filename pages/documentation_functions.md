@@ -29,7 +29,7 @@ An overview is given below but users are encouraged to refer to `Lambda.h` to ge
       call(hello_name, $(String, "Bob"));
       
       /* Higher order functions supported */
-      var names = new(List, 3, 
+      var names = new(List,
         $(String, "Dan"), 
         $(String, "Robert"), 
         $(String, "Chris"));

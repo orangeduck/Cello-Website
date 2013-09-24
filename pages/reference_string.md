@@ -38,14 +38,14 @@ __Creation__
     var s0 = $(String, "Hello");
     
     /* Heap String can be freely edited */
-    var s1 = new(String, "There");
+    var s1 = new(String, $(String, "There"));
     append(s1, $(String, " There"));
     
     delete(s1);
     
 __Manipulation__
 
-    var s0 = new(String, "Balloons");
+    var s0 = new(String, $(String, "Balloons"));
     
     show($(Int, len(s0))); /* 8 */
     show(contains(s0, $(String, "Ball")));     /* True */

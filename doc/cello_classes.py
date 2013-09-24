@@ -97,8 +97,9 @@ __Usage__
                     "int print(const char* fmt, ...);",
                     "int println(const char* fmt, ...);",
                     "int print_to(var out, int pos, const char* fmt, ...);",
-                    "int print_va(const char* fmt, va_list va);",
-                    "int print_to_va(var out, int pos, const char* fmt, va_list va);"],
+                    "int print_vl(const char* fmt, var_list vl);",
+                    "int println_vl(const char* fmt, var_list vl);",
+                    "int print_to_vl(var out, int pos, const char* fmt, var_list vl);"],
             
                 "description" : "Use a format string to write several objects",
                 "parameters" : [
@@ -124,8 +125,9 @@ __Usage__
                     "int scan(const char* fmt, ...);",
                     "int scanln(const char* fmt, ...);",
                     "int scan_from(var input, int pos, const char* fmt, ...);",
-                    "int scan_va(const char* fmt, va_list va);",
-                    "int scan_from_va(var input, int pos, const char* fmt, va_list va);"],
+                    "int scan_vl(const char* fmt, var_list vl);",
+                    "int scanln_vl(const char* fmt, var_list vl);",
+                    "int scan_from_vl(var input, int pos, const char* fmt, var_list vl);"],
             
                 "description" : "Use a format string to read several objects",
                 "parameters" : [
@@ -143,7 +145,7 @@ Show is the standard class used to convert objects to, and from, a String repres
 
 The `print`, `println` and `print_to` functions provide a mechanism for writing formatted strings. To do this they provide a new format specifier `%$` which uses an object's `Show` functionality to write to String. All objects which don't support `Show` can still be shown via a default implementation. 
 
-All the `Show` methods which are variable arguments should only be passed `var` type objects and should never be passed native C types. To print native C types wrap them in Cello types using `$` (see examples below).
+All the `Show` methods which are variable arguments only take `var` type objects and should never be passed native C types. To print native C types wrap them in Cello types using `$` (see examples below).
 
 Standard format specifiers such as `%f` and `%d` will call functions such as `as_double` and `as_long` on their passed in arguments to convert to a C type before performing the standard C formatting behaviour.
 
@@ -171,9 +173,9 @@ __String Scanning__
     
     var input = $(String, "1 and 52 then 78");
     
-    var i0 = new(Int, 0);
-    var i1 = new(Int, 0);
-    var i2 = new(Int, 0);
+    var i0 = new(Int, $(Int, 0));
+    var i1 = new(Int, $(Int, 0));
+    var i2 = new(Int, $(Int, 0));
     
     scan_from(input, 0, "%i and %i then %i", i0, i1, i2);
     
@@ -182,7 +184,7 @@ __String Scanning__
     
 __String Writing__
 
-    var greeting = new(String, "");
+    var greeting = new(String, $(String, ""));
     print_to(greeting, 0, "Hello %s %s, %s?", $(String, "Mr"), $(String, "Johnson"), $(String, "how are you?"));
     
     /* Hello Mr Johnson, how are you? */
@@ -204,8 +206,8 @@ __String Writing__
         methods = 
         [
             {
-                "code" : ["#define call(x, ...) call_with_ptr(x, (var[]){ __VA_ARGS__, (var)-1 })",
-                          "var call_with_ptr(var self, var* args);",
+                "code" : ["#define call(x, ...) call_vl(x, var_list_new(__VA_ARGS__))",
+                          "var call_vl(var self, var_list vl);"
                           "var call_with(var self, var args);"],
                 "description" : "Call a function with some arguments",
                 "parameters" : [
@@ -244,7 +246,7 @@ __Multiple Arguments__
 
     call(add_print, $(Int, 10), $(Int, 21));
     
-    var args = new(List, 2, $(Int, 10), $(Int, 21));
+    var args = new(List, $(Int, 10), $(Int, 21));
     call_with(add_print, args);
     delete(args);
     
@@ -256,7 +258,7 @@ __Threads__
     };
     
     var t = new(Thread, f);    
-    call(t, None);
+    call(t);
     join(t);
     
     delete(t);
@@ -436,9 +438,9 @@ __Usage__
         signature = 
     """
     class {
-      size_t size;
-      var (*construct)(var, va_list*);
+      var (*construct)(var, var_list);
       var (*destruct)(var);
+      size_t (*size)(void);
     } New;
     """,
         methods = [
@@ -495,15 +497,15 @@ __Usage__
         ],
         description = 
 """
-The `New` class provides a method to implement dynamic (heap) memory allocation for certain object types as well as _constructor_ and _destructor_ functions to be called just after an object's memory space has been allocated and just before it's memory allocation is freed. To implement this class you must also give the memory size of the data object to allocated.
+The `New` class provides a method to implement dynamic (heap) memory allocation for certain object types as well as _constructor_ and _destructor_ functions to be called just after an object's memory space has been allocated and just before it's memory allocation is freed. To implement this class you must also give a function returning the memory size of the data object to allocated.
 
-The `new` function uses C variable arguments to provide a method of passing arguments to an object's constructor. Unfortunately the exact type and order of these arguments cannot be checked by the compiler so it is up to the users to refer to the documentation to see how a certain type of object is correctly constructed. Incorrect construction will simply crash the program.
+The `new` function takes a list of `var` type arguments to provide a method of passing arguments to an object's constructor. native C types should never be passed into this list and should instead be wrapped using `$`. See examples for details.
 """,
         examples =
 """
 __Usage__
 
-    var x = new(Int, 1);
+    var x = new(Int, $(Int, 1));
     
     show(x); /* 1 */
     show(type_of(x)) /* Int */
@@ -513,11 +515,11 @@ __Usage__
     var y = $(Real, 0.0);  
     
     show(y); /* 0.0 */
-    construct(y, 1.0);
+    construct(y, $(Int, 1.0));
     show(y); /* 1.0 */
     
     var z = allocate(String);
-    construct(z, "Hello");
+    construct(z, $(String, "Hello"));
     
     show(z); /* Hello */
     z = destruct(z);
@@ -557,8 +559,8 @@ This class is important to implement as it is used extensively by contains to gi
 """
 __Usage 1__
 
-    var x = new(Int, 10);
-    var y = new(Int, 20);
+    var x = new(Int, $(Int, 10));
+    var y = new(Int, $(Int, 20));
     
     show(x); /* 10 */
     show(y); /* 20 */
@@ -574,8 +576,8 @@ __Usage 1__
 
 __Usage 2__
 
-    var x = new(String, "Hello");
-    var y = new(String, "There");
+    var x = new(String, $(String, "Hello"));
+    var y = new(String, $(String, "There"));
     
     show(x); /* Hello */
     show(y); /* There */
@@ -620,7 +622,7 @@ By convention `copy` means a deep copy. That is a copy that also copies all inne
 """
 __Usage__
     
-    var x = new(String, "Hello");
+    var x = new(String, $(String, "Hello"));
     var y = copy(x);
     
     show(x); /* Hello */
@@ -918,7 +920,7 @@ Note that the `contains` method uses the `Eq` type class to test for containment
         examples =
 """
 __Usage__
-    var x = new(List, 3, $(Int, 1), $(Real, 2.0), $(String, "Hello"));
+    var x = new(List, $(Int, 1), $(Real, 2.0), $(String, "Hello"));
 
     show(len(x)); /* 3 */
     show(contains(x, $(Int, 1)));          /* True */
@@ -969,7 +971,7 @@ The `Sort` class provides an interface for sorting an object, typically a collec
 """
 __Usage__
 
-    var x = new(Array, Real, 4, $(Real, 5.2), $(Real, 7.1), $(Real, 2.2), $(Real, 1.1));
+    var x = new(Array, Real, $(Real, 5.2), $(Real, 7.1), $(Real, 2.2), $(Real, 1.1));
     
     show(x); /* <'Array' At 0x0000000000414603 [5.2, 7.1, 2.2, 1.1]> */
     sort(x);
@@ -1007,7 +1009,7 @@ The `Reverse` class provides an interface for reversing an object, typically a c
 """
 __Usage__
 
-    var x = new(Array, Real, 4, $(Real, 5.2), $(Real, 7.1), $(Real, 2.2), $(Real, 1.1));
+    var x = new(Array, Real, $(Real, 5.2), $(Real, 7.1), $(Real, 2.2), $(Real, 1.1));
     
     show(x); /* <'Array' At 0x0000000000414603 [5.2, 7.1, 2.2, 1.1]> */
     reverse(x);
@@ -1044,7 +1046,7 @@ The `Append` class provides an interface for appending an object to another, thi
 """,
         examples = 
 """
-    var x = new(Array, Real, 2, $(Real, 9.9), $(Real, 2.8));
+    var x = new(Array, Real, $(Real, 9.9), $(Real, 2.8));
     
     show(x); /* <'Array' At 0x0000000000414603 [9.9, 2.8]> */
     append(x, $(Real, 2.5));
@@ -1107,7 +1109,7 @@ Key-Value mapping data structures will usually provide iteration only over their
 """
 __Usage__
 
-    var x = new(Array, Int, 3, $(Int, 1), $(Int, 2), $(Int, 5));
+    var x = new(Array, Int, $(Int, 1), $(Int, 2), $(Int, 5));
     
     foreach(o in x) {
         show(o); /* 1, 2, 5 */
@@ -1187,7 +1189,7 @@ In containers `push` uses `assign` to copy in new contents and the result of a `
 """
 __Usage__
 
-    var x = new(Array, Int, 0);
+    var x = new(Array, Int);
     
     push(x, $(Int, 0));
     push(x, $(Int, 5));
@@ -1250,7 +1252,7 @@ __Usage__
     var snd = $(Real, 2.0);
     var trd = $(String, "Hello");
 
-    var x = new(List, 3, fst, snd, trd);
+    var x = new(List, fst, snd, trd);
 
     show(at(x, 0)); /* 1 */
     show(at(x, 1)); /* 2.0 */
@@ -1521,7 +1523,7 @@ __Locks__
         return None;
     };
 
-    var threads = new(List, 5,
+    var threads = new(List,
     new(Thread, thread_function),
     new(Thread, thread_function),
     new(Thread, thread_function),
@@ -1529,7 +1531,7 @@ __Locks__
     new(Thread, thread_function));
 
     foreach(t in threads) {
-        call(t, None);
+        call(t);
     }
 
     foreach(t in threads) {
@@ -1762,13 +1764,13 @@ __Usage__
       return None;
     };
     
-    var threads = new(List, 5,
+    var threads = new(List,
       new(Thread, f), new(Thread, f),
       new(Thread, f), new(Thread, f),
       new(Thread, f));
     
     foreach(t in threads) {
-      call(t, None);
+      call(t);
     }
     
     foreach(t in threads) {
@@ -1832,7 +1834,7 @@ __Usage__
     };
     
     var t = new(Thread, thread_hello);
-    call(t, None);
+    call(t);
     
     println("Waiting for %$...", t);
     join(t);

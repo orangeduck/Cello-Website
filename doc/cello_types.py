@@ -37,7 +37,7 @@ The equivalent C++ construct to this type is [std::vector](http://www.cplusplus.
 """
 __Construction & Deletion__
 
-    var x = new(Array, Int, 0);
+    var x = new(Array, Int);
     push(x, $(Int, 32));
     push(x, $(Int, 6));
     
@@ -47,7 +47,7 @@ __Construction & Deletion__
     
 __Element Access__
 
-    var x = new(Array, Real, 2, $(Real, 0.01), $(Real, 5.12));
+    var x = new(Array, Real, $(Real, 0.01), $(Real, 5.12));
     
     show(at(x, 0)); /* 0.01 */
     show(at(x, 1)); /* 5.12 */
@@ -59,7 +59,7 @@ __Element Access__
 
 __Collection Queries__
 
-    var x = new(Array, Char, 4, $(Char, 'a'), $(Char, 'b'), $(Char, 'c'), $(Char, 'd'));
+    var x = new(Array, Char, $(Char, 'a'), $(Char, 'b'), $(Char, 'c'), $(Char, 'd'));
     
     show(contains(x, $(Char, 'a'))); /* True */
     show($(Int, len(x)));            /* 4 */
@@ -78,7 +78,7 @@ __Collection Queries__
     
 __Iteration__
 
-    var greetings = new(Array, String, 3, $(String, "Hello"), $(String, "Bonjour"), $(String, "Hej"));
+    var greetings = new(Array, String, $(String, "Hello"), $(String, "Bonjour"), $(String, "Hej"));
     
     foreach(greet in greetings) {
       show(greet);
@@ -141,7 +141,7 @@ Char is a wrapper for the native C char type.
 __Properties__
 
     var x = $(Char, 'a');
-    var y = new(Char, 'b');
+    var y = new(Char, $(Char, 'b'));
     var z = copy(x);
     
     show(eq(x, z)); /* True */
@@ -173,10 +173,10 @@ As it is a Hashtable Dictionary provides O(1) performance for element access in 
 __Usage__
     
     var prices = new(Dictionary);
-    var k0 = new(String, "Apple");
-    var k1 = new(String, "Banana");
-    var v0 = new(Int, 10);
-    var v1 = new(Int, 20);
+    var k0 = new(String, $(String, "Apple"));
+    var k1 = new(String, $(String, "Banana"));
+    var v0 = new(Int, $(Int, 10));
+    var v1 = new(Int, $(Int, 20));
     
     put(prices, k0, v0);
     put(prices, k1, v1);
@@ -205,7 +205,7 @@ The position of the cursor in the file stream is stored internally and as such t
 """
 __Opening & Closing__
     
-    var x = new(File, "test.bin", "wb");
+    var x = new(File, $(String, "test.bin"), $(String, "wb"));
   
     char* binary = "\0\1\1\1\1\1\0\0\0\0"
     write(x, binary, 10);
@@ -226,7 +226,7 @@ __Automatic Closing__
     
     with(f in open($(File, None), "details.txt", "r")) {
       
-      var x = new(Int, 0);
+      var x = new(Int, $(Int, 0));
       
       for (int i = 0; i < 100; i++) {
         scan_from(f, 0, "%i", x);
@@ -271,7 +271,7 @@ __Mapping__
         return None;
     };
 
-    var names = new(Array, 3, 
+    var names = new(Array, 
     $(String, "Dan"), 
     $(String, "Robert"), 
     $(String, "Chris"));
@@ -331,10 +331,10 @@ The equivalent C++ construct to this type is a [std::vector](http://www.cplusplu
 """
 __Construction & Deletion__
 
-    var i0 = new(String, "Test");
-    var i1 = new(Int, 6);
+    var i0 = new(String, $(String, "Test"));
+    var i1 = new(Int, $(Int, 6));
     
-    var x = new(List, 2, i0, i1);
+    var x = new(List, i0, i1);
     show(x); /* <'List' At 0x0000000000414603 ["Test", 6]> */
     delete(x);
     
@@ -343,11 +343,11 @@ __Construction & Deletion__
     
 __Element Access__
 
-    var i0 = new(String, "Test");
-    var i1 = new(Int, 6);
-    var i2 = new(Real, 5.2);
+    var i0 = new(String, $(String, "Test"));
+    var i1 = new(Int, $(Int, 6));
+    var i2 = new(Real, $(Real, 5.2));
     
-    var x = new(List, 2, i0, i1);
+    var x = new(List, i0, i1);
     show(at(x, 0)); /* "Test" */
     show(at(x, 1)); /* 6 */
     
@@ -362,11 +362,11 @@ __Element Access__
 
 __Collection Queries__
 
-    var i0 = new(Int, 2);
-    var i1 = new(Int, 6);
-    var i2 = new(Real, 5.2);
+    var i0 = new(Int, $(Int, 2));
+    var i1 = new(Int, $(Int, 6));
+    var i2 = new(Real, $(Real, 5.2));
 
-    var x = new(List, 3, i0, i1, i2);
+    var x = new(List, i0, i1, i2);
     
     show(contains(x, $(Int, 6)));    /* True */
     show($(Int, len(x)));            /* 3 */
@@ -389,11 +389,11 @@ __Collection Queries__
     
 __Iteration__
 
-    var i0 = new(String, "Test");
-    var i1 = new(Int, 6);
-    var i2 = new(Real, 5.2);
+    var i0 = new(String, $(String, "Test"));
+    var i1 = new(Int, $(Int, 6));
+    var i2 = new(Real, $(Real, 5.2));
     
-    var x = new(List, 3, i0, i1, i1);
+    var x = new(List, i0, i1, i1);
     
     foreach(i in x) {
       show(i);
@@ -426,10 +426,10 @@ The equivalent C++ construct to this type is a [std::map](http://www.cplusplus.c
 __Creation__
 
     var prices = new(Map);
-    var k0 = new(String, "Apple");
-    var k1 = new(String, "Banana");
-    var v0 = new(Int, 10);
-    var v1 = new(Int, 20);
+    var k0 = new(String, $(String, "Apple"));
+    var k1 = new(String, $(String, "Banana"));
+    var v0 = new(Int, $(Int, 10));
+    var v1 = new(Int, $(Int, 20));
     
     put(prices, k0, v0);
     put(prices, k1, v1);
@@ -486,7 +486,7 @@ Basic wrapper of standard C `long`.
 __Usage__
 
     var i0 = $(Int, 1);
-    var i1 = new(Int, 24313);
+    var i1 = new(Int, $(Int, 24313));
     var i2 = copy(i0);
     
     show(i0); /* 1 */
@@ -526,7 +526,7 @@ Basic wrapper of standard C `double`.
 __Usage__
 
     var r0 = $(Real, 1.0);
-    var r1 = new(Real, 24.313);
+    var r1 = new(Real, $(Real, 24.313));
     var r2 = copy(r0);
     
     show(r0); /* 1.0 */
@@ -608,7 +608,9 @@ It can also be used in conjunction with `With` to declare object lifetimes. Or a
 """
 __Single Lifetime__
 
-    with(liferef in $(Reference, new(String, "Life is long"))) {
+    var quote = $(String, "Life is long");
+    
+    with(liferef in $(Reference, new(String, quote))) {
         println("This reference is: %$", liferef);
         println("This string is alive: '%s'", at(liferef,0));
     }
@@ -617,9 +619,13 @@ __Single Lifetime__
 
 __Many Lifetimes__
 
-    with(liferef0 in $(Reference, new(String, "Life is long")))
-    with(liferef1 in $(Reference, new(String, "Life is Beautiful")))
-    with(liferef2 in $(Reference, new(String, "Life is Grand"))) {
+    var quote0 = $(String, "Life is Long");
+    var quote1 = $(String, "Life is Beautiful");
+    var quote2 = $(String, "Life is Grand");
+
+    with(liferef0 in $(Reference, new(String, quote0)))
+    with(liferef1 in $(Reference, new(String, quote1)))
+    with(liferef2 in $(Reference, new(String, quote2))) {
         println("%s :: %s :: %s", at(liferef0,0), at(liferef1,0), at(liferef2,0));
     }
 
@@ -659,14 +665,14 @@ __Creation__
     var s0 = $(String, "Hello");
     
     /* Heap String can be freely edited */
-    var s1 = new(String, "There");
+    var s1 = new(String, $(String, "There"));
     append(s1, $(String, " There"));
     
     delete(s1);
     
 __Manipulation__
 
-    var s0 = new(String, "Balloons");
+    var s0 = new(String, $(String, "Balloons"));
     
     show($(Int, len(s0))); /* 8 */
     show(contains(s0, $(String, "Ball")));     /* True */
@@ -851,7 +857,7 @@ __Usage__
     };
     
     var t = new(Thread, f);    
-    call(t, None);
+    call(t);
     join(t);
     
     delete(t);
@@ -880,13 +886,13 @@ __Usage__
         return None;
     };
     
-    var threads = new(List, 5,
+    var threads = new(List,
         new(Thread, f), new(Thread, f),
         new(Thread, f), new(Thread, f),
         new(Thread, f));
         
     foreach(t in threads) {
-        call(t, None);
+        call(t);
     }
     
     foreach(t in threads) {

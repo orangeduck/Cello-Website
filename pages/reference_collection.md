@@ -121,7 +121,7 @@ Return the smallest item in a collection.
 ### Examples
 
 __Usage__
-    var x = new(List, 3, $(Int, 1), $(Real, 2.0), $(String, "Hello"));
+    var x = new(List, $(Int, 1), $(Real, 2.0), $(String, "Hello"));
 
     show(len(x)); /* 3 */
     show(contains(x, $(Int, 1)));          /* True */

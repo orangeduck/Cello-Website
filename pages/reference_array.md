@@ -40,7 +40,7 @@ The equivalent C++ construct to this type is [std::vector](http://www.cplusplus.
 
 __Construction & Deletion__
 
-    var x = new(Array, Int, 0);
+    var x = new(Array, Int);
     push(x, $(Int, 32));
     push(x, $(Int, 6));
     
@@ -50,7 +50,7 @@ __Construction & Deletion__
     
 __Element Access__
 
-    var x = new(Array, Real, 2, $(Real, 0.01), $(Real, 5.12));
+    var x = new(Array, Real, $(Real, 0.01), $(Real, 5.12));
     
     show(at(x, 0)); /* 0.01 */
     show(at(x, 1)); /* 5.12 */
@@ -62,7 +62,7 @@ __Element Access__
 
 __Collection Queries__
 
-    var x = new(Array, Char, 4, $(Char, 'a'), $(Char, 'b'), $(Char, 'c'), $(Char, 'd'));
+    var x = new(Array, Char, $(Char, 'a'), $(Char, 'b'), $(Char, 'c'), $(Char, 'd'));
     
     show(contains(x, $(Char, 'a'))); /* True */
     show($(Int, len(x)));            /* 4 */
@@ -81,7 +81,7 @@ __Collection Queries__
     
 __Iteration__
 
-    var greetings = new(Array, String, 3, $(String, "Hello"), $(String, "Bonjour"), $(String, "Hej"));
+    var greetings = new(Array, String, $(String, "Hello"), $(String, "Bonjour"), $(String, "Hej"));
     
     foreach(greet in greetings) {
       show(greet);

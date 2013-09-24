@@ -50,10 +50,11 @@ In the header a __Type__  `Vec2` can be defined as follows...
       var type;
       float x, y;
     } Vec2Data;
-
-    /** Vec2_New(var self, float x, float y); */
-    var Vec2_New(var self, va_list* args);
+    
+    var Vec2_New(var self, var_list vl);
     var Vec2_Delete(var self);
+    size_t Vec2_Size(void);
+    
     void Vec2_Assign(var self, var obj);
     var Vec2_Copy(var self);
 
@@ -62,33 +63,38 @@ In the header a __Type__  `Vec2` can be defined as follows...
     float Vec2_Dot(var self, var obj);
     float Vec2_Length(var self);
 
-    instance(Vec2, New) = { sizeof(Vec2Data), Vec2_New, Vec2_Delete };
+    instance(Vec2, New) = { Vec2_New, Vec2_Delete, Vec2_Size };
     instance(Vec2, Assign) = { Vec2_Assign };
     instance(Vec2, Copy) = { Vec2_Copy };
     instance(Vec2, Eq) = { Vec2_Eq };
     instance(Vec2, Vector) = { Vec2_Dot, Vec2_Length };
 
-In the source file we can use some macros to aid construction of the __Type__ object.
+In the source file we can use some macros to aid construction of the __Type__ object, and then define the rest of the functions.
 
-    var Vec2 = methods {
-      methods_begin(Vec2),
-      method(Vec2, New),
-      method(Vec2, Assign),
-      method(Vec2, Copy),
-      method(Vec2, Eq),
-      method(Vec2, Vector),
-      methods_end(Vec2)
+    var Vec2 = type_data {
+      type_begin(Vec2),
+      type_entry(Vec2, New),
+      type_entry(Vec2, Assign),
+      type_entry(Vec2, Copy),
+      type_entry(Vec2, Eq),
+      type_entry(Vec2, Show),
+      type_entry(Vec2, Vector),
+      type_end(Vec2)
     };
 
-    var Vec2_New(var self, va_list* args) {
+    var Vec2_New(var self, var_list vl) {
       Vec2Data* v = cast(self, Vec2);
-      v->x = va_arg(*args, double);
-      v->y = va_arg(*args, double);
+      v->x = as_double(var_list_get(vl));
+      v->y = as_double(var_list_get(vl));
       return self;
     }
 
     var Vec2_Delete(var self) {
       return self;
+    }
+    
+    size_t Vec2_Size(void) {
+      return sizeof(Vec2Data);
     }
 
     void Vec2_Assign(var self, var obj) {
@@ -97,16 +103,16 @@ In the source file we can use some macros to aid construction of the __Type__ ob
       v1->x = v2->x;
       v1->y = v2->y;
     }
-
+    
     var Vec2_Copy(var self) {
       Vec2Data* v = cast(self, Vec2);
-      return new(Vec2, v->x, v->y);
+      return new(Vec2, $(Real, v->x), $(Real, v->y));
     }
 
     var Vec2_Eq(var self, var obj) {
       Vec2Data* v1 = cast(self, Vec2);
       Vec2Data* v2 = cast(obj, Vec2);
-      return (var)(v1->x is v2->x and v1->y is v2->y);
+      return bool_var(v1->x is v2->x and v1->y is v2->y);
     }
 
     float Vec2_Dot(var self, var obj) {

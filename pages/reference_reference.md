@@ -28,7 +28,9 @@ It can also be used in conjunction with `With` to declare object lifetimes. Or a
 
 __Single Lifetime__
 
-    with(liferef in $(Reference, new(String, "Life is long"))) {
+    var quote = $(String, "Life is long");
+    
+    with(liferef in $(Reference, new(String, quote))) {
         println("This reference is: %$", liferef);
         println("This string is alive: '%s'", at(liferef,0));
     }
@@ -37,9 +39,13 @@ __Single Lifetime__
 
 __Many Lifetimes__
 
-    with(liferef0 in $(Reference, new(String, "Life is long")))
-    with(liferef1 in $(Reference, new(String, "Life is Beautiful")))
-    with(liferef2 in $(Reference, new(String, "Life is Grand"))) {
+    var quote0 = $(String, "Life is Long");
+    var quote1 = $(String, "Life is Beautiful");
+    var quote2 = $(String, "Life is Grand");
+
+    with(liferef0 in $(Reference, new(String, quote0)))
+    with(liferef1 in $(Reference, new(String, quote1)))
+    with(liferef2 in $(Reference, new(String, quote2))) {
         println("%s :: %s :: %s", at(liferef0,0), at(liferef1,0), at(liferef2,0));
     }
 

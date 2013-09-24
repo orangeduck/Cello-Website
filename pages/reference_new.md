@@ -2,9 +2,9 @@ New
 ---
 __Constructable on the Heap__
 
-The `New` class provides a method to implement dynamic (heap) memory allocation for certain object types as well as _constructor_ and _destructor_ functions to be called just after an object's memory space has been allocated and just before it's memory allocation is freed. To implement this class you must also give the memory size of the data object to allocated.
+The `New` class provides a method to implement dynamic (heap) memory allocation for certain object types as well as _constructor_ and _destructor_ functions to be called just after an object's memory space has been allocated and just before it's memory allocation is freed. To implement this class you must also give a function returning the memory size of the data object to allocated.
 
-The `new` function uses C variable arguments to provide a method of passing arguments to an object's constructor. Unfortunately the exact type and order of these arguments cannot be checked by the compiler so it is up to the users to refer to the documentation to see how a certain type of object is correctly constructed. Incorrect construction will simply crash the program.
+The `new` function takes a list of `var` type arguments to provide a method of passing arguments to an object's constructor. native C types should never be passed into this list and should instead be wrapped using `$`. See examples for details.
 
 
 ### Methods
@@ -78,9 +78,9 @@ Call the destructor of an object.
 
 
     class {
-      size_t size;
-      var (*construct)(var, va_list*);
+      var (*construct)(var, var_list);
       var (*destruct)(var);
+      size_t (*size)(void);
     } New;
     
 
@@ -115,7 +115,7 @@ Call the destructor of an object.
 
 __Usage__
 
-    var x = new(Int, 1);
+    var x = new(Int, $(Int, 1));
     
     show(x); /* 1 */
     show(type_of(x)) /* Int */
@@ -125,11 +125,11 @@ __Usage__
     var y = $(Real, 0.0);  
     
     show(y); /* 0.0 */
-    construct(y, 1.0);
+    construct(y, $(Int, 1.0));
     show(y); /* 1.0 */
     
     var z = allocate(String);
-    construct(z, "Hello");
+    construct(z, $(String, "Hello"));
     
     show(z); /* Hello */
     z = destruct(z);

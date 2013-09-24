@@ -3,7 +3,7 @@ Memory Management
 
 Memory management is hard. Very hard when combined with a lack of rich stack types. Very very hard when combined with a whole load of high level concepts. Cello gives you a few options, which where possible, the standard library is agnostic too. You can use what you think is best.
 
-__Destructive Operations__ - Most of the standard library uses destructive operations and expects the user to make a copy if they exlicity want one.
+__Destructive Operations__ - Most of the standard library uses destructive operations and expects the user to make a copy if they explicitly want one.
 
 __Output Parameters__ - In some places it is more appropriate to use output parameters and in which case `assign` is used to move the data around. 
 
@@ -12,7 +12,9 @@ __Reference Objects__ - References wrap standard objects, where `with` can be us
 
     local void object_lifetime_example(void) {
       
-      with(liferef in $(Reference, new(String, "Life is long"))) {
+      var quote = $(String, "Life is long");
+      
+      with(liferef in $(Reference, new(String, quote))) {
         print("This string is alive: %$\n", at(liferef,0));
       }
 
@@ -24,15 +26,19 @@ __Reference Objects__ - References wrap standard objects, where `with` can be us
 
     local void many_object_lifetimes(void) {
       
-      with(liferef0 in $(Reference, new(String, "Life is long")))
-      with(liferef1 in $(Reference, new(String, "Life is Beautiful")))
-      with(liferef2 in $(Reference, new(String, "Life is Grand"))) {
+      var quote0 = $(String, "Life is Long");
+      var quote1 = $(String, "Life is Beautiful");
+      var quote2 = $(String, "Life is Grand");
+      
+      with(liferef0 in $(Reference, new(String, quote0)))
+      with(liferef1 in $(Reference, new(String, quote1)))
+      with(liferef2 in $(Reference, new(String, quote2))) {
         print("%s :: %s :: %s\n", at(liferef0,0), at(liferef1,0), at(liferef2,0));
       }
 
     }
     
-__Reference Pools__ - Reference pools are also avaliable which use `retain` and `release` to providing a reference counting mechanism.
+__Reference Pools__ - Reference pools are also available which use `retain` and `release` to providing a reference counting mechanism.
 
     #include "Cello.h"
 

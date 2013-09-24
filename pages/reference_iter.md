@@ -77,7 +77,7 @@ Given the current iteration object return the next. If there is no objects left 
 
 __Usage__
 
-    var x = new(Array, Int, 3, $(Int, 1), $(Int, 2), $(Int, 5));
+    var x = new(Array, Int, $(Int, 1), $(Int, 2), $(Int, 5));
     
     foreach(o in x) {
         show(o); /* 1, 2, 5 */

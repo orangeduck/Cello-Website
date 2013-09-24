@@ -25,7 +25,7 @@ Cello provides exception handling to deal with errors. The semantics and syntax 
       return 0;
     }
 
-One can also catch multiple objects and then write conditional code based on each. Or one can catch all exceptions or any thown object by leaving the specifer list empty.
+One can also catch multiple objects and then write conditional code based on each. Or one can catch all exceptions or any thrown object by leaving the specifier list empty.
 
     try {
       do_some_work();
@@ -41,5 +41,7 @@ One can also catch multiple objects and then write conditional code based on eac
     }
 
 Throwing an exception will jump the program control to the innermost `catch` block. If it is not handled here it is passed on to an outer block. To catch an exception one must put the thrown object. Any object can be thrown and caught as an Exception in Cello so users can create their own Exception types or find other applications for the semantics. The thrown message will be preserved internally, but be careful of throwing stack memory which may become invalidated when jumping to the new location.
+
+<span class="label label-important">Important</span> The `catch` part of an exception must always be evaluated! This means one should NEVER return from inside a exception `try` block.
 
 [Back](/documentation)

@@ -36,10 +36,10 @@ The equivalent C++ construct to this type is a [std::vector](http://www.cplusplu
 
 __Construction & Deletion__
 
-    var i0 = new(String, "Test");
-    var i1 = new(Int, 6);
+    var i0 = new(String, $(String, "Test"));
+    var i1 = new(Int, $(Int, 6));
     
-    var x = new(List, 2, i0, i1);
+    var x = new(List, i0, i1);
     show(x); /* <'List' At 0x0000000000414603 ["Test", 6]> */
     delete(x);
     
@@ -48,11 +48,11 @@ __Construction & Deletion__
     
 __Element Access__
 
-    var i0 = new(String, "Test");
-    var i1 = new(Int, 6);
-    var i2 = new(Real, 5.2);
+    var i0 = new(String, $(String, "Test"));
+    var i1 = new(Int, $(Int, 6));
+    var i2 = new(Real, $(Real, 5.2));
     
-    var x = new(List, 2, i0, i1);
+    var x = new(List, i0, i1);
     show(at(x, 0)); /* "Test" */
     show(at(x, 1)); /* 6 */
     
@@ -67,11 +67,11 @@ __Element Access__
 
 __Collection Queries__
 
-    var i0 = new(Int, 2);
-    var i1 = new(Int, 6);
-    var i2 = new(Real, 5.2);
+    var i0 = new(Int, $(Int, 2));
+    var i1 = new(Int, $(Int, 6));
+    var i2 = new(Real, $(Real, 5.2));
 
-    var x = new(List, 3, i0, i1, i2);
+    var x = new(List, i0, i1, i2);
     
     show(contains(x, $(Int, 6)));    /* True */
     show($(Int, len(x)));            /* 3 */
@@ -94,11 +94,11 @@ __Collection Queries__
     
 __Iteration__
 
-    var i0 = new(String, "Test");
-    var i1 = new(Int, 6);
-    var i2 = new(Real, 5.2);
+    var i0 = new(String, $(String, "Test"));
+    var i1 = new(Int, $(Int, 6));
+    var i2 = new(Real, $(Real, 5.2));
     
-    var x = new(List, 3, i0, i1, i1);
+    var x = new(List, i0, i1, i1);
     
     foreach(i in x) {
       show(i);

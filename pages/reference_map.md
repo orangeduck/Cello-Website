@@ -35,10 +35,10 @@ The equivalent C++ construct to this type is a [std::map](http://www.cplusplus.c
 __Creation__
 
     var prices = new(Map);
-    var k0 = new(String, "Apple");
-    var k1 = new(String, "Banana");
-    var v0 = new(Int, 10);
-    var v1 = new(Int, 20);
+    var k0 = new(String, $(String, "Apple"));
+    var k1 = new(String, $(String, "Banana"));
+    var v0 = new(Int, $(Int, 10));
+    var v1 = new(Int, $(Int, 20));
     
     put(prices, k0, v0);
     put(prices, k1, v1);

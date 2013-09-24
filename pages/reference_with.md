@@ -81,7 +81,7 @@ __Locks__
         return None;
     };
 
-    var threads = new(List, 5,
+    var threads = new(List,
     new(Thread, thread_function),
     new(Thread, thread_function),
     new(Thread, thread_function),
@@ -89,7 +89,7 @@ __Locks__
     new(Thread, thread_function));
 
     foreach(t in threads) {
-        call(t, None);
+        call(t);
     }
 
     foreach(t in threads) {

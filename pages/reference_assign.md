@@ -59,8 +59,8 @@ Assign the value of one object to another.
 
 __Usage 1__
 
-    var x = new(Int, 10);
-    var y = new(Int, 20);
+    var x = new(Int, $(Int, 10));
+    var y = new(Int, $(Int, 20));
     
     show(x); /* 10 */
     show(y); /* 20 */
@@ -76,8 +76,8 @@ __Usage 1__
 
 __Usage 2__
 
-    var x = new(String, "Hello");
-    var y = new(String, "There");
+    var x = new(String, $(String, "Hello"));
+    var y = new(String, $(String, "There"));
     
     show(x); /* Hello */
     show(y); /* There */

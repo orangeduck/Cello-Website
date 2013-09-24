@@ -58,7 +58,7 @@ Make a copy of an object.
 
 __Usage__
     
-    var x = new(String, "Hello");
+    var x = new(String, $(String, "Hello"));
     var y = copy(x);
     
     show(x); /* Hello */

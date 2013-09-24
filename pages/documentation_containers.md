@@ -10,11 +10,11 @@ They are divided up into two types. _Containers_ and _Collections_.
 Containers
 ----------
 
-Containers are data structures which actually contain objects. They allocating memory for them and deallocating memory on destruction. The primary example of this is `Array`, a dynamically resizable sequence of one type of Object.
+Containers are data structures which actually contain objects. They allocating memory for them and deallocating memory on destruction. The primary example of this is `Array`, a dynamically resizeable sequence of one type of Object.
 
 Because these containers must allocate and deallocate space (calling deconstructors), they can only work on a single type which must be specified at creation. 
 
-    var x = new(Array, Int, 0);
+    var x = new(Array, Int);
     push(x, $(Int, 32));
     push(x, $(Int, 6));
     
@@ -37,10 +37,10 @@ Collections are data structures containing pointers to objects. They are not res
 
 Because they are not responsible for allocation they can contain several differing types but it is the user's responsibility to ensure operations remain valid across all types inside (for example to ensure `Eq` makes sense when comparing a `Int` and an `String`).
     
-    var i0 = new(Int, 21);
-    var i1 = new(String, "Hello");
+    var i0 = new(Int, $(Int, 21));
+    var i1 = new(String, $(String, "Hello"));
     
-    var x = new(List, 0);
+    var x = new(List);
     push(x, i0);
     push(x, i1);
     

@@ -32,7 +32,7 @@ Basic wrapper of standard C `long`.
 __Usage__
 
     var i0 = $(Int, 1);
-    var i1 = new(Int, 24313);
+    var i1 = new(Int, $(Int, 24313));
     var i2 = copy(i0);
     
     show(i0); /* 1 */

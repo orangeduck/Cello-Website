@@ -75,13 +75,13 @@ __Usage__
       return None;
     };
     
-    var threads = new(List, 5,
+    var threads = new(List,
       new(Thread, f), new(Thread, f),
       new(Thread, f), new(Thread, f),
       new(Thread, f));
     
     foreach(t in threads) {
-      call(t, None);
+      call(t);
     }
     
     foreach(t in threads) {

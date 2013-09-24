@@ -70,7 +70,7 @@ __Usage__
     };
     
     var t = new(Thread, thread_hello);
-    call(t, None);
+    call(t);
     
     println("Waiting for %$...", t);
     join(t);

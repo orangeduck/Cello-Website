@@ -75,7 +75,7 @@ Pop an object from another.
 
 __Usage__
 
-    var x = new(Array, Int, 0);
+    var x = new(Array, Int);
     
     push(x, $(Int, 0));
     push(x, $(Int, 5));
