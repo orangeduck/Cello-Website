@@ -32,7 +32,7 @@ All _rich_ objects must start with this entry - but adding it is at the discreti
 
 As we know, C is famous for having no hidden costs. You pay only for what you use. This is why it is unavoidable. C allows you no way to insert this entry into a programmer's structs unknowingly. Doing so would be dishonest, and C hates liars.
 
-What about having the type information in a separate table which we index using the struct memory location? This does work well, but also means any structure creation must go via some function we define (so we can add the type information to our table). In many cases this is fine, but sometimes it is more useful to have usable data come from outside of this function, for example created the stack (see _The Dollar_).
+What about having the type information in a separate table which we index using the struct memory location? This does work well, but also means any structure creation must go via some function we define (so we can add the type information to our table). In many cases this is fine, but sometimes it is more useful to have usable data come from outside of this function, for example created on the stack (see _The Dollar_).
 
 Anyway, if we swallow this cost, we can add many new behaviours to the language that seem like magic to the outside world. Onto the next stage, designing our _metadata_ object!
 
