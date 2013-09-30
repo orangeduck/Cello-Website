@@ -79,3 +79,4 @@ Contents
     * [Exceptions](/documentation/exceptions)
     * [Lambda](/documentation/functions)
     * [Values](/documentation/values)
+    * [Parents](/documentation/parents)

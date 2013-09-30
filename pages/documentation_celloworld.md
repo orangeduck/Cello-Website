@@ -23,7 +23,7 @@ This should create a program called `cello_world` you can then execute
 If you have errors:
 
 * You should double check you have [installed](installation) the library correctly.
-* You may need to add some extra compile flags such as `-fblocks -fnested-functions`
+* You may need to add some extra compile flags such as `-fblocks`
 * You may need to add some extra linker flags such as `-lpthread -lm`
 * You may need to run `ldconfig` to refresh your library cache.
 

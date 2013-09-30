@@ -35,7 +35,7 @@ def index(page="home", section=None):
         ["types", "containers", "functions",
         "memory", "exceptions", "hacking", 
         "comparison", "installation", "celloworld",
-        "values"]):
+        "values", "parents"]):
         
         section = "_"+section
         
