@@ -12,7 +12,8 @@ Use the `call` macro to call in uncurried form, passing the arguments directly t
 -------------------------------
 
     #define call(x, ...) call_vl(x, var_list_new(__VA_ARGS__))
-    var call_vl(var self, var_list vl);var call_with(var self, var args);
+    var call_vl(var self, var_list vl);
+    var call_with(var self, var args);
 
 Call a function with some arguments
 

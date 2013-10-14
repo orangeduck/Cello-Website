@@ -1,4 +1,5 @@
 
+
 Contents
 --------
 
@@ -17,7 +18,7 @@ Contents
     
 ### Articles
 
-* [Hacking C to its limits](/documentation/hacking)
+* [Hacking C to it's limits](/documentation/hacking)
 * [Cello vs C++ vs ObjC](/documentation/comparison)
     
 ### Reference
@@ -79,4 +80,3 @@ Contents
     * [Exceptions](/documentation/exceptions)
     * [Lambda](/documentation/functions)
     * [Values](/documentation/values)
-    * [Parents](/documentation/parents)

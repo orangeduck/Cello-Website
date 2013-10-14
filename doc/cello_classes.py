@@ -207,7 +207,7 @@ __String Writing__
         [
             {
                 "code" : ["#define call(x, ...) call_vl(x, var_list_new(__VA_ARGS__))",
-                          "var call_vl(var self, var_list vl);"
+                          "var call_vl(var self, var_list vl);",
                           "var call_with(var self, var args);"],
                 "description" : "Call a function with some arguments",
                 "parameters" : [
