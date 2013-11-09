@@ -1,4 +1,4 @@
-__Cello__ is a _GNU99_ C _library_ which brings higher level programming to C.
+__Cello__ is a C _library_ that introduces higher level programming to C.
 
 <blockquote>
 
@@ -104,9 +104,9 @@ Or a longer example:
 Inspiration
 -----------
 
-The high level stucture of Cello projects is inspired by _Haskell_, while the syntax and semantics are inspired by _Python_ and _Obj-C_. Cello isn't about _Object Orientation_ in C, but I hope that with Cello I've turned C into something of a _dynamic_ and _powerful_ functional language which it may have once been.
+The high level stucture of Cello projects is inspired by _Haskell_, while the syntax and semantics are inspired by _Python_ and _Obj-C_. Cello is not about _Object Orientation_ in C. Instead it provides tools that turn C into something of a _dynamic_ and _powerful_ functional language. A path it may have gone down in an alternate reality.
 
-Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all Cello is just a fun experiment to see what C would look like when hacked to its limits.
+Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all, Cello is a fun experiment to see what C would look like when hacked to its limits.
 
 Contributions
 -------------
