@@ -28,7 +28,6 @@ If you have errors:
 
 * You should double check you have [installed](installation) the library correctly.
 * You may need to add some extra compile flags such as `-fblocks`
-* You may need to add some extra linker flags such as `-lpthread -lm`
 * You may need to run `ldconfig` to refresh your library cache.
 
 [Back](/documentation)
