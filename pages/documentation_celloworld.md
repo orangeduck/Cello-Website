@@ -14,6 +14,10 @@ To start open up a text editor and create a new file called `cello_world.c`. Typ
 You should be able to compile this with the following command 
 
     $ gcc -std=gnu99 cello_world.c -lCello -o cello_world
+    
+If you are using linux you might need to link some additional libraries
+
+    $ gcc -std=gnu99 cello_world.c -lCello -lm -lpthread -ldl -o cello_world
 
 This should create a program called `cello_world` you can then execute
 
