@@ -3,7 +3,7 @@
 
 Although Cello does not look like it - it is _just a C library_. That means that in general it can be installed and used like any other C library.
 
-The reason I mention this is because if you get stuck, or become unsure of what to do, then looking for help in general about _using C_ or _installing C libraries_ will be a good way to start. If you are completely new to C it might be good to learn some very basics before diving into Cello. For this I can recommend [Learn C the Hard Way](http://c.learncodethehardway.org/book/) as a fantastic resource for newcomers and beginners.
+The reason I mention this is because if you get stuck, or become unsure of what to do, then looking for help in general about _using C_ or _installing C libraries_ will be a good way to start. If you are completely new to C it might be good to learn some very basics before diving into Cello. For this why not try my other project [Build Your Own Lisp](http://www.buildyourownlisp.com/), or if you don't fancy that, you can try [Learn C the Hard Way](http://c.learncodethehardway.org/book/), which is a pretty good resource for newcomers and beginners.
 
 Saying all that, installing a C library is not always a trivial matter, so here are some general instructions as to how to get started.
 
@@ -20,7 +20,7 @@ In this form it is not ready to use but first needs to be __compiled__ and then 
 2. Compile
 ----------
 
-To compile Cello requires a GNU99 compatible C compiler. This almost always means `gcc`.
+To compile Cello requires a C99 compatible C compiler. This almost always means `gcc`.
 
 * __On Linux__ `gcc` can be installed via the system package manager. For example if you are using Ubuntu enter `apt-get install gcc` into a terminal.
 * __On Mac__ XCode needs to be installed along with the command line tools. This will install a version of `gcc` using the `clang` compiler suite.

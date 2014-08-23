@@ -138,9 +138,9 @@ With
 The idea behind `with` is almost identical to `foreach`. We have `enter_with` and `exit_with` functions implemented by the `With` typeclass then use a single iteration of a `for` loop to use them.
 
     #define with(x, y) \
-      for(var x = enter_for(y); not (x is Undefined); x = exit_for(x))
+      for(var x = enter_for(y); x isnt Undefined; x = exit_for(x))
 
-Where `enter_for` calls `enter_with` and returns `y`, while `exit_for` calls `exit_with` and returns `Undefined`. Using a `for` loop for declaring variables scoped to a single block is a pretty nice hack that lets you create a whole bunch of blocks with custom behaviours.
+The `enter_for` function calls `enter_with` and returns `y`, while the `exit_for` function calls `exit_with` and returns `Undefined`. Using a `for` loop for declaring variables scoped to a single block is a pretty nice hack that lets you create a whole bunch of blocks with custom behaviours.
 
 
 Lambda
@@ -157,6 +157,8 @@ If we assume the same type for all lambda statements, with arguments rolled into
 
       
 GNU99 C also allows for use of the `auto` keyword to do forward declaration. Again not a win for portability but a powerful addition to the language.
+
+While this hack is limited to `gcc` we can make use of [clang blocks](http://clang.llvm.org/docs/BlockLanguageSpec.html) when using the clang compiler on OSX. The functionality is the same, only requiring a small change in syntax.
 
 
 Exceptions

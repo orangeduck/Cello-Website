@@ -1,4 +1,4 @@
-__Cello__ is a C _library_ that introduces higher level programming to C.
+__Cello__ is a _library_ that introduces higher level programming to C.
 
 <blockquote>
 
@@ -83,10 +83,10 @@ Or a longer example:
           
           /* Run time type-checking with "cast" */
           var key = cast(at(args, 0), String);
-          var val = cast(get(prices, key), Int);
+          var value = cast(get(prices, key), Int);
           
           try {
-            print_to(file, 0, "%$ :: %$\n", key, val);
+            print_to(file, 0, "%$ :: %$\n", key, value);
           } catch (e in IOError) {
             println("Could not write to file - got %$", e);
           }

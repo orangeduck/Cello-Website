@@ -1,7 +1,7 @@
 Cello vs C++ vs ObjC
 --------------------
 
-A common question that asked about this project are "What are the advantages of using _Cello_ over _C++_ or _Objective C_?"
+A common question that gets asked about this project is "What are the advantages of using _Cello_ over _C++_ or _Objective C_?"
 
 The short answer is _personal preference_. As far as features are concerned all these projects are fairly similar. But they also all differ by a large amount in other areas.
 
