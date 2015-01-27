@@ -60,7 +60,7 @@ def index(page="home", section=None):
           "<pre><code>", 
           "<pre><code data-language=\"libcello\">")
         content = content.replace(
-          "<h3>",  "<div class=\"greybar\"></div> <h3>")
+          "<h3>",  "<h3 class='text-center' style='margin-bottom:20px;'>")
         
         content = content.replace("</h1>", "</h1><hr/>")
         content = Markup(content)

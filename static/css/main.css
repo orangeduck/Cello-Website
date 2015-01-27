@@ -7,9 +7,17 @@
   background-color: #FFFFFF;
 }
 
+@font-face{
+font-family: "Roboto-Light";
+src: local('Roboto-Light'), url('/static/fonts/Roboto-Light.ttf');
+}
+
 body {
+  font-family: "Roboto-Light","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 13px;
-  background-color: #FAFAFA;
+  /* background-color: #FAFAFA; */
+  background: url("/static/img/symphony.png") 
+  repeat scroll center top transparent;
 }
 
 a {
@@ -28,16 +36,6 @@ ul li:before {
 
 h3 {
   margin-top:30px;
-}
-
-.greybar {
-  margin-top: 35px;
-  margin-right:20px;
-  width:25px;
-  height:5px;
-  background-color: #eaeaea;
-  border-radius: 2px;
-  float: left;
 }
 
 .greybar_long {

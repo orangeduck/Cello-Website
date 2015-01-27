@@ -65,8 +65,8 @@ libraries.
 
       /* Tables also support iteration */
       foreach (key in prices) {
-        var price = get(prices, key);
-        print("Price of %$ is %$\n", key, price);
+        var val = get(prices, key);
+        print("Price of %$ is %$\n", key, val);
       }
       
       return 0;
@@ -86,8 +86,8 @@ Learning Resources.
 
 Articles about its creation and internal workings.
 
-* [Cello 1. A Fat Pointer Library](/learn/fatpointer)
-* [Cello 2. Hacking C to its Limits](/learn/hacking)
+* [Fat Pointer Libraries](/learn/fatpointer)
+* [Hacking C to its Limits](/learn/hacking)
 * [Cello vs C++ vs ObjC](/learn/comparison)
 * [Benchmarking Cello](/learn/benchmarking)
 * [Garbage Collection in C](/learn/garbage)
@@ -101,33 +101,27 @@ Articles about its creation and internal workings.
     #include "Cello.h"
 
     int main(int argc, char** argv) {
-          
-      var file = $(File, None);
-      sopen(file, $S("prices.bin"), $S("w"));
       
-      /* "with" closes file at end of scope. */
-      with (file) {
-      
-        /* First class function object */
-        function(write_pair, args) {
-          
-          var k = get(args, $I(0));
-          var v = get(prices, k);
-          
-          try {
-            print_to(file, 0, "%$ -> %$\n", k, v);
-          } catch (e in IOError) {
-            println("IOError: %$", e);
-          }
-
-          return None;
-        };
+      /* First class function declaration */
+      function(print_safe, args) {
         
-        /* Higher order functions */
-        map(prices, write_pair);
-      }
+        /* Exceptions */
+        try {
+          println("%$", get(args, $I(0)));
+        } catch (e in IOError) {
+          println("IOError: %$", e);
+        }
+
+        return None;
+      };
       
-      del(prices);
+      /* Tuple is a simple stack based collection */
+      var t = tuple($F(51.25), $I(21), $S("Hello"));
+      
+      /* Higher Order Functions */
+      map(t, print_safe);
+      
+      return 0;
     }
 
 
@@ -146,7 +140,7 @@ interested in experimenting with what is possible in C.
 * __How does it work?__
 
 I recommend reading 
-[A Fat Pointer Library](/learn/fatpointer) and 
+[Fat Pointer Libraries](/learn/fatpointer) and 
 [Hacking C to its Limits](/learn/hacking) to get an overview of how Cello works.
 You can also peek at the source code, which I'm told is fairly readable, or 
 ask me any questions you like via e-mail.
@@ -154,13 +148,15 @@ ask me any questions you like via e-mail.
 * __Can it be used in Production?__
 
 It might be better to try Cello out on a hobby project first. Cello does aim to 
-be _production ready_, but it has it's fair share of oddities and pitfalls, and 
-if you are working in a team, or to a deadline, there is much better tooling, 
-support and community for languages such as C++.
+be _production ready_, but because it is a hack it has its fair share of 
+oddities and pitfalls, and if you are working in a team, or to a deadline, 
+there is much better tooling, support and community for languages such as C++.
 
 * __Is anyone using Cello?__
 
-No.
+The short answer is no. Cello is too big and scary a dependancy for new C 
+projects which wish to be portable and easy to maintain. But there are some 
+small projects growing out of it. Why not check out [Chords](/chords).
 
 
   </div>
