@@ -30,10 +30,10 @@ pre code {
 pre, code {
     font-family: Consolas, 'DejaVu Sans Mono', 'Liberation Mono', 'Courier New', monospace;
     color: #333;
-    background: #fCfCfC;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
+    background: #f8f8f8;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
 pre, pre code {
@@ -41,8 +41,7 @@ pre, pre code {
 }
 
 pre .comment {
-    color: #339933;
-    font-style: italic;
+    color: #998;
 }
 
 pre .support {
@@ -54,12 +53,7 @@ pre .tag, pre .tag-name {
 }
 
 pre .keyword, pre .css-property, pre .vendor-prefix, pre .sass, pre .class, pre .id, pre .css-value, pre .entity.function, pre .storage.function {
-    color: #006666;
     font-weight: bold;
-}
-
-pre .keyword.operator {
-  color: #000033;
 }
 
 pre .css-property, pre .css-value, pre .vendor-prefix, pre .support.namespace {
@@ -72,11 +66,11 @@ pre .constant.numeric, pre .keyword.unit, pre .hex-color {
 }
 
 pre .entity.class {
-    color: #991F00;
+    color: #458;
 }
 
 pre .entity.id, pre .entity.function {
-    color: #CC5200;
+    color: #900;
 }
 
 pre .attribute, pre .variable {
@@ -85,7 +79,7 @@ pre .attribute, pre .variable {
 
 pre .string, pre .support.value  {
     font-weight: normal;
-    color: #808080;
+    color: #d14;
 }
 
 pre .regexp {

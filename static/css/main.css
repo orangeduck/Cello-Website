@@ -1,80 +1,65 @@
-
-h1 {
-  margin-top:50px;
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 800px;
+  border-left: 1px solid #eaeaea;
+  border-right: 1px solid #eaeaea;
+  background-color: #FFFFFF;
 }
 
-h2 {
-  margin-top: 70px;
-  line-height: 10px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-
-html {
-  background: url(/static/img/back.png) repeat center top;
-}
-
-pre {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  border: 2px solid #689052;
+body {
+  font-size: 13px;
+  background-color: #FAFAFA;
 }
 
 a {
-  color: #689052;
-}
- 
-code {
-  color: #82372f;
+  color: #FF6600;
 }
 
-.text_shadow { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
-.shadow { box-shadow: 0 0px 1px rgba(0, 0, 0, 0.5); }
-
-.bordered {  
-  border: 1px solid #689052;
-  border-radius: 6px 6px 6px 6px;
+ul {
+    list-style: none;
+    padding: 0px;
 }
 
-.center {
+ul li:before {
+    content: '\00BB';
+    margin: 0 1em;    /* any design */
+}
+
+h3 {
+  margin-top:30px;
+}
+
+.greybar {
+  margin-top: 35px;
+  margin-right:20px;
+  width:25px;
+  height:5px;
+  background-color: #eaeaea;
+  border-radius: 2px;
+  float: left;
+}
+
+.greybar_long {
   margin-left: auto;
-  margin-right: auto;
+  margin-right:auto;
+  width:80%;
+  height:5px;
+  background-color: #eaeaea;
+  border-radius: 2px;
 }
 
-.nobull {
-  list-style-type: none;
+.centered {
+    text-align:center;
 }
 
-.white { color: #ffffff; }
-
-.padbig    { margin: 30px; }
-.padmedium { margin: 20px; }
-.padsmall  { margin: 10px; }
-.padright  { margin-right: 50px; }
-
-.right { float: right; }
-.left { float:left; }
-
-#navcontainer {
-  height:20px;
+hr {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
-#all {
-  /*background: url(/static/img/back_splash.png) no-repeat center top;*/
-  padding-top: 30px;
-  padding-bottom: 30px;
-  text-align: center; 
-  width: 100%;
+.marginlr {
+  margin-left:5px;
+  margin-right:5px;
 }
 
-#container {
-  width:642px;
-  /*background: url(/static/img/inner.png) repeat center top;*/
-  background-color: #FFFFFF;
-  text-align:left;
-}
-
-#splash {
-  width:640px;
-  height:300px;
-  background: url(/static/img/splash.png) center top;
-  background-color: #000000;
-}

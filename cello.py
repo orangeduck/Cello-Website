@@ -56,8 +56,12 @@ def index(page="home", section=None):
         content = f.read()
         f.close()
         content = markdown.markdown(content)
-        content = content.replace("<pre><code>", "<pre><code data-language=\"libcello\">")
-        content = content.replace("</h2>", "</h2><hr/>")
+        content = content.replace(
+          "<pre><code>", 
+          "<pre><code data-language=\"libcello\">")
+        content = content.replace(
+          "<h3>",  "<div class=\"greybar\"></div> <h3>")
+        
         content = content.replace("</h1>", "</h1><hr/>")
         content = Markup(content)
         cache.set("libcello-" + filename, content, timeout=5*60)

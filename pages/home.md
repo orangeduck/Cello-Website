@@ -1,94 +1,123 @@
-__Cello__ is a _library_ that introduces higher level programming to C.
-
-<blockquote>
-
-<ul>
-  <li> <strong>Interfaces</strong> allow for structured design </li>
-  <li> <strong>Duck Typing</strong> allows for generic functions </li>
-  <li> <strong>Exceptions</strong> control error handling </li>
-  <li> <strong>Constructors/Destructors</strong> aid memory management </li>
-  <li> <strong>Syntactic Sugar</strong> increases readability </li>
-  <li> <strong>C Library</strong> means excellent performance and integration </li>
-</ul>
-
-</blockquote>
-
-
-    /* Example libCello Program */
+  <div class="row">
+  <div class="col-xs-6 col-md-6">
 
     #include "Cello.h"
 
     int main(int argc, char** argv) {
 
       /* Stack objects are created using "$" */
-      var int_item = $(Int, 5);
-      var float_item = $(Real, 2.4);
-      var string_item = $(String, "Hello");
+      var i0 = $(Int, 5);
+      var i2 = $(Int, 3);
+      var i2 = $(Int, 4);
 
       /* Heap objects are created using "new" */
-      var items = new(List, int_item, float_item, string_item);
+      var items = new(Array, Int, i0, i1, i2);
       
       /* Collections can be looped over */
       foreach (item in items) {
-        /* Types are also objects */
-        var type = type_of(item);
-        print("Object %$ has type %$\n", item, type);
+        print("Object %$ is of type %$\n",
+          item, type_of(item));
       }
       
-      /* Heap objects destroyed with "delete" */
-      delete(items); 
-    }
+      del(items);
       
-Quickstart
-----------
+      return 0;
+    }
 
-For more examples please take a look at the quickstart documentation section:
+  </div>
+  <div class="col-xs-6 col-md-6">
 
-* [Containers and Collections](/documentation/containers)
-* [Type and Classes](/documentation/types)
-* [Exceptions](/documentation/exceptions)
-* [First Class Functions](/documentation/functions)
-* [Memory Management](/documentation/memory)
+__Cello__ is a _library_ that brings higher level programming to C.
 
-Or some articles about the creation:
+By acting as a _modern_, _powerful_ runtime system Cello makes many things easy 
+that were previously impractical or awkward in C such as:
 
-* [Hacking C to its limits](/documentation/hacking)
-* [Cello vs C++ vs ObjC](/documentation/comparison)
+* __Generic Data Structures__
+* __Polymorphic Functions__
+* __Interfaces / Type Classes__
+* __Constructors / Destructors__
+* __Reflection__
+* __Exceptions__
 
-Or a longer example:
+And using GCC or Clang:
 
-    /* Another Example Cello Program */
+* __Closures__
+* __Garbage Collection__
+
+And because Cello works seamlessly alongside standard C you get all the other 
+benefits such as great performance, powerful tooling, and extensive 
+libraries.
+
+  </div>
+  </div><hr/>
+  <div class="row">
+  <div class="col-xs-6 col-md-6">
 
     #include "Cello.h"
 
     int main(int argc, char** argv) {
       
-      /* Tables require "Eq" and "Hash" on key type */
+      /* Shorthand $ can be used for basic types */
       var prices = new(Table, String, Int);
-      put(prices, $(String, "Apple"),  $(Int, 12)); 
-      put(prices, $(String, "Banana"), $(Int,  6)); 
-      put(prices, $(String, "Pear"),   $(Int, 55)); 
+      set(prices, $S("Apple"),  $I(12)); 
+      set(prices, $S("Banana"), $I( 6)); 
+      set(prices, $S("Pear"),   $I(55)); 
 
-      /* Tables also supports iteration */
+      /* Tables also support iteration */
       foreach (key in prices) {
         var price = get(prices, key);
         print("Price of %$ is %$\n", key, price);
       }
       
-      /* "with" automatically closes file at end of scope. */
-      with (file in open($(File, NULL), "prices.bin", "wb")) {
+      return 0;
+    }
+    
+  </div>
+  <div class="col-xs-6 col-md-6">
+    
+### Articles
+
+Learning Resources.
+
+* [Installation](/learn/hacking)
+* [Cello World](/learn/hacking)
+* [Quickstart](/learn/quickstart)
+* [Common Queries/Pitfalls](/learn/pitfalls)
+
+Articles about its creation and internal workings.
+
+* [Cello 1. A Fat Pointer Library](/learn/fatpointer)
+* [Cello 2. Hacking C to its Limits](/learn/hacking)
+* [Cello vs C++ vs ObjC](/learn/comparison)
+* [Benchmarking Cello](/learn/benchmarking)
+* [Garbage Collection in C](/learn/garbage)
+    
+  </div>
+  </div><hr/>
+  <div class="row">
+  <div class="col-xs-6 col-md-6">
+    
+
+    #include "Cello.h"
+
+    int main(int argc, char** argv) {
+          
+      var file = $(File, None);
+      sopen(file, $S("prices.bin"), $S("w"));
+      
+      /* "with" closes file at end of scope. */
+      with (file) {
       
         /* First class function object */
-        lambda(write_pair, args) {
+        function(write_pair, args) {
           
-          /* Run time type-checking with "cast" */
-          var key = cast(at(args, 0), String);
-          var value = cast(get(prices, key), Int);
+          var k = get(args, $I(0));
+          var v = get(prices, k);
           
           try {
-            print_to(file, 0, "%$ :: %$\n", key, value);
+            print_to(file, 0, "%$ -> %$\n", k, v);
           } catch (e in IOError) {
-            println("Could not write to file - got %$", e);
+            println("IOError: %$", e);
           }
 
           return None;
@@ -98,24 +127,42 @@ Or a longer example:
         map(prices, write_pair);
       }
       
-      delete(prices);
+      del(prices);
     }
 
-Inspiration
------------
 
-The high level stucture of Cello projects is inspired by _Haskell_, while the syntax and semantics are inspired by _Python_ and _Obj-C_. Cello is not about _Object Orientation_ in C. Instead it provides tools that turn C into something of a _dynamic_ and _powerful_ functional language. A path it may have gone down in an alternate reality.
+  </div>
+  <div class="col-md-6">
+  
 
-Although the syntax is pleasant, Cello _isn't_ a library for beginners. It is for C power users, as manual memory management doesn't play nicely with many higher-order concepts. Most of all, Cello is a fun experiment to see what C would look like when hacked to its limits.
+### F.A.Q
 
-Contributions
--------------
+* __Why does this exist?__
 
-Cello is licensed under BSD3.
+Cello is a fun and interesting experiment to see what C looks like hacked 
+to its limits. But Cello has also evolved into a powerful tool for those 
+interested in experimenting with what is possible in C.
 
-Contributions are welcomed via [github](https://github.com/orangeduck/libCello).
+* __How does it work?__
 
-For queries please visit the IRC channel `#libcello` on Freenode. 
+I recommend reading 
+[A Fat Pointer Library](/learn/fatpointer) and 
+[Hacking C to its Limits](/learn/hacking) to get an overview of how Cello works.
+You can also peek at the source code, which I'm told is fairly readable, or 
+ask me any questions you like via e-mail.
 
-Or send them to `contact@theorangeduck.com`.
+* __Can it be used in Production?__
+
+It might be better to try Cello out on a hobby project first. Cello does aim to 
+be _production ready_, but it has it's fair share of oddities and pitfalls, and 
+if you are working in a team, or to a deadline, there is much better tooling, 
+support and community for languages such as C++.
+
+* __Is anyone using Cello?__
+
+No.
+
+
+  </div>
+  </div>
 
