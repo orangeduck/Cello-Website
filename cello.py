@@ -28,16 +28,18 @@ except RuntimeError:
 @app.route('/<page>/<section>')
 def index(page="home", section=None):
     
-    if not (page in ["home", "documentation", "contribute", "reference"]): page = "home"
+    if not (page in ["home", "learn", "reference"]): page = "home"
     
-    if (page in ["documentation"] and 
+    if (page in ["learn"] and 
         section  in 
-        ["types", "containers", "functions",
-        "memory", "exceptions", "hacking", 
-        "comparison", "installation", "celloworld",
-        "values", "parents"]):
+        ["installation",
+         "cello-world",
+         "a-fat-pointer-library",
+         "hacking-c-to-its-limits",
+         "cello-vs-cpp-vs-objc",
+         "benchmarking-cello"]):
         
-        section = "_"+section
+        section = "-"+section
         
     elif (page in ["reference"] and
         
@@ -62,11 +64,19 @@ def index(page="home", section=None):
         content = content.replace(
           "<h3>",  "<h3 class='text-center' style='margin-bottom:20px;'>")
         
-        content = content.replace("</h1>", "</h1><hr/>")
+        content = content.replace("</h1>", "</h1><hr style='margin-bottom:20px;'/>")
         content = Markup(content)
         cache.set("libcello-" + filename, content, timeout=5*60)
 
-    return render_template('page.html', content=content)
+    if page == 'home':
+        title = 'High Level C'
+    else:
+        if section != "":
+            title = section.replace('-', ' ').title()
+        else:
+            title = page.replace('-', ' ').title()
+
+    return render_template('page.html', content=content, title=title)
 
 if __name__ == "__main__":
     app.run(debug=True)

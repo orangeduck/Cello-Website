@@ -65,7 +65,7 @@ Rainbow.extend('libcello', [
     },
     {
       'name':'keyword',
-      'pattern': /\b(function|var|is|not|and|or|else|foreach|with|try|catch|throw|if|if_eq|if_neq|if_gt|if_lt|if_ge |if_le|typedef|for|while|switch|case|break|do|return|sizeof|as|void|unsigned|const|char|short|int|long |bool|float|double|size_t|true|false|va_list\*|void\*|char\*|char\*\*|var\*|FILE\*|va_list|bool|struct |union|static|extern|volatile|module|class|data|instance|type_data|type_begin|type_entry|type_end|lambda|lambda_id|lambda_const|lambda_compose|lambda_flip|lambda_partial|lambda_partial_l |lambda_partial_r|lambda_void|lambda_uncurry|lambda_void_uncurry|lambda_pipe|lambda_method_pipe|local|global|in|enum)(?=\(|\b)/g
+      'pattern': /\b(fun|var|is|not|and|or|else|foreach|with|try|catch|throw|if|if_eq|if_neq|if_gt|if_lt|if_ge |if_le|typedef|for|while|switch|case|break|do|return|sizeof|as|void|unsigned|const|char|short|int|long|bool|float|double|size_t|true|false|va_list\*|void\*|char\*|char\*\*|var\*|FILE\*|va_list|bool|struct|union|static|extern|volatile|in|enum)(?=\(|\b)/g
     },
     {
       'name':'entity.class',
@@ -73,7 +73,7 @@ Rainbow.extend('libcello', [
     },
     {
       'name':'entity.function',
-      'pattern':/\b(cast|new|del|alloc|dealloc|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|mem|rem|empty|sort|maximum|minimum|reverse|iter_init|iter_next|hash|push|push_at|pop|pop_at|set|get|c_char|c_str|c_int|c_float|begin|end|sopen|sclose|sseek|stell|sflush|seof|sread|swrite|instance|method|implements|type_of|madd|msub|mmul|mdiv|mneg|mabs|map|call_with|call|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_with|println_with|print_to_with|look|look_from|scan|scanln|scan_from|scan_with|scanln_with|scan_from_with|current|join|terminate|lock|unlock|lock_try|append|concat|bool_var|tuple)(?=\(|\b)/g
+      'pattern':/\b(cast|new|del|alloc|dealloc|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|mem|rem|empty|sort|maximum|minimum|reverse|iter_init|iter_next|hash|push|push_at|pop|pop_at|set|get|c_char|c_str|c_int|c_float|begin|end|sopen|sclose|sseek|stell|sflush|seof|sread|swrite|method|implements|instance|type_of|madd|msub|mmul|mdiv|mneg|mabs|map|call_with|call|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_with|println_with|print_to_with|look|look_from|scan|scanln|scan_from|scan_with|scanln_with|scan_from_with|current|join|terminate|lock|unlock|lock_try|append|concat|bool_var|tuple)(?=\(|\b)/g
     },
     {
       'name':'support.class',

@@ -1,40 +1,5 @@
-Array
------
-__Sequential Container__
-
-Array is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It is a [Container](/documentation/containers) meaning it allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
-
-Elements are copied in an Array using `assign` which means the type much implement the [Assign](reference/assign) class.
-
-Elements are ordered linearly. Elements are accessed by their position in this sequence directly. Addition and removal of elements at the end of the sequence is fast, with memory movement required for elements in the middle of the sequence. 
-
-The equivalent C++ construct to this type is [std::vector](http://www.cplusplus.com/reference/vector/vector/)
-
-
-### Implements
-
-* <span style="width:75px; float:left;">[New](new)</span> `new` `delete` `construct` `destruct`
-* <span style="width:75px; float:left;">[Assign](assign)</span> `assign`
-* <span style="width:75px; float:left;">[Copy](copy)</span> `copy`
-* <span style="width:75px; float:left;">[Eq](eq)</span> `eq` `neq` `if_eq` `if_neq`
-* <span style="width:75px; float:left;">[Collection](collection)</span> `len` `clear` `contains` `discard`
-* <span style="width:75px; float:left;">[Push](push)</span> `push` `pop` `push_at` `pop_at`
-* <span style="width:75px; float:left;">[At](at)</span> `at` `set`
-* <span style="width:75px; float:left;">[Iter](iter)</span> `foreach` `iter_start` `iter_end` `iter_next`
-* <span style="width:75px; float:left;">[Reverse](reverse)</span> `reverse`
-* <span style="width:75px; float:left;">[Sort](sort)</span> `sort`
-* <span style="width:75px; float:left;">[Append](append)</span> `append`
-* <span style="width:75px; float:left;">[Show](show)</span> `show` `print` `look` `scan`
-
-
-### See Also
-
-* <span style="width:75px; float:left;">[List](list)</span> _Sequential Collection_
-* <span style="width:75px; float:left;">[Table](table)</span> _Hashtable Container_
-* <span style="width:75px; float:left;">[Tree](tree)</span> _Binary Tree Container_
-* <span style="width:75px; float:left;">[Dictionary](dictionary)</span> _Hashtable Collection_
-* <span style="width:75px; float:left;">[Map](map)</span> _Binary Tree Collection_
-
+  <div class="row">
+  <div class="col-xs-6 col-md-6">
 
 ### Examples
 
@@ -89,4 +54,52 @@ __Iteration__
     
     delete(x);
 
-[Back](/documentation)
+  </div>
+  <div class="col-xs-6 col-md-6">
+
+Array
+-----
+__Sequential Container__
+
+Array is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It is a [Container](/documentation/containers) meaning it allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
+
+Elements are copied in an Array using `assign` which means the type much implement the [Assign](reference/assign) class.
+
+Elements are ordered linearly. Elements are accessed by their position in this sequence directly. Addition and removal of elements at the end of the sequence is fast, with memory movement required for elements in the middle of the sequence. 
+
+The equivalent C++ construct to this type is [std::vector](http://www.cplusplus.com/reference/vector/vector/)
+
+
+### Implements
+
+* <span style="width:75px; float:left;">[New](new)</span> `new` `delete` `construct` `destruct`
+* <span style="width:75px; float:left;">[Assign](assign)</span> `assign`
+* <span style="width:75px; float:left;">[Copy](copy)</span> `copy`
+* <span style="width:75px; float:left;">[Eq](eq)</span> `eq` `neq` `if_eq` `if_neq`
+* <span style="width:75px; float:left;">[Collection](collection)</span> `len` `clear` `contains` `discard`
+* <span style="width:75px; float:left;">[Push](push)</span> `push` `pop` `push_at` `pop_at`
+* <span style="width:75px; float:left;">[At](at)</span> `at` `set`
+* <span style="width:75px; float:left;">[Iter](iter)</span> `foreach` `iter_start` `iter_end` `iter_next`
+* <span style="width:75px; float:left;">[Reverse](reverse)</span> `reverse`
+* <span style="width:75px; float:left;">[Sort](sort)</span> `sort`
+* <span style="width:75px; float:left;">[Append](append)</span> `append`
+* <span style="width:75px; float:left;">[Show](show)</span> `show` `print` `look` `scan`
+
+
+### See Also
+
+* <span style="width:75px; float:left;">[List](list)</span> _Sequential Collection_
+* <span style="width:75px; float:left;">[Table](table)</span> _Hashtable Container_
+* <span style="width:75px; float:left;">[Tree](tree)</span> _Binary Tree Container_
+* <span style="width:75px; float:left;">[Dictionary](dictionary)</span> _Hashtable Collection_
+* <span style="width:75px; float:left;">[Map](map)</span> _Binary Tree Collection_
+
+  <p style="text-align:center;">
+[Back](/learn)
+  </p>
+
+  </div>
+  </div>
+
+
+

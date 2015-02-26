@@ -79,17 +79,17 @@ libraries.
 
 Learning Resources.
 
-* [Installation](/learn/hacking)
-* [Cello World](/learn/hacking)
+* [Installation](/learn/installation)
+* [Cello World](/learn/cello-world)
 * [Quickstart](/learn/quickstart)
-* [Common Queries/Pitfalls](/learn/pitfalls)
+* [Common Queries / Pitfalls](/learn/pitfalls)
 
 Articles about its creation and internal workings.
 
-* [Fat Pointer Libraries](/learn/fatpointer)
-* [Hacking C to its Limits](/learn/hacking)
-* [Cello vs C++ vs ObjC](/learn/comparison)
-* [Benchmarking Cello](/learn/benchmarking)
+* [A Fat Pointer Library](/learn/a-fat-pointer-library)
+* [Hacking C to its Limits](/learn/hacking-c-to-its-limits)
+* [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)
+* [Benchmarking Cello](/learn/benchmarking-cello)
 * [Garbage Collection in C](/learn/garbage)
     
   </div>
@@ -103,7 +103,7 @@ Articles about its creation and internal workings.
     int main(int argc, char** argv) {
       
       /* First class function declaration */
-      function(print_safe, args) {
+      fun (print_safe, args) {
         
         /* Exceptions */
         try {
@@ -133,14 +133,14 @@ Articles about its creation and internal workings.
 
 * __Why does this exist?__
 
-Cello is a fun and interesting experiment to see what C looks like hacked 
-to its limits. But Cello has also evolved into a powerful tool for those 
-interested in experimenting with what is possible in C.
+I made Cello as a fun experiment to see what C looks like hacked to its limits. 
+As well as being a powerful library and toolkit, it should be interesting to 
+those who want to explore what is possible in C.
 
 * __How does it work?__
 
 I recommend reading 
-[Fat Pointer Libraries](/learn/fatpointer) and 
+[A Fat Pointer Library](/learn/fatpointer) and 
 [Hacking C to its Limits](/learn/hacking) to get an overview of how Cello works.
 You can also peek at the source code, which I'm told is fairly readable, or 
 ask me any questions you like via e-mail.
@@ -154,9 +154,10 @@ there is much better tooling, support and community for languages such as C++.
 
 * __Is anyone using Cello?__
 
-The short answer is no. Cello is too big and scary a dependancy for new C 
-projects which wish to be portable and easy to maintain. But there are some 
-small projects growing out of it. Why not check out [Chords](/chords).
+People have exerimented with it, but there is no high profile project I know of
+that uses it. Cello is too big and scary a dependancy for new C projects if 
+they want to be portable and easy to maintain. Even so there are some smaller 
+projects growing out of it. Why not check out [Chords](/chords).
 
 
   </div>

@@ -24,6 +24,10 @@ a {
   color: #FF6600;
 }
 
+p {
+  text-align: justify;
+}
+
 ul {
     list-style: none;
     padding: 0px;
@@ -59,5 +63,10 @@ hr {
 .marginlr {
   margin-left:5px;
   margin-right:5px;
+}
+
+.docitem {
+  display: inline-block;
+  width:75px;
 }
 

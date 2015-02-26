@@ -1,3 +1,101 @@
+  <div class="row">
+  <div class="col-xs-6 col-md-6">
+
+### Methods
+
+
+    var new(var type, ...);
+
+Create a new object of a certain type on the heap.
+
+__Parameters__
+  
+  * `type` Type to create
+  * `...` Arguments to be passed to constructor
+
+__Returns__ New Object
+
+
+    void delete(var obj);
+
+
+Delete an object created on the heap.
+
+* __Parameters__
+    * `obj` Object to delete
+* __Returns__ None
+
+
+    var allocate(var type);
+
+
+Allocate space for an object of a certain type.
+
+* __Parameters__
+    * `type` Type to allocate space for
+* __Returns__ Blank object of certain type
+
+
+    void deallocate(var obj);
+
+
+Free the space allocated by a certain object.
+
+* __Parameters__
+    * `obj` Object to free the memory for
+* __Returns__ None
+
+
+    var construct(var obj, ...);
+
+
+Call the constructor of an object.
+
+* __Parameters__
+    * `obj` Object to call constructor on
+    * `...` Arguments to be passed to constructor
+* __Returns__ Newly Constructed Object
+
+
+    var destruct(var obj);
+
+
+Call the destructor of an object.
+
+* __Parameters__
+    * `obj` Object to call destructor on
+* __Returns__ Newly Destructed Object
+
+
+
+### Examples
+
+__Usage__
+
+    var x = new(Int, $(Int, 1));
+    
+    show(x); /* 1 */
+    show(type_of(x)) /* Int */
+    
+    delete(x);
+    
+    var y = $(Real, 0.0);  
+    
+    show(y); /* 0.0 */
+    construct(y, $(Int, 1.0));
+    show(y); /* 1.0 */
+    
+    var z = allocate(String);
+    construct(z, $(String, "Hello"));
+    
+    show(z); /* Hello */
+    z = destruct(z);
+    deallocate(z);
+
+  </div>
+  <div class="col-xs-6 col-md-6">
+
+
 New
 ---
 __Constructable on the Heap__
@@ -7,71 +105,6 @@ The `New` class provides a method to implement dynamic (heap) memory allocation 
 The `new` function takes a list of `var` type arguments to provide a method of passing arguments to an object's constructor. native C types should never be passed into this list and should instead be wrapped using `$`. See examples for details.
 
 
-### Methods
-
--------------------------------
-
-    var new(var type, ...);
-
-Create a new object of a certain type on the heap.
-
-* __Parameters__
-    * `type` Type to create
-    * `...` Arguments to be passed to constructor
-* __Returns__ New Object
-
-------------------------------- 
-
-    void delete(var obj);
-
-Delete an object created on the heap.
-
-* __Parameters__
-    * `obj` Object to delete
-* __Returns__ None
-
-------------------------------- 
-
-    var allocate(var type);
-
-Allocate space for an object of a certain type.
-
-* __Parameters__
-    * `type` Type to allocate space for
-* __Returns__ Blank object of certain type
-
-------------------------------- 
-
-    void deallocate(var obj);
-
-Free the space allocated by a certain object.
-
-* __Parameters__
-    * `obj` Object to free the memory for
-* __Returns__ None
-
-------------------------------- 
-
-    var construct(var obj, ...);
-
-Call the constructor of an object.
-
-* __Parameters__
-    * `obj` Object to call constructor on
-    * `...` Arguments to be passed to constructor
-* __Returns__ Newly Constructed Object
-
-------------------------------- 
-
-    var destruct(var obj);
-
-Call the destructor of an object.
-
-* __Parameters__
-    * `obj` Object to call destructor on
-* __Returns__ Newly Destructed Object
-
-------------------------------- 
 
 
 ### Signature
@@ -111,29 +144,9 @@ Call the destructor of an object.
 * <span style="width:75px; float:left;">[Copy](copy)</span> _Copyable_
 
 
-### Examples
+  <p style="text-align:center;">
+[Back](/learn)
+  </p>
 
-__Usage__
-
-    var x = new(Int, $(Int, 1));
-    
-    show(x); /* 1 */
-    show(type_of(x)) /* Int */
-    
-    delete(x);
-    
-    var y = $(Real, 0.0);  
-    
-    show(y); /* 0.0 */
-    construct(y, $(Int, 1.0));
-    show(y); /* 1.0 */
-    
-    var z = allocate(String);
-    construct(z, $(String, "Hello"));
-    
-    show(z); /* Hello */
-    z = destruct(z);
-    deallocate(z);
-    
-
-[Back](/documentation)
+  </div>
+  </div>
