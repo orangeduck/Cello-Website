@@ -7,7 +7,7 @@
 Rainbow.extend('libcello', [
     {
         'name': 'keyword.operator',
-        'pattern': /\$|\+|\!|\-|&(gt|lt|amp);|\||\*|\=/g
+        'pattern': /\$|\+|\!|\-|&(gt|lt|amp);|\||\*|\=|%/g
     },    
     {
       'matches': {
@@ -73,10 +73,10 @@ Rainbow.extend('libcello', [
     },
     {
       'name':'entity.function',
-      'pattern':/\b(cast|new|del|alloc|dealloc|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|mem|rem|empty|sort|maximum|minimum|reverse|iter_init|iter_next|hash|push|push_at|pop|pop_at|set|get|c_char|c_str|c_int|c_float|begin|end|sopen|sclose|sseek|stell|sflush|seof|sread|swrite|method|implements|instance|type_of|madd|msub|mmul|mdiv|mneg|mabs|map|call_with|call|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_with|println_with|print_to_with|look|look_from|scan|scanln|scan_from|scan_with|scanln_with|scan_from_with|current|join|terminate|lock|unlock|lock_try|append|concat|bool_var|tuple)(?=\(|\b)/g
+      'pattern':/\b(cast|new|del|alloc|dealloc|construct|destruct|assign|copy|eq|neq|gt|lt|ge|le|len|clear|mem|rem|empty|sort|maximum|minimum|reverse|iter_init|iter_next|hash|push|push_at|pop|pop_at|set|get|c_char|c_str|c_int|c_float|begin|end|sopen|sclose|sseek|stell|sflush|seof|sread|swrite|method|implements|instance|type_of|type_implements|type_instance|madd|msub|mmul|mdiv|mneg|mabs|map|call_with|call|format_to|format_from|format_to_va|format_from_va|show|show_to|print|println|print_to|print_with|println_with|print_to_with|look|look_from|scan|scanln|scan_from|scan_with|scanln_with|scan_from_with|current|join|terminate|lock|unlock|lock_try|append|concat|bool_var|tuple|traverse|size)(?=\(|\b)/g
     },
     {
       'name':'support.class',
-      'pattern':/\b(New|Assign|Copy|Eq|Ord|Hash|Serialize|AsLong|AsDouble|AsStr|AsChar|Num|Collection|Reverse|Iter|Push|At|Dict|With|Stream|Call|Retain|Sort|Append|Show|Format|Vector|Process|Lock)(?=\(|\b)/g
+      'pattern':/\b(New|Assign|Copy|Eq|Ord|Hash|Serialize|AsLong|AsDouble|AsStr|AsChar|Num|Collection|Reverse|Iter|Push|At|Dict|With|Stream|Call|Retain|Sort|Append|Show|Format|Vector|Process|Lock|Traverse)(?=\(|\b)/g
     }
 ], true);

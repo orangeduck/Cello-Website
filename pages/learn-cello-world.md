@@ -33,6 +33,8 @@ If you have errors:
 * You may need to add some extra compile flags such as `-fblocks`
 * You may need to run `ldconfig` to refresh your library cache.
 
+* * *
+
   <p style="text-align:center;">
 [Back](/learn)
   </p>

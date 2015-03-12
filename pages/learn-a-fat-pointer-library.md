@@ -256,7 +256,7 @@ just perhaps the _Fat Pointer_ has the potential to give C another breath of
 life, like Javascript was so lucky to have.
 
  
-
+* * *
 
   <p style="text-align:center;">
 [Back](/learn)

@@ -88,11 +88,13 @@ The equivalent C++ construct to this type is [std::vector](http://www.cplusplus.
 
 ### See Also
 
-* <span style="width:75px; float:left;">[List](list)</span> _Sequential Collection_
-* <span style="width:75px; float:left;">[Table](table)</span> _Hashtable Container_
-* <span style="width:75px; float:left;">[Tree](tree)</span> _Binary Tree Container_
-* <span style="width:75px; float:left;">[Dictionary](dictionary)</span> _Hashtable Collection_
-* <span style="width:75px; float:left;">[Map](map)</span> _Binary Tree Collection_
+* <span style="width:75px; float:left;">[List](list)</span> __Sequential Collection__
+* <span style="width:75px; float:left;">[Table](table)</span> __Hashtable Container__
+* <span style="width:75px; float:left;">[Tree](tree)</span> __Binary Tree Container__
+* <span style="width:75px; float:left;">[Dictionary](dictionary)</span> __Hashtable Collection__
+* <span style="width:75px; float:left;">[Map](map)</span> __Binary Tree Collection__
+
+* * *
 
   <p style="text-align:center;">
 [Back](/learn)

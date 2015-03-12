@@ -83,6 +83,8 @@ manually, or include them directly in their project.
 If everything has gone correctly you should be 
 [ready to play](/learn/cello-world).
 
+* * *
+
   <p style="text-align:center;">
 [Back](/learn)
   </p>

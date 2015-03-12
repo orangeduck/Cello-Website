@@ -19,8 +19,7 @@
           item, type_of(item));
       }
       
-      del(items);
-      
+      /* Heap objects destructed via Garbage Collection */
       return 0;
     }
 
@@ -36,13 +35,13 @@ that were previously impractical or awkward in C such as:
 * __Polymorphic Functions__
 * __Interfaces / Type Classes__
 * __Constructors / Destructors__
+* __Garbage Collection__
 * __Reflection__
 * __Exceptions__
 
 And using GCC or Clang:
 
 * __Closures__
-* __Garbage Collection__
 
 And because Cello works seamlessly alongside standard C you get all the other 
 benefits such as great performance, powerful tooling, and extensive 
@@ -90,7 +89,7 @@ Articles about its creation and internal workings.
 * [Hacking C to its Limits](/learn/hacking-c-to-its-limits)
 * [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)
 * [Benchmarking Cello](/learn/benchmarking-cello)
-* [Garbage Collection in C](/learn/garbage)
+* [Garbage Collection](/learn/garbage-collection)
     
   </div>
   </div><hr/>

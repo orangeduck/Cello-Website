@@ -37,7 +37,8 @@ def index(page="home", section=None):
          "a-fat-pointer-library",
          "hacking-c-to-its-limits",
          "cello-vs-cpp-vs-objc",
-         "benchmarking-cello"]):
+         "benchmarking-cello",
+         "garbage-collection"]):
         
         section = "-"+section
         
