@@ -36,12 +36,8 @@ that were previously impractical or awkward in C such as:
 * __Interfaces / Type Classes__
 * __Constructors / Destructors__
 * __Garbage Collection__
-* __Reflection__
 * __Exceptions__
-
-And using GCC or Clang:
-
-* __Closures__
+* __Reflection__
 
 And because Cello works seamlessly alongside standard C you get all the other 
 benefits such as great performance, powerful tooling, and extensive 
@@ -88,7 +84,7 @@ Articles about its creation and internal workings.
 * [A Fat Pointer Library](/learn/a-fat-pointer-library)
 * [Hacking C to its Limits](/learn/hacking-c-to-its-limits)
 * [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)
-* [Benchmarking Cello](/learn/benchmarking-cello)
+* [Benchmarking Cello](/learn/benchmarks)
 * [Garbage Collection](/learn/garbage-collection)
     
   </div>
