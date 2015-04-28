@@ -45,8 +45,8 @@ pre .comment {
     font-style: italic;
 }
 
-pre .support {
-    color: #0086B3;
+pre .support.class {
+    color: #1B2140;
 }
 
 pre .tag, pre .tag-name {

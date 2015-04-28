@@ -9,29 +9,37 @@ manually deallocate memory.
 
 Garbage collectable objects are allocated via the `new` function and can be 
 (optionally) deleted via `del`. The Garbage Collector in Cello can also be 
-disabled at compile time using the flag `-DCELLO_GC=0` without affecting the 
+disabled at compile time using the flag `-DCELLO_NGC` without affecting the 
 standard library, which uses `del` either way to manage its memory. When 
-disabled, memory must be manually managed with `new` and `del`.
+disabled, memory must be manually managed with `new` and `del`. To allocate 
+memory while avoiding the Garbage Collector without completely disabling it the 
+`new_raw` and `del_raw` functions can be used.
 
 There are a few things to be aware of when using the Cello Garbage Collector:
 
 * __Reachability__
 
 Garbage Collectable objects must be reachable via local variables on the 
-stack or via some chain of other Cello objects that are themselves reachable. 
-They __must not__ be stored in global/static variables or in locations only 
-reachable via non-Cello structures. To store Cello objects in global/static 
-locations or inside non-Cello structures the `new_root` function should be 
-used, and the corrisponding objects deleted manually with `del`.
+stack, or via some chain of other GC allocated Cello objects that are 
+themselves reachable. They __must not__ be stored in global/static variables, 
+or in locations only reachable via non-Cello structures. Additionally each 
+thread in Cello has its own Garbage Collector which runs locally, so objects 
+should not be allocated in one thread, and only reachable from another. To 
+store Cello objects in global/static locations or inside non-Cello structures 
+the `new_root` function should be used, and the corresponding objects deleted 
+manually with `del`. Due to these limitations it can be better to think of the 
+Cello Garbage Collector as a kind of lazy 
+[RAII](http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization) 
+which calls object destructors _some time_ after the object goes out of scope.
 
-* __The Traverse Class__
+* __The Mark Class__
 
-By default the Cello Garbage collector just scans the memory of heap 
-allocated Cello objects to find pointers to other Cello objects, but this can 
-be overwritten by implementing the `Traverse` class. If you create a Cello 
-type that does it's own memory allocation and stores Cello Objects elsewhere 
+By default the Cello Garbage collector just scans the memory of an object to 
+find pointers to other Cello objects it has allocated, but this behaviour can 
+be overridden by implementing the `Mark` class. If you create a Cello type that 
+does it's own memory allocation and stores Cello Objects inside of that memory  
 you can define this class to allow it to interact correctly with the GC.
-  
+
 * __Real Time Collection__
 
 Garbage Collection in Cello is still somewhat new and experimental. It uses 
@@ -43,7 +51,7 @@ long pauses so it is not appropriate for real-time applications.
 The Garbage Collector scans the stack memory, and this naturally contains 
 uninitialised values. Although it does this safely, if you are running a 
 Cello program through Valgrind these accesses will be reported as errors. 
-Other than these Cello, shouldn't have any memory errors in Valgrind, so the 
+Other than this Cello, shouldn't have any memory errors in Valgrind, so the 
 easiest way to disable these to examine any real problems is to run Valgrind 
 with the option `--undef-value-errors=no`.
   
@@ -53,7 +61,7 @@ There there is simply no way to create a _completely_ portable garbage
 collector in C. But unlike the [Boehm Garbage Collector](http://en.wikipedia.org/wiki/Boehm_garbage_collector), 
 the Cello Garbage Collector doesn't need to use any platform specific 
 tricks. All it relies on is the assumption that the architecture uses a call 
-stack to implement function frames - this means it should be safe to use for 
+stack to implement function frames. This means it should be safe to use for 
 more or less all architectures found in the wild.
   
 # How it works  
@@ -76,24 +84,25 @@ all allocations of garbage collectable objects have to go via `new` so there is
 no trouble recording whenever a new object is allocated.
 
 The list of reachable objects is usually much harder to obtain. In languages 
-such as Python, which run on a virtual machine, this can be made by traversing 
-the data structures that represent the code running on the virtual machine, 
+such as Java, which run on a virtual machine, this can be made by traversing 
+the data structures that represent the program running on the virtual machine, 
 finding all references to objects and following any more references those 
 objects contain.
 
 In this case the list of reachable objects is not explicitly computed. Instead 
 the comparison is done implicitly by _marking_ and then _sweeping_. First all 
-of the reachable objects are _marked_ by recursively following references, 
-starting from local and global variables in the code, until there are no longer 
-any unmarked objects to be found. Then the list of allocated ojects is _swept_ 
-by going over and deleting any that are unmarked.
+of the reachable objects are _marked_, starting from local and global 
+variables and recursively following references in the program all objects are 
+marked, until there are no longer any unmarked objects to be found. Then the 
+list of allocated objects is _swept_ by going over and deleting any that are 
+remaining unmarked.
 
 But C works at a lower level of abstraction than these languages. There is no 
-convinient list of "objects" or "references" to follow. In C we are dealing 
+convenient list of "objects" or "references" to follow. In C we are dealing 
 with raw memory and all of this structure doesn't exist. Luckily, because Cello 
 acts as a runtime system on top of native C, we can use it alongside a few 
 crafty tricks to try and rebuild much of this structure - and in doing so 
-create a basic garbage collector limited to Cello objects.
+create a basic Garbage Collector limited to Cello objects.
 
 We can start with the observation that, in general, memory in C exists in three 
 locations - the heap, the stack, and the data segment. This means if an object 
@@ -117,7 +126,7 @@ garbage collectable Cello objects from other Cello objects. This means we limit
 our search to heap objects created via Cello. Our Cello runtime knowns the 
 allocation size for each heap object allocated, so we can scan the memory at 
 each object for pointers to other Cello objects. If the object does some custom 
-memory allocation we can get it to implement the `Traverse` type class to tell 
+memory allocation we can get it to implement the `Mark` type class to tell 
 us directly what objects it points to.
 
 With the data segment ignored, and the heap easily scanned, this leaves the 
@@ -127,14 +136,14 @@ continuous area of memory that grows down (or sometimes up, although that
 doesn't make much difference) for each function call. It contains all the local 
 variables used by functions as well are various other housekeeping data. By 
 getting the memory address of the top of the stack, and of the bottom, we can 
-scan over all the memory inbetween and check it for pointers to Cello objects.
+scan over all the memory in-between and check it for pointers to Cello objects.
 
 Assuming the stack grows from top to bottom we can get a conservative 
 approximation of the bottom of the stack by just taking the address of some 
 local variable:
 
-    var Cello_GC_Stack_Bot() {
-      var p = None;
+    void* Cello_GC_Stack_Bot() {
+      void* p = NULL;
       return &p;
     }
    
@@ -148,9 +157,9 @@ function is not inlined by only calling the marking function via a function
 pointer, who's value is decided using a volatile variable (volatile variables 
 are immune to optimisations). Then we know that the `Cello_GC_Stack_Bot` 
 function will return an address that will definitely cover the spilled 
-registers and everything else on the stack below our call.
+registers and everything else on the stack above our call.
     
-    var Cello_GC_Mark_Prelude() {
+    void Cello_GC_Mark_Prelude() {
       jmp_buf env;
       setjmp(env);
       
@@ -205,11 +214,11 @@ pointer size. We can also keep track of the maximum and minimum
 pointer addresses we've allocated and quickly disregard anything outside of 
 these bounds.
 
-Simple measures will stop us following _bad_ or _invalid_ pointers in almost 
-all cases, but we need to narrow it down even futher because a bad memory 
-access could crash the program. For this purpose a hash table is maintained 
-which stores all the pointers which have been allocated by Cello. It can be 
-used to quickly check if a pointer is to an allocated Cello object.
+These simple measures will stop us following _bad_ or _invalid_ pointers in 
+almost all cases, but we need to narrow it down even further because a bad 
+memory access could crash the program. For this purpose a hash table is 
+maintained which stores all the pointers which have been allocated by Cello. It 
+can be used to quickly check if a pointer is to an allocated Cello object.
 
 Here is what the function `Cello_GC_Mark_Item` roughly looks like. It does 
 these brief checks and then on success does the actual marking and recursion. 
@@ -219,7 +228,7 @@ these brief checks and then on success does the actual marking and recursion.
       if (a % sizeof(var) is 0
       and a >= minptr
       and a <= maxptr
-      and     Cello_GC_Valid(a)
+      and     Cello_GC_Allocated(a)
       and not Cello_GC_Marked(a)) {
           Cello_GC_Mark(a);
           Cello_GC_Recurse(a);

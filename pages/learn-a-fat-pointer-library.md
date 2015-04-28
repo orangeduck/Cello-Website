@@ -187,9 +187,10 @@ The actual type object structure in Cello is pretty complicated, but a
 simplified example might end up looking something like this under the hood.
 
     var Int = (struct TypeEntry[]){
-      {  "New", (struct New){ Int_New, Int_Del, Int_Size } },
-      {  "Ord", (struct Ord){ Int_Lt, Int_Gt } },
-      {   NULL, NULL  }
+      { "Size", &((struct Size){ Int_Size })
+      { "New",  &((struct  New){ Int_New, Int_Del }) },
+      { "Ord",  &((struct  Ord){ Int_Lt, Int_Gt }) },
+      {  NULL,  NULL  }
     };
 
 Then when (for example), we wish to call `new` to make an `Int`, we just lookup 
@@ -199,8 +200,8 @@ function. This is very much like the concept of a
 [vtable](http://en.wikipedia.org/wiki/Virtual_method_table) from C++.
 
 
-    if (type_implements(type, "New")) {
-        struct New* inst = type_instance(type, "New");
+    if (type_implements(type, New)) {
+        struct New* inst = type_instance(type, New);
         return inst->new(self, args);
     }
 
@@ -248,12 +249,12 @@ up. The Javascript floodgates opened and it became something totally different.
 
 Cello still has a lot of oddities and awkard bits, but so far Cello is the only 
 _Fat Pointer Library_ I know of that tries to do everything, packaging it up 
-in a nice syntax. The key thing is that it isn't entirerly unsuccessful, and 
-that Cello is just one design of a runtime. There are many possible 
-ways in which a Runtime could be designed with different strengths and ideas. 
-I'd love to see what other people can do with this combination of thoughts, and 
-just perhaps the _Fat Pointer_ has the potential to give C another breath of 
-life, like Javascript was so lucky to have.
+in a nice syntax. The key thing to take away from this project is that it isn't 
+entirerly unsuccessful, and that Cello is just one design of a runtime. There 
+are many possible ways in which a Runtime could be designed with different 
+strengths and ideas. I'd love to see what other people can do with this 
+combination of thoughts, and just perhaps the _Fat Pointer_ has the potential 
+to give C another breath of life, like Javascript was so lucky to have.
 
  
 * * *

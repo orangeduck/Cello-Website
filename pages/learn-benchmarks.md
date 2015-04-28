@@ -4,11 +4,14 @@
 
 # Benchmarks
 
-Unfortunately there is no easy answer to _How Fast is Cello?_ Cello is 
-a superset of standard C, which makes it very difficult to benchmark in an 
-objective way. If you really want a single answer I can tell you that Cello is 
-_somewhere between C and Java_, but before we go into the 
-numbers, here are some broad statements about Cello's performance:
+Because Cello is a superset of standard C, it is difficult to benchmark in an 
+objective way. The best single, easy answer I can give is that Cello is _at 
+best_ as fast as C and _at worst_ as fast as a JIT'd scripting language such as 
+Java. For a more detailed look, all the benchmarking code is avaliable on the 
+[Cello github repository](https://github.com/orangeduck/libCello). 
+
+As for actually optimising Cello programs - here are some broad statements 
+about Cello's performance that are worth keeping in mind:
 
 * __Cello works well in conjunction with standard C.__
 
@@ -16,8 +19,8 @@ Using standard C for tight loops and numerical computations is going to give
 you very fast performance. This is both natural and easy due to how simple the 
 Cello/C interop is. Similarly, just using Cello as a high level wrapper for the 
 main objects or components in your program is going to incur practically no 
-performance penalty over standard C at all. It is also worth remembering that 
-all of the benchmarked C programs are still valid Cello programs.
+performance penalty over standard C. It is also worth remembering that all of 
+the benchmarked C programs are also valid Cello programs.
 
 * __Generic Functions have some fixed overhead.__
 
@@ -33,35 +36,17 @@ tight loop this overhead can add up.
 * __Cello's data structures are runtime polymorphic.__
 
 Because Cello's data structures are runtime polymorphic rather than compile 
-time polymorphic, in general they will never be as fast as C++ `stl` 
+time polymorphic, in general they will never be as fast as C++ stl 
 structures, data structures from a C macro library such as 
 [klib](https://github.com/attractivechaos/klib), or even some unityped 
-language's data structures. Even so, their performance is still pretty decent.
+language's data structures. Even so, their performance is still 
+pretty decent.
 
 
   </div>
   <div class="col-xs-2 col-md-2"></div>
   </div>
 
-  <div class="row">
-  <div class="col-xs-6 col-md-6">
-  
-<p style="text-align:center;">
-  <img src="/static/img/benchmark_sudoku.png"/>
-</p>
-
-  </div>
-  <div class="col-xs-6 col-md-6">
-
-### Sudoku
-
-In this benchmark Cello is used as a simple wrapper around the main objects 
-used in the benchmarking program I.E the sudoku grid. Because all the heavy 
-lifting is done in C the use of Cello incurs essentially no overhead and 
-performance is the same as in C.
-  
-  </div>
-  </div><hr/>
   <div class="row">
   <div class="col-xs-6 col-md-6">
   
@@ -74,10 +59,29 @@ performance is the same as in C.
   
 ### Matrix Multiplication
   
-Similarly to the Sudoku benchmark, Cello is only used here as a basic wrapper 
-around the main objects such as the matrices. The actual multiplication is done 
-in normal C and so is very fast. Scripting languages like Ruby and Python 
-perform particularly badly here due to their slowness with arithmetic.
+In this benchmark, Cello is only used here as a basic wrapper around the main 
+objects such as the matrices. The actual multiplication is done in normal C and 
+so is very fast. Scripting languages like Ruby and Python perform particularly 
+badly here due to their slowness with arithmetic.
+  
+  </div>
+  </div><hr/>
+  <div class="row">
+  <div class="col-xs-6 col-md-6">
+  
+<p style="text-align:center;">
+  <img src="/static/img/benchmark_sudoku.png"/>
+</p>
+
+  </div>
+  <div class="col-xs-6 col-md-6">
+
+### Sudoku
+
+Similarly to the Matrix Multiplication benchmark, Cello is just used as a 
+simple wrapper around the main objects used in the benchmarking program I.E the 
+sudoku grid. Because all the heavy lifting is done in C the use of Cello incurs 
+practically no overhead and performance is very similar to C.
   
   </div>
   </div><hr/>
@@ -93,12 +97,13 @@ perform particularly badly here due to their slowness with arithmetic.
 
 ### N-Body Simulation
   
-This benchmark is written in _idomatic_ Cello. For example 
-`foreach(b in bodies)` is used instead of 
-`for(int i = 0; i < num_bodies; i++)` and Cello code is used where possible 
-without concern for performance. In this case because using Cello functions 
-blocks the compiler from unrolling loops and inlining functions it is 
-somewhat slower than standard C. This benchmark shows the overhead of using 
+As well as wrapping all the main objects, in this benchmark Cello techniques 
+are used wherever makes sense. For example `foreach(b in bodies)` is used 
+instead of `for(int i = 0; i < num_bodies; i++)`. The intention was to write 
+Cello code without concern for performance. In this case because using Cello 
+functions blocks the compiler from unrolling loops and inlining functions it is 
+somewhat slower than normal C implementation but still as fast as JITed 
+scripting languages. This benchmark shows the overhead of using 
 _idomatic_ Cello even for performance critical sections of the code.
   
   </div>
@@ -117,9 +122,9 @@ _idomatic_ Cello even for performance critical sections of the code.
 
 This benchmark shows the use of the `Table` structure in Cello as compared to
 other language's hashtable implementations. In C the `klib` library is used and 
-in C++ `std::unordered_map` is used. Even unityped scripting languages tend to 
-use optimised C implementations of hashtables and so everyone performs fairly 
-evenly. Cello is slightly slower than you might expect due to using runtime 
+in C++ `std::unordered_map` is used. Scripting languages tend to use optimised 
+C implementations of hashtables and so all of the languages perform fairly 
+evenly. Cello is a little slower than some of the others due to the runtime 
 polymorphism.
 
   </div>
@@ -137,11 +142,11 @@ polymorphism.
 ### Map
 
 This benchmark shows the use of the `Map` structure in Cello as compared to
-other language's balance binary tree implementations (typically red-black 
+other language's balanced binary tree implementations (typically red-black 
 trees). In C the `klib` library is used and in C++ `std::map` is used. Python 
-is particularly slow in this benchmark because a pure-python implementation is 
-used. Otherwise Cello achieves performance similar to Java or C 
-implementations wrapped for scripting language such as the one used for Ruby.
+and Lua are particularly slow in this benchmark because non-C implementations 
+are used. Ruby uses an C implementation wrapped for Ruby objects and so is 
+somewhat faster. Cello achieves performance similar to Java.
 
   </div>
   </div><hr/>
@@ -158,9 +163,9 @@ implementations wrapped for scripting language such as the one used for Ruby.
 ### Array
 
 This benchmark shows the use of the `Array` structure in Cello as compared to
-other language's array. In C++ `std::vector` is used. Cello's array 
-implementation here is fairly slow due to being polymorphic and the overhead 
-of storing type meta-data for each entry.
+other language's arrays. In C an adaption of the `klib` vector is used. In C++ 
+`std::vector` is used. Cello's array implementation here is slower than standard C/C++ due to being runtime polymorphic, but stays competitive with scripting 
+language implementations.
 
 Lua performs very poorly because it's array type is implemented as a hash-table 
 so many operations are much slower on it.

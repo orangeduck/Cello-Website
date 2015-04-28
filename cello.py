@@ -7,9 +7,6 @@ from werkzeug.contrib.cache import MemcachedCache
 import os
 import markdown
 
-from doc.cello_classes import cello_classes
-from doc.cello_types import cello_types
-
 app = Flask(__name__)
 app.root_path = os.path.dirname(__file__)
 
@@ -28,7 +25,7 @@ except RuntimeError:
 @app.route('/<page>/<section>')
 def index(page="home", section=None):
     
-    if not (page in ["home", "learn", "reference"]): page = "home"
+    if not (page in ["home", "learn"]): page = "home"
     
     if (page in ["learn"] and 
         section  in 
@@ -38,15 +35,12 @@ def index(page="home", section=None):
          "hacking-c-to-its-limits",
          "cello-vs-cpp-vs-objc",
          "benchmarks",
-         "garbage-collection"]):
+         "quickstart",
+         "queries-and-pitfalls",
+         "garbage-collection"] + 
+         open('./doc/object-list.md').read().lower().split(' ')):
         
         section = "-"+section
-        
-    elif (page in ["reference"] and
-        
-        section in map(lambda k: k.lower(), cello_classes.keys()) or
-        section in map(lambda k: k.lower(), cello_types.keys())):
-        section = "_"+section
         
     else:
         section = ""

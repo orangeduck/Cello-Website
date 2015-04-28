@@ -1,5 +1,10 @@
 *~
 *.pyc
 *.log
+*.exe
 other/*
 doc/output/*
+doc/examples/*
+doc/prices.txt
+doc/test.bin
+doc/test.txt

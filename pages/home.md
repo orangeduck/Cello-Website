@@ -77,14 +77,14 @@ Learning Resources.
 * [Installation](/learn/installation)
 * [Cello World](/learn/cello-world)
 * [Quickstart](/learn/quickstart)
-* [Common Queries / Pitfalls](/learn/pitfalls)
+* [Common Queries / Pitfalls](/learn/queries-and-pitfalls)
 
 Articles about its creation and internal workings.
 
 * [A Fat Pointer Library](/learn/a-fat-pointer-library)
 * [Hacking C to its Limits](/learn/hacking-c-to-its-limits)
 * [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)
-* [Benchmarking Cello](/learn/benchmarks)
+* [Benchmarks](/learn/benchmarks)
 * [Garbage Collection](/learn/garbage-collection)
     
   </div>

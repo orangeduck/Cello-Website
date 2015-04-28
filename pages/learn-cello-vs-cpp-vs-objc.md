@@ -5,12 +5,12 @@
 # Cello vs C++ vs ObjC
 
 A common question that gets asked about this project is "What are the 
-advantages of using _Cello_ over _C++_ or _Objective C_?". The short answer is 
-_personal preference_. The features of each are fairly similar, but they all 
-differ by a large amount in other areas.
+advantages of using Cello over C++ or Objective C?". The short answer is 
+_personal preference_. The features of each are fairly similar, but they all do 
+differ in other areas.
 
 The first Major difference between Cello, C++, and Objective C is that Cello is 
-_just a C library_. The others are _whole new languages_. 
+just a C library. The others are whole new languages. 
 
 * When using __Cello__ you are programming in C. It requires a __C compiler__. 
 * When using __C++__ you are programming C++. It requires a __C++ compiler__.
@@ -23,12 +23,12 @@ thinking about anything else. You may only have access to one compiler type or
 are required to use one language.
 
 
-## Cello vs C++
+### Cello vs C++
 
 There are two major difference between Cello and C++. The first is that Cello 
-must rely on typeless pointers and runtime polymorphism to achieve its high 
-level features, and the second is in the design and structure of the _standard 
-library_ of each.
+must rely on void pointers and runtime polymorphism to achieve its high 
+level features, and the second is in the design and structure of the standard 
+library of each.
 
 The standard C++ library is well known for being large, complex and spanning 
 paradigms. It supports many many things out of the box using different methods 
@@ -37,16 +37,18 @@ are Template based (such as STL). The C++ standard library is like a huge messy
 toolbox.
 
 The Cello standard library has been desgined from scratch. It is much smaller 
-and modern, with consistent ideas and design. There are no OO sections and it 
-is designed using Composition rather than Inheritence. It much closer resembles 
-the design of the Go or Haskell standard libraries.
+and modern, with consistent ideas and design. It is designed using Composition 
+rather than Inheritence. It much closer resembles the design of the Go or 
+Haskell standard libraries.
+
+Cello also comes with a basic form of Garbage Collection.
 
 __Cello Cons__
 
 * No Support for Smart Pointers
 * No Support for Rich Stack Types
 * Much Smaller Standard Library
-* Missing Compile Time Type Checking
+* More Relaxed Type System
 * Fewer Developers, Less Support
 * No Templates
 
@@ -55,10 +57,10 @@ __Cello Pros__
 * Consistent & Clean Syntax
 * Consistent & Clean Standard Library
 * Powerful Runtime with Reflection
-* Simplier Extension to C
+* More Simple Extension to C
 
 
-## Cello vs ObjC
+### Cello vs ObjC
 
 I don't have nearly as much experience in ObjC but I can tell you that it is 
 fairly similar to Cello when it comes to internals. The major difference is in 
@@ -83,15 +85,13 @@ __Cello Cons__
 
 * No Compile Time Type Checking
 * No Apple / OS X Libraries
-* More difficult memory management
 
 __Cello Pros__
 
 * Nicer Syntax
-* Modern Standard Library
+* Simple, Modern Standard Library
 * Composition based design
 * Exceptions instead of Error Codes
-* Closures instead of Delegates
 
 * * *
 
