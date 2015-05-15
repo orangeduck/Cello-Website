@@ -11,7 +11,10 @@ The `Function` type allows C function pointers to be treated as Cello objects. T
 
 ### Definition
 
-    struct Function { var(*func)(var); };
+    struct Function {
+      var (*func)(var);
+    };
+    
 
 ### Derives
 

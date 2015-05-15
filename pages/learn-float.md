@@ -20,13 +20,16 @@ __Usage__
   <div class="col-xs-6 col-md-6">
 
 # Float
-__Float Point Object__
+__Floating Point Object__
 
 64-bit double precision float point Object.
 
 ### Definition
 
-    struct Float { double val; };
+    struct Float {
+      double val;
+    };
+    
 
 ### Derives
 

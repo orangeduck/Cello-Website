@@ -1,6 +1,14 @@
   <div class="row">
   <div class="col-xs-6 col-md-6">
 
+### Methods
+
+__tuple__
+
+    #define tuple(...)
+
+Construct a `Tuple` object on the stack.
+
 ### Examples
 
 __Usage__
@@ -22,17 +30,20 @@ __Usage__
   <div class="col-xs-6 col-md-6">
 
 # Tuple
-__Basic Stack Based Collection__
+__Basic Collection__
 
-The `Tuple` type provides a basic way to create a simple collection of objects. It's main use is the fact that it can be constructed on the stack using the `tuple` macro. This makes it suitable for a number of purposes such as use in functions that take a variable number of arguments.
+The `Tuple` type provides a basic way to create a simple collection of objects. Its main use is the fact that it can be constructed on the stack using the `tuple` macro. This makes it suitable for a number of purposes such as use in functions that take a variable number of arguments.
 
 Tuples can also be constructed on the heap and stored in collections. This makes them also useful as a simple _untyped_ list of objects.
 
-Internally Tuples are just a NULL terminated array of pointers. This makes positional access and iteration fast, but for Tuples with many elements operations that require counting the number of elements can be slow.
+Internally Tuples are just a `NULL` terminated array of pointers. This makes positional access fast, but many other operations slow including iteration and counting the number of elements. Due to this it is only recommended Tuples are used for small collections. 
 
 ### Definition
 
-    struct Tuple { var* items; };
+    struct Tuple {
+      var* items;
+    };
+    
 
 ### Derives
 
@@ -49,7 +60,7 @@ Internally Tuples are just a NULL terminated array of pointers. This makes posit
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` 
 * <span style="width:75px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
-* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`iter_init` `iter_next` 
+* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` 
 * <span style="width:75px; float:left;">[Len](/learn/len)</span>`len` 
 * <span style="width:75px; float:left;">[Mark](/learn/mark)</span>`mark` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 

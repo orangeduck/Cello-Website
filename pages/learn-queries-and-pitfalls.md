@@ -74,6 +74,8 @@ that the `catch` part of an exception block is always provided, and always
 evaluated. If this doesn't happen the internal state the manages exceptions 
 gets messed up and will break things nastily.
 
+Instead of...
+
     try {
       do_something();
       return true;
@@ -81,7 +83,7 @@ gets messed up and will break things nastily.
       return false;
     }
     
-Please instead only return from outside of the `try` block.
+Instead only return from outside of the `try` block.
     
     bool success = true;
     
@@ -97,16 +99,16 @@ Please instead only return from outside of the `try` block.
 
 The [Cello Garbage Collector](/learn/garbage-collection) will collect any 
 objects which it cannot reach. An object is reachable if there are any local 
-variables on the stack pointing to it _or_ if it is pointer to from any other 
+variables on the stack pointing to it _or_ if it is pointed to from any other 
 reachable Cello object.
 
 This means objects stored in global variables, or in C structures which are not 
 Cello objects, _aren't_ reachable by the Garbage Collector and so will be 
 deleted almost immediately after construction.
 
-You can block objects from being deleted by the Garbage Collector by allocating 
-them with the function `new_root`. If you do this just remember to manually 
-delete them with `del` once you are done.
+You can stop unreachable objects from being deleted by the Garbage Collector by 
+allocating them with the function `new_root`. If you do this just remember to 
+manually delete them with `del_root` once you are done.
 
 
 ## Modifying Collections during Iteration <a name="modifying-collections-during-iteration"></a>

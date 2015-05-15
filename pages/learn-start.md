@@ -3,6 +3,12 @@
 
 ### Methods
 
+__with__
+
+    #define with(...)
+
+Perform operations in between `start` and `stop`.
+
 __start__
 
     void start(var self);
@@ -14,6 +20,12 @@ __stop__
     void stop(var self);
 
 Stop the object `self`.
+
+__wait__
+
+    void wait(var self);
+
+Block and wait for the object `self` to stop.
 
 __running__
 
@@ -33,7 +45,7 @@ __Usage__
 __Scoped__
 
     var x = new(Mutex);
-    with(mut in x) { /* Lock Mutex */ 
+    with (mut in x) { /* Lock Mutex */ 
       print("Inside Mutex!\n");
     } /* unlock Mutex */
 
@@ -54,6 +66,7 @@ The main nicety of the `Start` class is that it allows use of the `with` macro w
     struct Start {
       void (*start)(var);
       void (*stop)(var);
+      void (*wait)(var);
       bool (*running)(var);
     };
     

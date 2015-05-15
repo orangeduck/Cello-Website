@@ -20,11 +20,11 @@ Sorts the object `self` using the function `f`.
 __Usage__
 
     var x = new(Array, Float, 
-      $F(5.2), $F(7.1), $F(2.2), $F(1.1));
+      $F(5.2), $F(7.1), $F(2.2));
     
-    show(x); /* <'Array' At 0x0000000000414603 [5.2, 7.1, 2.2, 1.1]> */
+    show(x); /* <'Array' At 0x00414603 [5.2, 7.1, 2.2]> */
     sort(x);
-    show(x); /* <'Array' At 0x0000000000414603 [1.1, 2.2, 5.2, 7.1]> */
+    show(x); /* <'Array' At 0x00414603 [2.2, 5.2, 7.1]> */
     
 
 
@@ -33,7 +33,7 @@ __Usage__
   <div class="col-xs-6 col-md-6">
 
 # Sort
-__Elements can be sorted__
+__Sortable__
 
 The `Sort` class can be implemented by types which can be sorted in some way such as `Array`. By default the sorting function uses the `lt` method to compare elements, but a custom function can also be provided.
 
@@ -46,7 +46,7 @@ The `Sort` class can be implemented by types which can be sorted in some way suc
 ### Implementers
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
-* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Stack Based Collection_
+* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 
 * * *
 

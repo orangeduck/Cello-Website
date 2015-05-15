@@ -37,7 +37,10 @@ The `Ref` type is a basic wrapper around a C pointer. It can be used as a type a
 
 ### Definition
 
-    struct Ref { var val; };
+    struct Ref {
+      var val;
+    };
+    
 
 ### Derives
 

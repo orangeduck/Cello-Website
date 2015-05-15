@@ -46,7 +46,11 @@ __Manipulation__
 # Table
 __Hash table__
 
-The `Table` type is a hash table container that maps keys to values. It uses an open-addressing robin-hood hashing scheme which requires `Hash` and `Eq` to be defined on the key type. Keys and values are copied into the collection using the `Assign` class.
+The `Table` type is a hash table data structure that maps keys to values. It uses an open-addressing robin-hood hashing scheme which requires `Hash` and `Cmp` to be defined on the key type. Keys and values are copied into the collection using the `Assign` class and intially have zero'd memory.
+
+Hash tables provide `O(1)` lookup, insertion and removal can but require long pauses when the table must be _rehashed_ and all entries processed.
+
+This is largely equivalent to the C++ construct [std::unordered_map](http://www.cplusplus.com/reference/unordered_map/unordered_map/)
 
 ### Derives
 
@@ -62,7 +66,7 @@ The `Table` type is a hash table container that maps keys to values. It uses an 
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` 
 * <span style="width:75px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
-* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`iter_init` `iter_next` 
+* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` 
 * <span style="width:75px; float:left;">[Len](/learn/len)</span>`len` 
 * <span style="width:75px; float:left;">[Mark](/learn/mark)</span>`mark` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 

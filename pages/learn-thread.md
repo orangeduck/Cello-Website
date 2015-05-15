@@ -25,10 +25,9 @@ The `Thread` type provides a basic primitive for concurrent execution. It acts a
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` 
 * <span style="width:75px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
-* <span style="width:75px; float:left;">[Join](/learn/join)</span>`join` 
 * <span style="width:75px; float:left;">[Mark](/learn/mark)</span>`mark` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:75px; float:left;">[Start](/learn/start)</span>`start` `stop` `running` 
+* <span style="width:75px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
 
 * * *
 

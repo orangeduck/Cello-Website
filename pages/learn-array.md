@@ -60,7 +60,7 @@ __Iteration__
 # Array
 __Sequential Container__
 
-Array is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
+The `Array` type is data structure containing a sequence of a single type of object. It can dynamically grow and shrink in size depending on how many elements it contains. It allocates storage for the type specified. It also deallocates and destroys the objects inside upon destruction.
 
 Elements are copied into an Array using `assign` and will initially have zero'd memory.
 
@@ -83,7 +83,7 @@ This is largely equivalent to the C++ construct [std::vector](http://www.cpluspl
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` 
 * <span style="width:75px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
-* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`iter_init` `iter_next` 
+* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` 
 * <span style="width:75px; float:left;">[Len](/learn/len)</span>`len` 
 * <span style="width:75px; float:left;">[Mark](/learn/mark)</span>`mark` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 

@@ -26,7 +26,10 @@ __Integer Object__
 
 ### Definition
 
-    struct Int { int64_t val; };
+    struct Int {
+      int64_t val;
+    };
+    
 
 ### Derives
 

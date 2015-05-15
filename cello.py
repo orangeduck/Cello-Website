@@ -32,12 +32,12 @@ def index(page="home", section=None):
         ["installation",
          "cello-world",
          "a-fat-pointer-library",
-         "hacking-c-to-its-limits",
          "cello-vs-cpp-vs-objc",
          "benchmarks",
          "quickstart",
          "queries-and-pitfalls",
-         "garbage-collection"] + 
+         "garbage-collection",
+         "best-improvements-of-cello-2.0"] + 
          open('./doc/object-list.md').read().lower().split(' ')):
         
         section = "-"+section

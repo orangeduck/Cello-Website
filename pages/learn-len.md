@@ -14,9 +14,9 @@ Returns the length of object `self`.
 __Usage__
 
     var x = new(Array, Int, $I(1), $I(2), $I(5));
-    show($I(len(x)));
+    show($I(len(x))); /* 3 */
     var y = $S("Test");
-    show($I(len(y)));
+    show($I(len(y))); /* 4 */
     
 
 
@@ -41,9 +41,11 @@ The `Len` class can be implemented by any type that has a length associated with
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
 * <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
+* <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_
+* <span class="docitem">[Slice](/learn/slice)</span> | &nbsp; &nbsp;   _Partial Iterable_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
-* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Stack Based Collection_
+* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 
 * * *
 

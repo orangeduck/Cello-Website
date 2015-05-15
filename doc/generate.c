@@ -75,8 +75,7 @@ int main(int argc, char** argv) {
     Reverse, Sort,    Clear,   Reserve, 
     C_Str,   C_Int,   C_Float, Stream, 
     Pointer, Call,    Format,  Show, 
-    Current, Start,   Join,    Lock,
-    Mark);
+    Current, Start,   Lock,    Mark);
   
   var defaults = tuple(
     Cast, Size,   Alloc, 
@@ -351,19 +350,17 @@ int main(int argc, char** argv) {
       "* [Installation](/learn/installation)\n"
       "* [Cello World](/learn/cello-world)\n"
       "* [Quickstart](/learn/quickstart)\n"
-      "* [Common Queries / Pitfalls](/learn/pitfalls)\n"
-      "* [Type / Classes](/learn/types)\n"
-      "* [Exceptions](/learn/exceptions)\n"
-      "* [Closures](/learn/functions)\n"
-      "* [Garbage Collection](/learn/memory)\n"
+      "* [Common Queries / Pitfalls](/learn/queries-and-pitfalls)\n"
       "\n"
       "### Articles\n"
       "\n"
       "Here are several articles related to the creation and inner workings of Cello.\n"
       "\n"
+      "* [Best Improvements of Cello 2.0](/learn/best-improvements-of-cello-2.0)\n"
       "* [A Fat Pointer Library](/learn/a-fat-pointer-library)\n"
-      "* [Hacking C to it's limits](/learn/hacking-c-to-its-limits)\n"
       "* [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)\n"
+      "* [Benchmarks](/learn/benchmarks)\n"
+      "* [Garbage Collection](/learn/garbage-collection)\n"
       "\n"
       "  </div>\n"
       "  <div class=\"col-xs-6 col-md-6\">\n"

@@ -130,11 +130,11 @@ memory allocation we can get it to implement the `Mark` type class to tell
 us directly what objects it points to.
 
 With the data segment ignored, and the heap easily scanned, this leaves the 
-final, and arguably most important location for pointers to Cello objects - the 
+final, and arguably most important location for pointers to Cello objects, the 
 stack. Now in almost all reasonable implementations of C the stack is a 
 continuous area of memory that grows down (or sometimes up, although that 
 doesn't make much difference) for each function call. It contains all the local 
-variables used by functions as well are various other housekeeping data. By 
+variables used by functions as well as various other housekeeping data. By 
 getting the memory address of the top of the stack, and of the bottom, we can 
 scan over all the memory in-between and check it for pointers to Cello objects.
 
@@ -147,8 +147,8 @@ local variable:
       return &p;
     }
    
-But before we do this we need to ensure two things. First we want 
-to make sure we flush all of the values in the registers onto the stack so that 
+But before we do this we need to ensure two things. First we want to make sure 
+we flush all of the values in the registers onto the stack so that 
 we don't miss a pointer hiding in a register, and secondly we want to make sure 
 the `Cello_GC_Stack_Bot` function isn't inlined by the compiler. We can spill 
 the registers into stack memory in a somewhat portable way with `setjmp` - 
@@ -166,7 +166,7 @@ registers and everything else on the stack above our call.
       volatile int noinline = 1;
       void (*mark_stack)(void) = noinline
         ? Cello_GC_Mark_Stack
-        : (var(*)(void))(None);
+        : (var(*)(void))(NULL);
 
       mark_stack();
     }
@@ -183,9 +183,9 @@ the Cello GC, and then calls the user program:
         var stk = None; Cello_GC_Init(&stk); \
         return Cello_Main(argc, argv); \
       }; \
-      int Cello_Main(__VA_ARGS__)
+      int Cello_Main(int argc, char** argv)
     
-Using these techniques we can get a safe appoximate upper and lower bound to 
+Using these techniques we can get a safe approximate upper and lower bound to 
 the area of stack memory that should contain all the relevant pointers to 
 garbage collectable objects. Now all we need to do is scan this memory range 
 and mark any pointers we find referenced. 
@@ -201,15 +201,16 @@ and mark any pointers we find referenced.
     
     }
 
-But how can we tell if some block of memory is actually a pointer? We don't want 
-to be following pointers recklessly or else we might cause a segfault. Now in 
-general there is no way to distinguish between someone just constructing some 
-memory that looks like a pointer, and an actual pointer itself - but there are 
-a couple of heuristics that we can use to disregard lots of potential addresses.
+But how can we tell if some block of memory is actually a pointer? We don't 
+want to be following pointers recklessly or else we might cause a segfault. 
+Now in general there is no way to distinguish between some memory that looks 
+like a pointer, and an actual pointer itself - but there are a couple of 
+heuristics that we can use to disregard lots of potential addresses.
 
 First - pointers must be memory aligned - which means for 64-bit machines they 
 can only be located every 8-byte boundary, and must only point to some value on
 an 8-byte boundary. This means the pointer value must be a multiple of the 
+pointer size, and the _address_ of the pointer must be a multiple of the 
 pointer size. We can also keep track of the maximum and minimum 
 pointer addresses we've allocated and quickly disregard anything outside of 
 these bounds.
@@ -236,23 +237,29 @@ these brief checks and then on success does the actual marking and recursion.
     
     }
 
-The recursion function is also simple. It either calls the `traverse` function 
+The recursion function is also simple. It either calls the `mark` function 
 on the Cello object, or scans the memory at that location and tries to mark 
 each segment of memory as if it were a pointer - just like the stack data.
     
-    void Cello_GC_Recurse(var ptr) {
-    
+    static void Cello_GC_Recurse(struct GC* gc, var ptr) {
+      
       var type = type_of(ptr);
       
-      if (type_implements(type, Traverse)) {
-        traverse(ptr, $(Function, Cello_GC_Mark_Item));
+      struct Mark* m = type_instance(type, Mark);
+      if (m and m->mark) {
+        m->mark(ptr, gc, (void(*)(var,void*))GC_Mark_Item);
         return;
       }
       
-      for (size_t s = 0; s < size(type); s += sizeof(var)) {
-        Cello_GC_Mark_Item(((char*)ptr) + s);
+      struct Size* s = type_instance(type, Size);
+      if (s and s->size) {
+        for (size_t i = 0; i < s->size(); i += sizeof(var)) {
+          var p = ((char*)ptr) + i;
+          GC_Mark_Item(gc, *((var*)p));
+        }
+        return;
       }
-    
+      
     }
 
 This completes all that is required for the marking stage. The sweeping stage 

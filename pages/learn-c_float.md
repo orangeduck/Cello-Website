@@ -36,7 +36,7 @@ The `C_Float` class should be overridden by types which are representable as a C
 
 ### Implementers
 
-* <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Float Point Object_
+* <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Floating Point Object_
 
 * * *
 

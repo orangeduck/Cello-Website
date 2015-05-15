@@ -10,18 +10,27 @@ __help__
 
 Print help information about the object `self` either to `stdout` or to the object `out` at some position `pos`.
 
+### Examples
+
+__Usage__
+
+    help(Int);
+    
+
+
+
   </div>
   <div class="col-xs-6 col-md-6">
 
 # Help
-__Object gives usage information__
+__Usage information__
 
 The `Help` class can be implemented to let an object provide helpful information about itself. In the standard library this class is implemented by `Type` and it prints out the documentation provided by the `Doc` class in a friendly way.
 
 ### Definition
 
     struct Help {
-      void (*help)(var);
+      int (*help_to)(var, int);
     };
     
 

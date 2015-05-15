@@ -14,7 +14,7 @@ Call the object `self` with arguments `args`.
   <div class="col-xs-6 col-md-6">
 
 # Call
-__Callable like a Function__
+__Callable__
 
 The `Call` class is used by types which can be called as functions.
 

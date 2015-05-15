@@ -9,7 +9,7 @@ think of Cello a framework, or perhaps as a syntax layer, or even a totally new
 programming language, but the best way I've found to think of it is as 
 _A Fat Pointer Library_. Let me explain...
 
-## Proposal
+## The Proposal
 
 Fat Pointers were [proposed](http://www.drdobbs.com/architecture-and-design/cs-biggest-mistake/228701625) 
 by Walter Bright (inventor of the D programming language) as an extension to 
@@ -38,13 +38,13 @@ This proposal wasn't accepted into the C standard, but it turns out this sort
 of thing doesn't have to be a language extension, we can actually emulate Fat 
 Pointers in C ourselves.
 
-The trick is to place the length value in memory _just before_ the 
-pointer we actually pass to functions. This pointer is fully compatible 
-with normal pointers, and if we need to know the length we just move back a 
-step in memory to get it.
+The trick is to place the value representing the number of items in the array 
+in memory _just before_ the pointer we actually pass to functions. This pointer 
+is fully compatible with normal pointers, and if we need to know how many 
+elements it points to we just move back a step in memory to get it.
 
         
-              |--------------|  <-- Pointer to length
+              |--------------|  <-- Pointer to number of items
               |  ptr.length  |
               |==============|  <-- Pointer passed to functions
               |  ptr.item[0] |
@@ -57,121 +57,99 @@ step in memory to get it.
         
 This is exactly the approach used by the C strings library 
 [sds](https://github.com/antirez/sds). This allows for strings that are safer, 
-faster, and generally better than C strings, but which are also compatible with 
+faster, and more efficient than C strings, but which are also compatible with 
 standard C string functions.
 
 The only caveat is that because the pointer passed around is not actually the 
 address we got from the memory allocation routine (such as `malloc`) it can't be
 freed or resized in the normal way with `free` or `realloc`. Instead we have to 
 move back a step in memory and free _that_ pointer. So allocation, freeing, and 
-resizing must all be done via special functions.
+resizing must all be done via special functions. But any good C interface 
+should not assume pointers are heap allocated anyway.
 
-## Cello Runtime
+## Runtime
 
 To change a language's behaviour one must either change the compiler or the 
 runtime. A language like C has no runtime system but we can add one ourselves. 
-All we need to do is _tag_ objects with some extra information which our runtime 
+We can _tag_ objects with some extra information which our runtime 
 system can make use of. In old versions of Cello this was done by directly 
 embedding the information in C structs that were Cello compatible. This was okay
 but it meant specfically editing every struct we want to make avaliable for use 
 with Cello. 
 
-Instead we can use the ideas behind _Fat Pointers_, and rather than 
-storing the length of the allocated data, we could store our runtime 
-information in this memory space _before_ the pointer we return. In essence we 
-make all our pointers to Cello objects _Fat_. Then Cello pointers would be fully 
+Instead we can use the ideas behind _Fat Pointers_, and store our runtime 
+information in the memory space _before_ pointers. In essence we make all our 
+pointers to Cello objects _Fat_. Then Cello pointers would be fully 
 compatible with standard C pointers and functions (with the exception of `free` 
 and `realloc`), but also have the information to be used by our runtime system. 
 In this sense our runtime really does _extended_ the language rather than 
 create something that is conflicting.
 
 In Cello this extra information is pretty simple. All we store is a pointer to 
-the type such as `Int`, `Float` or `Array`, and some flags determining various 
-things such as where the object was allocated.
+the type such as `Int`, `Float` or `Array`.
 
     typedef void* var;
 
-    struct CelloHeader {
+    struct Header {
       var type;
-      var flags;
     };
 
 We can then allocate Fat Pointers on the heap with some simple pointer 
 arithmetic. Here is a modified version of the Cello function that does that.
 
-
     var alloc(size_t data_size) {
-      struct CelloHeader* head = malloc(
-        sizeof(struct CelloHeader) + data_size);
+      struct Header* head = calloc(1, sizeof(struct Header) + data_size);
       head->type = type;
-      head->flags = (var)CelloHeapAlloc;
-      return ((var)head) + sizeof(struct CelloHeader);
+      return ((var)head) + sizeof(struct Header);
     }
-
 
 And here is the deallocation function.
 
     void dealloc(var self) {
-      struct CelloHeader* head = self - sizeof(struct CelloHeader);
+      struct Header* head = self - sizeof(struct Header);
       free(head);
     }
 
+We can also allocate Fat Pointers on the stack. This takes two steps. First we 
+allocate memory big enough for the data using a `char[]` and then we call a 
+function to copy in the header details and return a pointer offset to point
+to the data.
 
-We can also allocate Fat Pointers on the stack but it takes a little more 
-trickery. First we need to allocate space for the extra information _and_ the 
-data, then we need to copy the data in, setup our type info, and finally add 
-the offset to the space we allocated.
+    #define alloc_stack(T) header_init( \
+      (char[sizeof(struct Header) + sizeof(struct T)]){0}, T)
 
-
-    char memory[sizeof(struct CelloHeader) + data_size];
-    memcpy(memory + sizeof(struct CelloHeader), data, data_size);
-    ((struct CelloHeader*)memory)->type = type;
-    ((struct CelloHeader*)memory)->flags = (var)CelloStackAlloc;
-    var self = memory + sizeof(struct CelloHeader);
-
-
-We can use a macro to turn this into a single step. In Cello this is the `$` 
-macro. We create two anonymous structures - one is an array of the required 
-data size, and one is a pointer to a structure with our initial data. These are 
-both passed to a function that sets the header data and copies in the contents 
-of the structure with our initial data. It looks like this.
-
-
-    #define $(T, ...) alloc_stk(T, \
-      ((char[sizeof(struct CelloHeader) + sizeof(struct T)]){}), \
-      &((struct T){__VA_ARGS__}), sizeof(struct T))
-
-
-Where `alloc_stk` does the copying, and returning the offset pointer.
-
-
-    var alloc_stk(var type, var memory, var data, size_t size) {
-      struct CelloHeader* head = memory;
-      head->type = type;
-      head->flags = (var)CelloStackAlloc;
-      memcpy(memory + sizeof(struct CelloHeader), data, size);
-      return memory + sizeof(struct CelloHeader);
+    var header_init(var head, var type) {
+      struct Header* self = head;
+      self->type = type;
+      return ((char*)self) + sizeof(struct Header);
     }
 
-It isn't pretty, but it works.
+We can also copy in some initial values to the members of this structure 
+allocation. In Cello this is the `$` macro. It allocates an anonymous structure
+of the given type, with the given members, and copies it into the allocation 
+found by `alloc_stack`.
+
+    #define $(T, ...) \
+      memcpy(alloc_stack(T), &((struct T){__VA_ARGS__}), sizeof(struct T))
 
 And now this gives us all we need to get started with our runtime. The next step
 is to design the format of the extra information tagged onto our data - 
 _the type_.
 
-## Cello Type Object
+## Type Object
 
 The _type_ is the meta-data associated with an object which tells us how it 
 should behave. For example if we wish to add some generic `new` and `del` to a 
 language, our _type_ must be able to tell us the size of the memory to 
 allocate, or what action to perform on construction / destruction.
 
-How we design our _type_ data should reflect the features we want avaliable in 
+How we design our _type_ data should reflect the features we want available in 
 the language. In Cello I chose a very simple design. The type object is just a
-list of instances of _type classes_ (a.k.a _interfaces_) which the object 
-implements and some identifier for each. For example say we want some type to 
-be able to be `get` or `set` using some keys and values - then we can provide 
-it with an instance of the `Get` type class. 
+list of instances of [Type Classes](http://en.wikipedia.org/wiki/Type_class) 
+(a.k.a Interfaces) which the object implements and some identifier for each. 
+For example say we want some type to be able to be `get` or `set` using some 
+keys and values - then we can provide it with an instance of the `Get` type 
+class. 
 
 In Cello a _type class_ is just a description of various behaviours with names, 
 so it can be easily represented as a struct full of function pointers.
@@ -189,7 +167,7 @@ simplified example might end up looking something like this under the hood.
     var Int = (struct TypeEntry[]){
       { "Size", &((struct Size){ Int_Size })
       { "New",  &((struct  New){ Int_New, Int_Del }) },
-      { "Ord",  &((struct  Ord){ Int_Lt, Int_Gt }) },
+      { "Cmp",  &((struct  Cmp){ Int_Cmp }) },
       {  NULL,  NULL  }
     };
 
@@ -206,11 +184,11 @@ function. This is very much like the concept of a
     }
 
 
-Perhaps the most suprising thing about this is that this single feature (of 
+Perhaps the most surprising thing about this is that this single feature (of 
 _type classes_ or _interfaces_) is powerful enough to support all of the 
 advanced features you see in Cello. It isn't just used for things like 
 constructors and destructors, it is used for everything, ranging from 
-garbage collection to generating the documentation.
+Garbage Collection to generating the Documentation.
 
 It is well known now that family style inheritance is generally pretty bad for 
 structuring things, and that single _interface_ inheritances tends to work a 
@@ -221,11 +199,11 @@ expressive, and readable way.
 
 ## Conclusion
 
-So Cello is a _Fat Pointer Library_. It lets you create pointers which are 
+Cello is a _Fat Pointer Library_. It lets you create pointers which are 
 tagged with additional runtime information, which can then be used for a whole 
 host of other tasks and features.
 
-In reality it is a little more complicated than the shallow explaination here, 
+In reality it is a little more complicated than the shallow explanation here, 
 but hopefully this gives you a vague idea of how it works under the hood. For 
 more information on the small hacks and tweaks that make Cello look and feel so 
 different please read [Hacking C to its Limits](/learn/hacking-c-to-its-limits) 
@@ -238,8 +216,8 @@ wouldn't use it for a project, and I don't expect others to either. I'm
 sometimes uncomfortable singing it's praises because I know it has issues. But 
 I also think it has potential.
 
-I believe the reason people get excited about Cello is because they see it in a
-similar light to what [underscore.js](http://underscorejs.org/) or 
+I believe the reason people get excited about Cello is because they see it 
+similarly to what [underscore.js](http://underscorejs.org/) or 
 [jquery](http://jquery.com/) did for Javascript. Suddenly a language that 
 appeared stale, exhausted, and difficult was transformed into something that 
 looked, and felt, completely different. Even if the transformation was somehow 

@@ -13,7 +13,7 @@ Show the object `self` either to `stdout` or to the object `output`.
 __look__
 
     int look(var self);
-        int look_from(var self, var input, int pos);
+    int look_from(var self, var input, int pos);
 
 Read the object `self` either from `stdout` or from the object `input`.
 
@@ -48,7 +48,7 @@ __Hello World__
 
 __File Writing__
 
-    with(f in sopen($(File, NULL), $S("prices.txt"), $S("wb"))) {
+    with (f in new(File, $S("prices.txt"), $S("wb"))) {
       print_to(f, 0, "%$ :: %$\n", $S("Banana"), $I(57));
       print_to(f, 0, "%$ :: %$\n", $S("Apple"),  $I(22));
       print_to(f, 0, "%$ :: %$\n", $S("Pear"),   $I(16));
@@ -92,7 +92,7 @@ All the Show methods which are variable arguments only take `var` objects as inp
 
 Standard format specifiers such as `%f` and `%d` will call functions such as `c_float` and `c_int` on their passed arguments to convert objects to C types before performing the standard C formatting behaviour.
 
-See `printf` for more information on format specifiers.
+See [printf](http://www.cplusplus.com/reference/cstdio/printf/) for more information on format specifiers.
 
 ### Definition
 
@@ -106,7 +106,7 @@ See `printf` for more information on format specifiers.
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[Box](/learn/box)</span> | &nbsp; &nbsp;   _Unique Pointer_
-* <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Float Point Object_
+* <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Floating Point Object_
 * <span class="docitem">[GC](/learn/gc)</span> | &nbsp; &nbsp;   _Garbage Collector_
 * <span class="docitem">[Int](/learn/int)</span> | &nbsp; &nbsp;   _Integer Object_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
@@ -114,7 +114,7 @@ See `printf` for more information on format specifiers.
 * <span class="docitem">[Ref](/learn/ref)</span> | &nbsp; &nbsp;   _Shared Pointer_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
-* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Stack Based Collection_
+* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 * <span class="docitem">[Type](/learn/type)</span> | &nbsp; &nbsp;   _Metadata Object_
 
 * * *

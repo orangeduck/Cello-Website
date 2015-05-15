@@ -3,6 +3,13 @@
 
 ### Methods
 
+__foreach__
+
+    #define foreach(...)
+    
+
+Iterate over elements in a loop.
+
 __iter_init__
 
     var iter_init(var self);
@@ -47,7 +54,7 @@ __Table__
   <div class="col-xs-6 col-md-6">
 
 # Iter
-__Can be looped over__
+__Iterable__
 
 The `Iter` class is implemented by types which can be looped over. This allows them to be used in conjunction with the `foreach` macro as well as various other components of Cello.
 
@@ -66,10 +73,10 @@ The `Iter` class is implemented by types which can be looped over. This allows t
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
 * <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
-* <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _A Sequence of Numbers_
+* <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_
 * <span class="docitem">[Slice](/learn/slice)</span> | &nbsp; &nbsp;   _Partial Iterable_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
-* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Stack Based Collection_
+* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 
 * * *
 

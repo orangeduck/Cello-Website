@@ -81,8 +81,8 @@ Learning Resources.
 
 Articles about its creation and internal workings.
 
+* [Best Improvements of Cello 2.0](/learn/best-improvements-of-cello-2.0)
 * [A Fat Pointer Library](/learn/a-fat-pointer-library)
-* [Hacking C to its Limits](/learn/hacking-c-to-its-limits)
 * [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)
 * [Benchmarks](/learn/benchmarks)
 * [Garbage Collection](/learn/garbage-collection)
@@ -96,26 +96,56 @@ Articles about its creation and internal workings.
     #include "Cello.h"
 
     int main(int argc, char** argv) {
-      
-      /* First class function declaration */
-      fun (print_safe, args) {
-        
-        /* Exceptions */
-        try {
-          println("%$", get(args, $I(0)));
-        } catch (e in IOError) {
-          println("IOError: %$", e);
-        }
 
-        return None;
-      };
+      var items = new(Array, Int, 
+        $I( 8), $I( 5), $I(20), 
+        $I(15), $I(16), $I(98));
+
+      /* Iterate over indices using "range" */
+      foreach (i in range($I(len(items)))) {
+        print("Item Range %i is %i\n", i, get(items, i));
+      }
+
+      /* Iterate over every other item with "slice" */ 
+      foreach (item in slice(items, _, _, $I(2))) {
+        print("Item Slice %i\n", item);
+      }
       
-      /* Tuple is a simple stack based collection */
-      var t = tuple($F(51.25), $I(21), $S("Hello"));
+      return 0;
+    }
+
+
+    
+<hr />
+<br />
+    
+    #include "Cello.h"
+
+    /* Define a normal C structure */
+    struct Point {
+      float x, y;
+    };
+
+    /* Make it compatible with Cello */
+    var Point = Cello(Point);
+
+    int main(int argc, char** argv) {
       
-      /* Higher Order Functions */
-      map(t, print_safe);
+      /* Create on Stack or Heap */
+      var p0 = $(Point, 0.0, 1.0);
+      var p1 = new(Point, $(Point, 0.0, 2.0));
       
+      /* It can be shown, compared, hashed, etc...
+      **
+      ** p0: <'Point' At 0x000000000022FC58>
+      ** p1: <'Point' At 0x00000000004C7CC8>
+      ** cmp: 1
+      ** hash: 2849275892l
+      */ 
+      print("p0: %$\np1: %$\ncmp: %i\nhash: %ul\n",
+        p0, p1, $I(cmp(p0, p1)), $I(hash(p0)));
+      
+      /* And collected by the GC when out of scope */
       return 0;
     }
 
@@ -135,10 +165,9 @@ those who want to explore what is possible in C.
 * __How does it work?__
 
 I recommend reading 
-[A Fat Pointer Library](/learn/fatpointer) and 
-[Hacking C to its Limits](/learn/hacking) to get an overview of how Cello works.
-You can also peek at the source code, which I'm told is fairly readable, or 
-ask me any questions you like via e-mail.
+[A Fat Pointer Library](/learn/fatpointer) to get an overview of how Cello 
+works.You can also peek at the source code, which I'm told is fairly readable, 
+or ask me any questions you like via e-mail.
 
 * __Can it be used in Production?__
 
@@ -149,11 +178,23 @@ there is much better tooling, support and community for languages such as C++.
 
 * __Is anyone using Cello?__
 
-People have exerimented with it, but there is no high profile project I know of
-that uses it. Cello is too big and scary a dependancy for new C projects if 
-they want to be portable and easy to maintain. Even so there are some smaller 
-projects growing out of it. Why not check out [Chords](/chords).
+People have experimented with it, but there is no high profile project I know 
+of that uses it. Cello is too big and scary a dependency for new C projects if 
+they want to be portable and easy to maintain.
 
+* __Can I get involved?__
+
+Yes! That would be great. If you do anything with Cello I'd love to know, you 
+can e-mail me at `contact@theorangeduck.com`, or help with the development at 
+the [Cello github repo](https://github.com/orangeduck/libCello). Contributions 
+are very welcome.
+
+* __Who are you?__
+
+Hello! I'm Daniel Holden. You many know me from a 
+[book I wrote](http://www.buildyourownlisp.com/) or my 
+[personal website](http://theorangeduck.com/). I also have a rarely updated 
+[twitter account](https://twitter.com/anorangeduck).
 
   </div>
   </div>

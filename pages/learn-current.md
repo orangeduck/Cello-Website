@@ -27,7 +27,7 @@ __Usage__
 # Current
 __Implicit Object__
 
-The `Current` class can be implemented by types which have implicit instances associated with them. For example it can be used to retrieve the _current_ `Thread`, or it could be used to get the _current_ Random Number generator.
+The `Current` class can be implemented by types which have implicit instances associated with them. For example it can be used to retrieve the _current_ `Thread`, or it could be used to get the _current_ Garbage Collector.
 
 This class may be implemented by types which express the [Singleton Design Pattern](http://en.wikipedia.org/wiki/Singleton_pattern)
 

@@ -6,17 +6,14 @@
 
 ## Overview
 
-Cello is a library that adds a runtime layer on top of standard C. This 
-runtime layer is then used to extend the C language in ways otherwise only 
-possible by changing the compiler.
+Cello adds a runtime layer on top of C. This is used to extend the C language 
+in ways otherwise only possible by changing the compiler. Users declare runtime 
+type variables linked to normal compile time types which contain information 
+used to perform the new actions required.
 
-The users declare runtime type variables linked to normal compile time types 
-which contain certain bits of information used to perform the various new 
-actions required.
-
-Pointers in Cello are tagged with this extra information, stored in the memory 
-just before the actual data which is pointed to. This means they are fully 
-compatible with standard C pointers and can interoperate pretty seamlessly.
+Pointers in Cello are tagged with this extra information. It is stored in the 
+memory just before the actual data which is pointed to. This means they are 
+fully compatible with standard C pointers and can interoperate seamlessly.
 
 The type information is mostly just a list of instances of _type classes_ or
 _interfaces_. These prove to be an extremely powerful concept in Cello and are 
@@ -29,17 +26,13 @@ implementation.
 Cello is pretty clever and it can automatically infer a whole bunch of these 
 behaviours without the user having to provide them. Cello objects can be 
 printed, compared, hashed, stored, garbage collected, ordered, copied and much 
-more. This gives you a whole lot out of the box.
-
-Anyway, let's get started and see what we can do!
+more. In other words, Cello has batteries included.
 
 ## Introduction
 
-Let's make some glitch art using Cello. This should be a good application to 
-show how to program in Cello. We're going to build some new Cello types and 
-interact with them using what Cello has to offer. We'll also see how it 
-interacts with standard C. Our glitch art is going to be inspired by the 
-artwork of Reddit user 
+Let's make some glitch art using Cello. We're going to build some new Cello 
+types to do this and see how they interact with standard C. Our glitch art is 
+going to be inspired by the artwork of Reddit user 
 [AMillionMonkeys](http://www.reddit.com/r/glitch_art/comments/20qgdi/old_man_in_a_suit_experimental_processing/). 
 Who used 
 [Langton's Ant](http://en.wikipedia.org/wiki/Langton%27s_ant) to generate the 
@@ -52,12 +45,11 @@ following images.
     style='float:right; margin-top:15px; margin-bottom:15px;'/>
 </p>
 
-But naturally we're going to have to use some different artwork as a base, and 
-it is going to have to be something more appropriate. How about 
-[this](https://www.flickr.com/photos/lukepdq/116161887) beautiful image 
-of a Cello player by flikr user [Luke G](https://www.flickr.com/photos/lukepdq/).
-For the purposes of this tutorial I've saved it as a `.tga` file and 
-downsampled it.
+This is pretty cool - but we're going to use some different artwork as a base. 
+How about [this](https://www.flickr.com/photos/lukepdq/116161887) beautiful 
+image of a Cello player by flikr user 
+[Luke G](https://www.flickr.com/photos/lukepdq/). For the purposes of this 
+tutorial I've saved it as a `.tga` file and downsampled it.
 
 <p style='text-align:center;'>
   <img src='/static/img/cello_glitch_start.png'
@@ -68,11 +60,9 @@ downsampled it.
 
 ## Objects
 
-All Cello objects start life as a standard C structure which we then add the 
-runtime information to. It is required that we define our C structures without 
-`typedef`'ing them and that we call the resulting Cello variable the same name 
-as the C type, but without the `struct` prefix. For example here is a `struct` 
-we might use to represent some image data.
+Cello objects start as standard C structures which we then add our runtime 
+information to. We must define our C structures without `typedef`'ing them. For 
+example here is a `struct` we might use to represent some image data.
 
     struct Image {
       uint64_t width;
@@ -82,7 +72,8 @@ we might use to represent some image data.
     
 The C type is called `struct Image` and all it does is record a width, height, 
 and pointer to some data. We can register this type with Cello using the 
-`Cello` macro.
+`Cello` macro. We must call the Cello variable the same name as the C type, but 
+without the `struct` prefix
 
     struct Image {
       uint64_t width;
@@ -99,25 +90,22 @@ You'll notice the C type of the Cello runtime type object is `var`. In Cello
 `var` just means `void*` which is a _generic pointer_, but by convention we 
 use it to mean _a pointer compatible with the Cello runtime_.
 
-This is all that is required to interact with Cello. We can allocate it either 
-on the heap or on the stack, show it, compare it, put it in a collection and 
-much more.
+For basic types this is all that is required to interact with Cello. We can 
+allocate already allocate objects of this type either on the heap or on the 
+stack, show them, compare them, put them in collections, and much more.
     
-    /* Allocate on Stack */
+    /* Allocate on Stack or Heap */
     struct Image* x = $(Image, 0, 0, NULL);
-    
-    /* Allocate on Heap */
     struct Image* y = new(Image);
     
     /* Print */
     print("This is an image: %$\n", x);
 
     /* Compare */
-    if (eq(x, y)) {
-      print("Images %$ and %$ are equal\n");
-    }
+    print("Images %$ and %$ are equal? %s\n", 
+      x, y, eq(x, y) ? $S("Yes") : $S("No"));
     
-    /* Put in a collection */
+    /* Put in an Array */
     struct Array* a = new(Array, Image, x, y);
     print("Array of Images: %$\n", a);
     
@@ -129,8 +117,8 @@ these type class implementations.
 
 Our C structure `struct Image` has a pointer to some memory which might be 
 allocated by some other function. If we want to avoid memory leaks we need to 
-make sure we deallocate that memory on destruction. Here we can make use of 
-Cello to define a custom destructor for the `Image` type.
+make sure we deallocate this memory when we are done with it. Here we can make 
+use of Cello to define a custom destructor for the `Image` type.
 
     void Image_Del(var self) {
       struct Image* i = self;
@@ -162,8 +150,7 @@ that implements the `Stream` class. This will allow us to read not just from
 processes, and a lot more. The Cello functions `sread` and `swrite` are used to 
 read and write data from _file-like_ objects. 
 
-Here are some functions for reading and writing 3-channel TGA files. In C this 
-is dead simple way.
+Here are some functions for reading and writing 3-channel TGA files.
 
     void Image_Load_TGA(struct Image* self, var stream) {
 
@@ -267,10 +254,9 @@ And also let us define a color type we can return to the user.
     var Color = Cello(Color);
 
 To let us use `get` and `set` on our `Image` type we have to implement a type 
-class just like we did for the constructor and destructor.
-
-The `cast` function does runtime type checking to assert that the pointer 
-passed in is of the given type. This allows us to safely cast to 
+class called `Get`. Here are some functions that match the signature of the 
+`Get` class. The `cast` function does runtime type checking to assert that the 
+pointer passed in is of the given type. This allows us to safely cast to 
 `struct Point*` and `struct Color*` for those arguments so we can use their
 members directly.
 
@@ -321,37 +307,43 @@ pixels get _dragged_ across the image.
 
 To decide on our new direction we'll hash the current color as well as the 
 iteration number divided by eight. This means the algorithm should change 
-direction roughly every eight steps. Be default the `hash` function returns the 
+direction roughly every eight steps. By default the `hash` function returns the 
 same number when used on an integer, so instead we will use the `hash_data` 
-function which performs a murmurhash on the raw input. 
+function which performs a [MurmurHash](http://en.wikipedia.org/wiki/MurmurHash) 
+on the raw input. 
 
     void Image_Glitch(struct Image* self) {
 
-      struct Point* p = $(Point,
+      struct Point* point = $(Point,
         rand() % self->width,
         rand() % self->height);
 
-      var c = get(self, p);
+      var color = get(self, point);
 
-      uint64_t d = 0;
+      uint64_t dir = 0;
 
       for (int i = 0; i < 20000; i++) {
 
-        var t = get(self, p);
-        set(self, p, c);
+        var temp = get(self, point);
+        set(self, point, color);
 
-        uint64_t n = (hash(c) ^ hash_data($I(i / 8), size(Int))) % 4;
-        switch (n) {
-          case 0: p->x++; break;
-          case 1: p->y++; break;
-          case 2: p->x--; break;
-          case 3: p->y--; break;
+        uint64_t next = (hash(color) ^ hash_data($I(i / 8), size(Int))) % 4;
+        switch (next) {
+          case 0: point->x++; break;
+          case 1: point->y++; break;
+          case 2: point->x--; break;
+          case 3: point->y--; break;
         }
 
-        if (p->x < 0 or p->x >= self->width)  { p->x = rand() % self->width; }
-        if (p->y < 0 or p->y >= self->height) { p->y = rand() % self->height; }
+        if (point->x < 0 or point->x >= self->width)  {
+          point->x = rand() % self->width;
+        }
+        
+        if (point->y < 0 or point->y >= self->height) {
+          point->y = rand() % self->height;
+        }
 
-        if (d isnt n) { c = t; d = n; }
+        if (dir isnt next) { color = temp; dir = next; }
         
       }
 
@@ -415,11 +407,6 @@ Our process is iterative, so we can also generate a gifs. Let's save out
 every 100th frame. All we need to do for this is put the following code inside 
 our `for` loop.
 
-What we do is generate a filename for each frame using the `print_to` function. 
-This function is a lot like `sprintf` but works for any type of object that 
-implements the `Format` class, so you can use it to also print to `stdout` or 
-any other file object.
-
     if (i % 100 is 0) {
       var filename = new(String);
       print_to(filename, 0, "./frames_cello/%04d.tga", $I(i / 100));
@@ -428,6 +415,11 @@ any other file object.
       }
     }
 
+What we do is generate a filename for each frame using the `print_to` function. 
+This function is a lot like `sprintf` but works for any type of object that 
+implements the `Format` class, so you can use it to also print to `stdout` or 
+any other file object.
+    
 Once all of these are saved out we can make use of imagemagick to generate a 
 gif.
 
@@ -464,13 +456,6 @@ Here is the final program in all its glory.
       char* data;
     };
 
-    void Image_New(var self, var args) { }
-
-    void Image_Del(var self) {
-      struct Image* i = self;
-      free(i->data);
-    }
-    
     var Image_Get(var self, var key) {
       struct Image* i = self;
       struct Point* p = cast(key, Point);
@@ -487,6 +472,11 @@ Here is the final program in all its glory.
       i->data[0 + p->x*3 + p->y*i->width*3] = c->r;
       i->data[1 + p->x*3 + p->y*i->width*3] = c->g;
       i->data[2 + p->x*3 + p->y*i->width*3] = c->b;
+    }
+
+    void Image_Del(var self) {
+      struct Image* i = self;
+      free(i->data);
     }
 
     void Image_Load_TGA(struct Image* self, var stream) {
@@ -521,39 +511,48 @@ Here is the final program in all its glory.
       swrite(stream, self->data, self->width * self->height * 3);
       
     }
- 
+
+    var Image = Cello(Image,
+      Instance(New, NULL, Image_Del),
+      Instance(Get, Image_Get, Image_Set, NULL, NULL));
+      
     void Image_Glitch(struct Image* self) {
 
-      struct Point* p = $(Point,
+      struct Point* point = $(Point,
         rand() % self->width,
         rand() % self->height);
 
-      var c = get(self, p);
+      var color = get(self, point);
 
-      uint64_t d = 0;
+      uint64_t dir = 0;
 
       for (int i = 0; i < 20000; i++) {
 
-        var t = get(self, p);
-        set(self, p, c);
+        var temp = get(self, point);
+        set(self, point, color);
 
-        uint64_t n = (hash(c) ^ hash_data($I(i / 8), size(Int))) % 4;
-        switch (n) {
-          case 0: p->x++; break;
-          case 1: p->y++; break;
-          case 2: p->x--; break;
-          case 3: p->y--; break;
+        uint64_t next = (hash(color) ^ hash_data($I(i / 8), size(Int))) % 4;
+        switch (next) {
+          case 0: point->x++; break;
+          case 1: point->y++; break;
+          case 2: point->x--; break;
+          case 3: point->y--; break;
         }
 
-        if (p->x < 0 or p->x >= self->width)  { p->x = rand() % self->width; }
-        if (p->y < 0 or p->y >= self->height) { p->y = rand() % self->height; }
+        if (point->x < 0 or point->x >= self->width)  {
+          point->x = rand() % self->width;
+        }
+        
+        if (point->y < 0 or point->y >= self->height) {
+          point->y = rand() % self->height;
+        }
 
-        if (d isnt n) { c = t; d = n; }
-
+        if (dir isnt next) { color = temp; dir = next; }
+        
         if (i % 100 is 0) {
           var filename = new(String);
           print_to(filename, 0, "./frames_cello/%04d.tga", $I(i / 100));
-          with (f in new(File, filename, $S("wb"))) {
+          with (f in new(File, filename, $S("wb")) {
             Image_Save_TGA(self, f);
           }
         }
@@ -561,10 +560,6 @@ Here is the final program in all its glory.
       }
 
     }
-    
-    var Image = Cello(Image,
-      Instance(New, NULL, Image_Del),
-      Instance(Get, Image_Get, Image_Set, NULL, NULL));
       
     int main(int argc, char** argv) {
       
@@ -581,8 +576,9 @@ Here is the final program in all its glory.
 
       }
       
-      system("convert ./frames_cello/*.tga -filter box "
-             "-resize 250x280 ./images/cello_processed.gif");
+      system(
+        "convert ./frames_cello/*.tga -filter box -resize 250x280 "
+        "./images/cello_processed.gif");
       
       return 0;
     }

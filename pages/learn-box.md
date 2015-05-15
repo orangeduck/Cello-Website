@@ -54,7 +54,10 @@ While this might not seem that useful when there is Garbage Collection this can 
 
 ### Definition
 
-    struct Box { var val; };
+    struct Box {
+      var val;
+    };
+    
 
 ### Derives
 

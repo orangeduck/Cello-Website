@@ -25,7 +25,7 @@ __Usage__
   <div class="col-xs-6 col-md-6">
 
 # Clear
-__Object can be Emptied__
+__Clearable__
 
 The `Clear` class can be implemented when it makes sense to _clear_ an object, such as to remove all of the items from an `Array` or `Table`.
 
@@ -43,7 +43,7 @@ The `Clear` class can be implemented when it makes sense to _clear_ an object, s
 * <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
-* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Stack Based Collection_
+* <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 
 * * *
 

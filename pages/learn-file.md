@@ -7,7 +7,7 @@ __Usage__
 
     var x = new(File, $S("test.bin"), $S("wb"));
     char* data = "hello";
-    swrite(x, data, 5);
+    swrite(x, data, strlen(data));
     sclose(x);
     
 
@@ -44,7 +44,10 @@ The `File` type is a wrapper of the native C `FILE` type representing a file in 
 
 ### Definition
 
-    struct File { FILE* file; };
+    struct File {
+      FILE* file;
+    };
+    
 
 ### Derives
 
@@ -60,7 +63,7 @@ The `File` type is a wrapper of the native C `FILE` type representing a file in 
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Format](/learn/format)</span>`format_to` `format_from` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:75px; float:left;">[Start](/learn/start)</span>`start` `stop` `running` 
+* <span style="width:75px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
 * <span style="width:75px; float:left;">[Stream](/learn/stream)</span>`sopen` `sclose` `sseek` `stell` `sflush` `seof` `sread` `swrite` 
 
 * * *

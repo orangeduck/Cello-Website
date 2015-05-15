@@ -1,13 +1,24 @@
   <div class="row">
   <div class="col-xs-6 col-md-6">
 
+### Examples
+
+__Usage__
+
+    var x = new(Mutex);
+    with (mut in x) { /* Lock Mutex */ 
+      print("Inside Mutex!\n");
+    } /* Unlock Mutex */
+
+
+
   </div>
   <div class="col-xs-6 col-md-6">
 
 # Mutex
 __Mutual Exclusion Lock__
 
-The `Mutex` type can be used to gain mutual exclusion across Threads for access of some resource.
+The `Mutex` type can be used to gain mutual exclusion across Threads for access to some resource.
 
 ### Derives
 
@@ -23,7 +34,7 @@ The `Mutex` type can be used to gain mutual exclusion across Threads for access 
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Lock](/learn/lock)</span>`lock` `lock_try` `unlock` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:75px; float:left;">[Start](/learn/start)</span>`start` `stop` `running` 
+* <span style="width:75px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
 
 * * *
 

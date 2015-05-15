@@ -39,7 +39,7 @@ The `GC` type provides an interface to the Cello Garbage Collector. One instance
 * <span style="width:75px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
 * <span style="width:75px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
-* <span style="width:75px; float:left;">[Start](/learn/start)</span>`start` `stop` `running` 
+* <span style="width:75px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
 
 * * *
 

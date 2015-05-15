@@ -46,7 +46,10 @@ For strings allocated on the heap a number of extra operations are provided over
 
 ### Definition
 
-    struct String { char* val; };
+    struct String {
+      char* val;
+    };
+    
 
 ### Derives
 

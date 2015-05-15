@@ -1,38 +1,18 @@
+  <div class="row">
+  <div class="col-xs-2 col-md-2"></div>
+  <div class="col-xs-8 col-md-8">
+
 # Best Improvements of Cello 2.0
 
-## 1. Better C Interop
+## Interoperation
 
 The complete internal workings of Cello have been rewritten and now it uses the 
-concept of fat pointers to ensure Cello Pointers are fully compatible with 
-standard C pointers. This is a massive win for interop with C because it means 
-you can happily write standard C functions with types and this or that when it 
-makes things easier. No longer are you forced to use typeless pointers when you 
-don't want to. Now Cello really does work _on top_ of normal C, not orthogonal 
-to it.
-
-
-    static void Body_Offset_Momentum(struct Body* self, 
-      double px, double py, double pz) {
-      self->vx = -px / solar_mass;
-      self->vy = -py / solar_mass;
-      self->vz = -pz / solar_mass;
-    }
-    
-    static void Bodies_Offset(var bodies) {
-    
-      foreach (body in bodies) {
-        struct Body* b = body;
-        px += b->vx * b->mass;
-        py += b->vy * b->mass;
-        pz += b->vz * b->mass;
-      }
-      
-      struct Body* first = get(bodies, $I(0));
-      
-      Body_Offset_Momentum(first, px, py, pz);
-      
-    }
-
+concept of [fat pointers](/learn/a-fat-pointer-library) to ensure Cello 
+Pointers are fully compatible with standard C pointers. This is a massive win 
+for interop with standard C because it means you can use Cello objects with 
+standard C functions and types. No longer are you forced to use typeless 
+pointers when you don't want to and Cello really does work _on top_ of normal 
+C, not orthogonal to it.
     
 Additionally the overhead of declaring a structure Cello compatible has been 
 reduced from 20 or 30 lines of code to just one. Not only this but there are a
@@ -42,53 +22,79 @@ infrastructure including garbage collection, data structures, IO, and much
 more.
 
 
-    struct Body {
-      double  x,  y,  z;
-      double vx, vy, vz;
-      double mass;
-    };
-
-    var Body = Cello(Body);
-
-    
-Before going down the path of declaring a Cello style object was pretty time 
-consuming. Now you can't afford not to!
-
-
-## 2. Performance
+## Performance
 
 It is fair to say that Cello 1.0 was insanely slow. It had some pretty terrible 
 data structures and the overhead of calling Cello functions inside a tight loop 
 was massive.
 
 In Cello 2.0 all the data structures have been updated to be modern, fast, and 
-efficient. Cello has also been heavily optimised and benchmarked to ensure it 
-doesn't have too much of a performance penalty. Currently it sits between C and 
-Java on most operations. The better interop with C has also helped in this 
-regard, making it easy to drop down to C for numerical calculations and other 
-performance intensive areas. And if you still need that extra performance 
-remember that all C programs are also valid Cello programs!
+efficient. Cello has also been heavily optimised and 
+[benchmarked](/learn/benchmarks) to ensure it doesn't have too much of a 
+performance penalty. Currently it sits between C and Java on most operations. 
+The better interop with C has also helped in this regard, making it easy to 
+drop down to C for numerical calculations and other performance intensive 
+areas. And if you still need that extra performance remember that all C 
+programs are also valid Cello programs!
 
 
-## 3. Portability
+## Portability
 
 Cello 2.0 only relies on a couple of fairly standard C language extensions. 
-Namely the _dollars in identifiers_ extension and the _gnu style variadic 
-macros_ extension.
+Namely the 
+[dollars in identifiers](https://gcc.gnu.org/onlinedocs/gcc/Dollar-Signs.html) 
+extension and the
+[gnu variadic macros](https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html) 
+extension.
 
-Unfortunately this does mean that closures have been dropped from the features 
+Unfortunately this does mean that closures were been dropped from the features 
 list since 1.0, but it seems like a sensible omission as now Cello can be 
 compiled easily with all of the major compilers including `gcc`, `clang`, 
-`cl.exe`, and `tcc`.
+`cl.exe`, and `tcc` (on the development branch).
 
 Several of the defines Cello 1.0 made such as `local` and `global` have also 
 been dropped. While these are certainly more readable than `static` and 
-`extern` the potential for shadowing issues, and the fact that I wanted Cello 
-to play nicely with C in this release outweighed the benefits.
+`extern` the potential for shadowing issues, and the fact that I wanted 
+Cello to play nicely with C in this release, outweighed the benefits.
+
+In general programming in Cello feels a lot less like a different language and 
+more like an augmented C.
 
 
-## 4. Debugging
+## Debugging
+
+Having a runtime layer isn't just good for high level programming - it also 
+provides an easy way to insert all of the runtime checks that are missing from 
+standard C programming. These are everywhere in Cello. It performs out of 
+bounds checks, out of memory checks, IO checks, and much more. If there is a 
+runtime error an exception will be thrown with a nice error message and a 
+stack trace.
+
+Of course once you're program is running correctly all of these checks can be 
+disabled using `-DCELLO_NDEBUG` to get C style performance.
+
+All of the documentation is now built into Cello and can be accessed via 
+the `help` function. Even the website documentation is generated using a simple 
+C script.
 
 
 
-## 5. Garbage Collection
+## Garbage Collection
+
+Having [Garbage Collection](/learn/garbage-collection) is a big win for 
+usability. And the fact that the Garbage Collection is optional means it can 
+be turned off for performance critical sections or ignored where it isn't 
+useful.
+
+More generally it means you can choose to program more like you are using a 
+scripting language than a systems language with the worry of memory leaks.
+
+
+
+  <p style="text-align:center;">
+[Back](/learn)
+  </p>
+
+  </div>
+  <div class="col-xs-2 col-md-2"></div>
+  </div>

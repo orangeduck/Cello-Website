@@ -6,9 +6,11 @@
 __Usage__
 
     var x = new(Process, $S("ls"), $S("r"));
-    var o = new(String);
-    scan_from(x, 0, "%s", o);
-    show(o);
+    char c;
+    while (not seof(x)) {
+      sread(x, &c, 1);
+      print("%c", $I(c));
+    };
     sclose(x);
     
 
@@ -24,7 +26,10 @@ The `Process` type is a wrapper for an operating system process as constructed b
 
 ### Definition
 
-    struct Process { FILE* proc; };
+    struct Process {
+      FILE* proc;
+    };
+    
 
 ### Derives
 
@@ -40,7 +45,7 @@ The `Process` type is a wrapper for an operating system process as constructed b
 * <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:75px; float:left;">[Format](/learn/format)</span>`format_to` `format_from` 
 * <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:75px; float:left;">[Start](/learn/start)</span>`start` `stop` `running` 
+* <span style="width:75px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
 * <span style="width:75px; float:left;">[Stream](/learn/stream)</span>`sopen` `sclose` `sseek` `stell` `sflush` `seof` `sread` `swrite` 
 
 * * *

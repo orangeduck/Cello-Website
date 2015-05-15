@@ -21,10 +21,9 @@ Read a formatted string `fmt` from the object `self` at position `pos`.
 
 __Usage__
 
-    /* printf("Hello my name is %s, I am %i
-    ", "Dan", 23); */
+    /* printf("Hello my name is %s, I'm %i\n", "Dan", 23); */
     format_to($(File, stdout), 0, 
-      "Hello my name is %s, I am %i\n", "Dan", 23);
+      "Hello my name is %s, I'm %i\n", "Dan", 23);
     
 
 
@@ -35,9 +34,9 @@ __Usage__
 # Format
 __Read or Write with Format String__
 
-Format abstracts the class of operations such as `scanf`, `sprintf` and `fprintf` with matching semantics. It provides general `printf` and `scanf` functionality for several different types objects in a uniform way. This class is essentially an inbetween class, used by by the `Show` class to read and write output.
+Format abstracts the class of operations such as `scanf`, `sprintf` and `fprintf` with matching semantics. It provides general `printf` and `scanf` functionality for several different types objects in a uniform way. This class is essentially an inbetween class, used by the `Show` class to read and write output.
 
-It is important to note that the semantics of these options match `printf` and not the newly defined `Show` class. For example it is perfectly valid to pass a C `int` to these functions, while the `println` function from `Show` must be passed only `var` objects.
+It is important to note that the semantics of these operations match `printf` and not the newly defined `Show` class. For example it is perfectly valid to pass a C `int` to these functions, while the `println` function from `Show` must be passed only `var` objects.
 
 ### Definition
 
