@@ -19,7 +19,7 @@ __Lifetimes__
 
     var quote = $S("Life is long");
     
-    with(r in $B(new(String, quote))) {
+    with (r in $B(new(String, quote))) {
       println("This reference is: %$", r);
       println("This string is alive: '%s'", deref(r));
     }
@@ -48,7 +48,7 @@ __Collection__
 # Box
 __Unique Pointer__
 
-The `Box` type is another wrapper around a C pointer with one additional behaviour as compared to `Ref`. When a `Box` object is deleted it will also call `del` on the object it points to. The means a `Box` is considered a pointer type that _owns_ the object it points to, and so is responsible for it's destruction. 
+The `Box` type is another wrapper around a C pointer with one additional behaviour as compared to `Ref`. When a `Box` object is deleted it will also call `del` on the object it points to. The means a `Box` is considered a pointer type that _owns_ the object it points to, and so is responsible for it's destruction. Due to this `Box`s must point to valid Cello objects and so can't be initalised with `NULL` or anything else invalid. 
 
 While this might not seem that useful when there is Garbage Collection this can be very useful when Garbage Collection is turned off, and when used in conjunction with collections.
 
@@ -61,19 +61,19 @@ While this might not seem that useful when there is Garbage Collection this can 
 
 ### Derives
 
-* <span style="width:75px; float:left;">[Alloc](/learn/alloc)</span>`$` `alloc` `dealloc` 
-* <span style="width:75px; float:left;">[Cast](/learn/cast)</span>`cast` 
-* <span style="width:75px; float:left;">[Cmp](/learn/cmp)</span>`cmp` `eq` `neq` `gt` `lt` `ge` `le` 
-* <span style="width:75px; float:left;">[Copy](/learn/copy)</span>`copy` 
-* <span style="width:75px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
-* <span style="width:75px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Alloc](/learn/alloc)</span>`$` `alloc` `dealloc` 
+* <span style="width:50px; float:left;">[Cast](/learn/cast)</span>`cast` 
+* <span style="width:50px; float:left;">[Cmp](/learn/cmp)</span>`cmp` `eq` `neq` `gt` `lt` `ge` `le` 
+* <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
+* <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
+* <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
 ### Implements
 
-* <span style="width:75px; float:left;">[Assign](/learn/assign)</span>`assign` 
-* <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
-* <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:75px; float:left;">[Pointer](/learn/pointer)</span>`ref` `deref` 
-* <span style="width:75px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
+* <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 
+* <span style="width:50px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
+* <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
+* <span style="width:50px; float:left;">[Pointer](/learn/pointer)</span>`ref` `deref` 
+* <span style="width:50px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
 
 * * *
 

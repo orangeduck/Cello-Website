@@ -30,9 +30,9 @@ If this is the case the `Mark` class can be overridden and the callback function
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
-* <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
 * <span class="docitem">[Thread](/learn/thread)</span> | &nbsp; &nbsp;   _Concurrent Execution_
+* <span class="docitem">[Tree](/learn/tree)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 
 * * *

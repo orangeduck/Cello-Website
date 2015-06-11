@@ -40,9 +40,9 @@ The `Clear` class can be implemented when it makes sense to _clear_ an object, s
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
-* <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
+* <span class="docitem">[Tree](/learn/tree)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 
 * * *

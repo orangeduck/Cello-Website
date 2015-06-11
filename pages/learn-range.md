@@ -58,21 +58,21 @@ This can be a useful replacement for the standard C `for` loop with decent perfo
 
 ### Derives
 
-* <span style="width:75px; float:left;">[Alloc](/learn/alloc)</span>`$` `alloc` `dealloc` 
-* <span style="width:75px; float:left;">[Assign](/learn/assign)</span>`assign` 
-* <span style="width:75px; float:left;">[Cast](/learn/cast)</span>`cast` 
-* <span style="width:75px; float:left;">[Cmp](/learn/cmp)</span>`cmp` `eq` `neq` `gt` `lt` `ge` `le` 
-* <span style="width:75px; float:left;">[Copy](/learn/copy)</span>`copy` 
-* <span style="width:75px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
-* <span style="width:75px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Alloc](/learn/alloc)</span>`$` `alloc` `dealloc` 
+* <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 
+* <span style="width:50px; float:left;">[Cast](/learn/cast)</span>`cast` 
+* <span style="width:50px; float:left;">[Cmp](/learn/cmp)</span>`cmp` `eq` `neq` `gt` `lt` `ge` `le` 
+* <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
+* <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
+* <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
 ### Implements
 
-* <span style="width:75px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
-* <span style="width:75px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` 
-* <span style="width:75px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` 
-* <span style="width:75px; float:left;">[Len](/learn/len)</span>`len` 
-* <span style="width:75px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:75px; float:left;">[Subtype](/learn/subtype)</span>`subtype` `key_subtype` `val_subtype` 
+* <span style="width:50px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
+* <span style="width:50px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` `key_type` `val_type` 
+* <span style="width:50px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` `iter_type` 
+* <span style="width:50px; float:left;">[Len](/learn/len)</span>`len` 
+* <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
+* <span style="width:50px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
 
 * * *
 

@@ -3,44 +3,42 @@
 
 ### Methods
 
-__slice__
+__filter__
 
-    #define slice(I, ...)
+    #define filter(I, F)
 
-Construct a `Slice` object on the stack over iterable `I`.
-
-__reverse__
-
-    #define reversed(I)Construct a `Slice` object that iterates over iterable `I` in reverse order.
-
-(null)
+Construct a `Filter` object on the stack over iterable `I` with filter function `F`.
 
 ### Examples
 
 __Usage__
 
-    var x = tuple(
-      $S("Hello"), $S("There"), $S("World"), $S("!"));
-    
-    /* Iterate over elements 0 to 2 */
-    foreach (s in slice(x, $I(2))) {
-      print("%s\n", s);
+    var greater_than_two(var x) {
+      return c_int(x) > 2 ? x : NULL;
     }
     
-    /* Iterate over elements 1 to 2 */
-    foreach (s in slice(x, $I(1), $I(2))) {
-      print("%s\n", s);
+    var x = new(Array, Int, $I(0), $I(5), $I(2), $I(9));
+    
+    foreach (n in filter(x, $(Function, greater_than_two))) {
+      show(n); /* 5, 9 */
     }
     
-    /* Iterate over every other element */
-    foreach (s in slice(x, _, _, $I(2))) {
-      print("%s\n", s);
+
+__Usage 2__
+
+    var mem_hello(var x) {
+      return mem(x, $S("Hello")) ? x : NULL;
     }
     
-    /* Iterate backwards, starting from element 3 */
-    foreach (s in slice(x, _, $I(2), $I(-1))) {
-      print("%s\n", s);
+    var x = new(Tuple, 
+      $S("Hello World"), $S("Hello Dan"), 
+      $S("Bonjour"));
+    
+    var y = new(Tuple);
+    foreach (item in filter(x, $(Function, mem_hello))) {
+      push(y, item);
     }
+    show(y); /* tuple("Hello World", "Hello Dan") */
     
 
 
@@ -48,18 +46,16 @@ __Usage__
   </div>
   <div class="col-xs-6 col-md-6">
 
-# Slice
-__Partial Iterable__
+# Filter
+__Filtered Iterable__
 
-The `Slice` type is an iterable that allows one to only iterate over part of another iterable. Given some start, stop and step, only those entries described by the `Slice` are returned in the iteration.
-
-Under the hood the `Slice` object still iterates over the whole iterable but it only returns those values in the range given.
+The `Filter` type can be used to filter the results of some iterable. Given a callable object `Filter` iterable returns only those items in the original iterable for where calling the function returns a non-`NULL` value.
 
 ### Definition
 
-    struct Slice {
+    struct Filter {
       var iter;
-      var range;
+      var func;
     };
     
 
@@ -77,9 +73,7 @@ Under the hood the `Slice` object still iterates over the whole iterable but it 
 * <span style="width:50px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:50px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` `key_type` `val_type` 
 * <span style="width:50px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` `iter_type` 
-* <span style="width:50px; float:left;">[Len](/learn/len)</span>`len` 
 * <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:50px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
 
 * * *
 

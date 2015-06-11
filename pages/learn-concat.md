@@ -51,6 +51,7 @@ The `Concat` class is implemented by objects that can have other objects either 
 ### Implementers
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
+* <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 

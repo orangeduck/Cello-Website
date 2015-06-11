@@ -5,7 +5,7 @@
 
 __Usage__
 
-    var prices = new(Table, String, Int);
+    var prices = new(Tree, String, Int);
     set(prices, $S("Apple"),  $I(12));
     set(prices, $S("Banana"), $I( 6));
     set(prices, $S("Pear"),   $I(55));
@@ -18,7 +18,7 @@ __Usage__
 
 __Manipulation__
 
-    var t = new(Table, String, Int);
+    var t = new(Tree, String, Int);
     set(t, $S("Hello"), $I(2));
     set(t, $S("There"), $I(5));
     
@@ -43,14 +43,14 @@ __Manipulation__
   </div>
   <div class="col-xs-6 col-md-6">
 
-# Table
-__Hash table__
+# Tree
+__Balanced Binary Tree__
 
-The `Table` type is a hash table data structure that maps keys to values. It uses an open-addressing robin-hood hashing scheme which requires `Hash` and `Cmp` to be defined on the key type. Keys and values are copied into the collection using the `Assign` class and intially have zero'd memory.
+The `Tree` type is a self balancing binary tree implemented as a red-black tree. It provides key-value access and requires the `Cmp` class to be defined on the key type.
 
-Hash tables provide `O(1)` lookup, insertion and removal can but require long pauses when the table must be _rehashed_ and all entries processed.
+Element lookup and insertion are provided as an `O(log(n))` operation. This means in general a `Tree` is slower than a `Table` but it has several other nice properties such as being able to iterate over the items in order and not having large pauses for rehashing on some insertions.
 
-This is largely equivalent to the C++ construct [std::unordered_map](http://www.cplusplus.com/reference/unordered_map/unordered_map/)
+This is largely equivalent to the C++ construct [std::map](http://www.cplusplus.com/reference/map/map/)
 
 ### Derives
 

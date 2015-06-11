@@ -35,7 +35,7 @@ that were previously impractical or awkward in C such as:
 * __Polymorphic Functions__
 * __Interfaces / Type Classes__
 * __Constructors / Destructors__
-* __Garbage Collection__
+* __Optional Garbage Collection__
 * __Exceptions__
 * __Reflection__
 

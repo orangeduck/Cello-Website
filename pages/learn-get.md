@@ -27,6 +27,18 @@ __rem__
 
 Removes the `key` from object `self`.
 
+__key_type__
+
+    var key_type(var self);
+
+Returns the key type for the object `self`.
+
+__val_type__
+
+    var val_type(var self);
+
+Returns the value type for the object `self`.
+
 ### Examples
 
 __Usage 1__
@@ -73,21 +85,26 @@ The `Get` class provides a method to _get_ or _set_ certain properties of an obj
       void (*set)(var, var, var);
       bool (*mem)(var, var);
       void (*rem)(var, var);
+      var (*key_type)(var);
+      var (*val_type)(var);
     };
     
 
 ### Implementers
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
+* <span class="docitem">[Filter](/learn/filter)</span> | &nbsp; &nbsp;   _Filtered Iterable_
 * <span class="docitem">[GC](/learn/gc)</span> | &nbsp; &nbsp;   _Garbage Collector_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
-* <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
+* <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Apply Function to Iterable_
 * <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_
 * <span class="docitem">[Slice](/learn/slice)</span> | &nbsp; &nbsp;   _Partial Iterable_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
 * <span class="docitem">[Thread](/learn/thread)</span> | &nbsp; &nbsp;   _Concurrent Execution_
+* <span class="docitem">[Tree](/learn/tree)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
+* <span class="docitem">[Zip](/learn/zip)</span> | &nbsp; &nbsp;   _Multiple Iterator_
 
 * * *
 

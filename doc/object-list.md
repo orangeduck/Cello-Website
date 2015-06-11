@@ -1,1 +1,1 @@
-Array Box File Float Function GC Int List Map Mutex Process Range Ref Slice String Table Thread Tuple Type Alloc Assign C_Float C_Int C_Str Call Cast Clear Cmp Concat Copy Current Doc Format Get Hash Help Iter Len Lock Mark New Pointer Push Reserve Reverse Show Size Sort Start Stream Subtype 
+Array Box File Filter Float Function GC Int List Map Mutex Process Range Ref Slice String Table Thread Tree Tuple Type Zip Alloc Assign C_Float C_Int C_Str Call Cast Cmp Concat Copy Current Doc Format Get Hash Help Iter Len Lock Mark New Pointer Push Resize Show Size Sort Start Stream 

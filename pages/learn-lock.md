@@ -21,6 +21,17 @@ __unlock__
 
 Release lock on object `self`.
 
+### Examples
+
+__Usage__
+
+    var x = new(Mutex);
+    lock(x);   /* Lock Mutex */ 
+    print("Inside Mutex!\n");
+    unlock(x); /* Unlock Mutex */
+
+
+
   </div>
   <div class="col-xs-6 col-md-6">
 

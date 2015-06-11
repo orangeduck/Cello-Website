@@ -3,43 +3,33 @@
 
 ### Methods
 
-__slice__
+__zip__
 
-    #define slice(I, ...)
+    #define zip(...)
 
-Construct a `Slice` object on the stack over iterable `I`.
+Construct a `Zip` object on the stack.
 
-__reverse__
+__enumerate__
 
-    #define reversed(I)Construct a `Slice` object that iterates over iterable `I` in reverse order.
+    #define enumerate(I)
 
-(null)
+Zip the iterable `I` with a `Range` object of the same length.
 
 ### Examples
 
 __Usage__
 
-    var x = tuple(
-      $S("Hello"), $S("There"), $S("World"), $S("!"));
-    
-    /* Iterate over elements 0 to 2 */
-    foreach (s in slice(x, $I(2))) {
-      print("%s\n", s);
+    /* Iterate over two iterables at once */
+    var x = new(Array, Int, $I(100), $I(200), $I(130));
+    var y = new(Array, Float, $F(0.1), $F(0.2), $F(1.3));
+    foreach (pair in zip(x, y)) {
+      print("x: %$\n", get(pair, $I(0)));
+      print("y: %$\n", get(pair, $I(1)));
     }
     
-    /* Iterate over elements 1 to 2 */
-    foreach (s in slice(x, $I(1), $I(2))) {
-      print("%s\n", s);
-    }
-    
-    /* Iterate over every other element */
-    foreach (s in slice(x, _, _, $I(2))) {
-      print("%s\n", s);
-    }
-    
-    /* Iterate backwards, starting from element 3 */
-    foreach (s in slice(x, _, $I(2), $I(-1))) {
-      print("%s\n", s);
+    /* Iterate over iterable with count */
+    foreach (pair in enumerate(x)) {
+      print("%i: %$\n", get(pair, $I(0)), get(pair, $I(1)));
     }
     
 
@@ -48,18 +38,16 @@ __Usage__
   </div>
   <div class="col-xs-6 col-md-6">
 
-# Slice
-__Partial Iterable__
+# Zip
+__Multiple Iterator__
 
-The `Slice` type is an iterable that allows one to only iterate over part of another iterable. Given some start, stop and step, only those entries described by the `Slice` are returned in the iteration.
-
-Under the hood the `Slice` object still iterates over the whole iterable but it only returns those values in the range given.
+The `Zip` type can be used to combine multiple iterables into one which is then iterated over all at once and returned as a Tuple. The Zip object only iterates when all of it's sub iterators have valid items. More specifically the Zip iteration will terminate if _any_ of the sub iterators terminate.
 
 ### Definition
 
-    struct Slice {
-      var iter;
-      var range;
+    struct Zip {
+      var iters;
+      var values;
     };
     
 
@@ -79,7 +67,6 @@ Under the hood the `Slice` object still iterates over the whole iterable but it 
 * <span style="width:50px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` `iter_type` 
 * <span style="width:50px; float:left;">[Len](/learn/len)</span>`len` 
 * <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:50px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
 
 * * *
 

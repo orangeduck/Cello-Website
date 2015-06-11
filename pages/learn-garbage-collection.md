@@ -282,7 +282,7 @@ it looks like this:
 
 Now when a user asks for a new allocation via `new` and memory usage has 
 exceeded some bound we simply call `Cello_Mark` and `Cello_Sweep` to free 
-any avaliable memory.
+any available memory.
     
 As you probably suspected, in reality there is a little more going on, with 
 various optimisations and tweaks to what is shown in the code snippits here, 

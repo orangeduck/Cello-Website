@@ -10,6 +10,24 @@ __call__
 
 Call the object `self` with arguments `args`.
 
+### Examples
+
+__Usage__
+
+    var increment(var args) {
+      struct Int* i = get(args, $I(0));
+      i->val++;
+      return NULL;
+    }
+    
+    var x = $I(0);
+    show(x); /* 0 */
+    call($(Function, increment), x);
+    show(x); /* 1 */
+    
+
+
+
   </div>
   <div class="col-xs-6 col-md-6">
 
@@ -28,6 +46,7 @@ The `Call` class is used by types which can be called as functions.
 ### Implementers
 
 * <span class="docitem">[Function](/learn/function)</span> | &nbsp; &nbsp;   _Function Object_
+* <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Apply Function to Iterable_
 * <span class="docitem">[Thread](/learn/thread)</span> | &nbsp; &nbsp;   _Concurrent Execution_
 
 * * *

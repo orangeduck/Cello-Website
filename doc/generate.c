@@ -61,21 +61,22 @@ static void test_example(var object, struct Example* example) {
 int main(int argc, char** argv) {
   
   var types = tuple(
-    Type,  Tuple, Ref,    Box,
-    Int,   Float, String, Map,
-    List,  Array, Table,  Range,
-    Slice, File,  Mutex,  Thread,
-    Process, Function, GC);
+    Type,    Tuple,    Ref,    Box,
+    Int,     Float,    String, Tree,
+    List,    Array,    Table,  Range,
+    Slice,   File,     Mutex,  Thread,
+    Process, Function, GC,     Zip,
+    Map,     Filter);
 
   var classes = tuple(
     Doc,     Help,    Cast,    Size,
     Alloc,   New,     Assign,  Copy,
-    Subtype, Cmp,     Hash,    Len,
-    Iter,    Push,    Concat,  Get,
-    Reverse, Sort,    Clear,   Reserve, 
-    C_Str,   C_Int,   C_Float, Stream, 
-    Pointer, Call,    Format,  Show, 
-    Current, Start,   Lock,    Mark);
+    Cmp,     Hash,    Len,     Iter,    
+    Push,    Concat,  Get,     Sort,
+    Resize,  C_Str,   C_Int,   C_Float, 
+    Stream,  Pointer, Call,    Format,  
+    Show,    Current, Start,   Lock,    
+    Mark);
   
   var defaults = tuple(
     Cast, Size,   Alloc, 
@@ -165,7 +166,7 @@ int main(int argc, char** argv) {
             print_to(link, 0, "(/learn/%s)", class);
             to_lower(link);
             print_to(f, 0, 
-              "* <span style=\"width:75px; float:left;\">"
+              "* <span style=\"width:50px; float:left;\">"
               "[%s]%s</span>", class, link);
             struct Doc* cdoc = type_instance(class, Doc);
             if (cdoc->methods) {
@@ -187,7 +188,7 @@ int main(int argc, char** argv) {
             print_to(link, 0, "(/learn/%s)", class);
             to_lower(link);
             print_to(f, 0, 
-              "* <span style=\"width:75px; float:left;\">"
+              "* <span style=\"width:50px; float:left;\">"
               "[%s]%s</span>", class, link);
             struct Doc* cdoc = type_instance(class, Doc);
             if (cdoc->methods) {

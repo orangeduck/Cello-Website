@@ -201,14 +201,9 @@ expressive, and readable way.
 
 Cello is a _Fat Pointer Library_. It lets you create pointers which are 
 tagged with additional runtime information, which can then be used for a whole 
-host of other tasks and features.
-
-In reality it is a little more complicated than the shallow explanation here, 
-but hopefully this gives you a vague idea of how it works under the hood. For 
-more information on the small hacks and tweaks that make Cello look and feel so 
-different please read [Hacking C to its Limits](/learn/hacking-c-to-its-limits) 
-or if you want to know about the Cello Runtime system in more detail I suggest 
-looking into the source code.
+host of other tasks and features. In reality it is a little more complicated 
+than the shallow explanation here, but hopefully this gives you a vague idea of 
+how it works under the hood.
 
 I've always tried to be objective about Cello. It is a hack on top of C, and 
 hacks don't always end up celebrated. I've admitted there are many reasons I 

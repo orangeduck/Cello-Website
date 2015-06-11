@@ -110,10 +110,11 @@ See [printf](http://www.cplusplus.com/reference/cstdio/printf/) for more informa
 * <span class="docitem">[GC](/learn/gc)</span> | &nbsp; &nbsp;   _Garbage Collector_
 * <span class="docitem">[Int](/learn/int)</span> | &nbsp; &nbsp;   _Integer Object_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
-* <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
-* <span class="docitem">[Ref](/learn/ref)</span> | &nbsp; &nbsp;   _Shared Pointer_
+* <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_
+* <span class="docitem">[Slice](/learn/slice)</span> | &nbsp; &nbsp;   _Partial Iterable_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
+* <span class="docitem">[Tree](/learn/tree)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
 * <span class="docitem">[Type](/learn/type)</span> | &nbsp; &nbsp;   _Metadata Object_
 
