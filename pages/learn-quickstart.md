@@ -28,7 +28,14 @@ behaviours without the user having to provide them. Cello objects can be
 printed, compared, hashed, stored, garbage collected, ordered, copied and much 
 more. In other words, Cello has batteries included.
 
-## Introduction
+## Installation
+
+Please start by following the instructions on the 
+[Installation](/learn/installation) page and then the instructions for making 
+your first Cello program on the [Cello World](/learn/cello-world) page. This 
+will get you ready for programming with Cello.
+
+## Glitch Art
 
 Let's make some glitch art using Cello. We're going to build some new Cello 
 types to do this and see how they interact with standard C. Our glitch art is 
@@ -58,7 +65,7 @@ tutorial I've saved it as a `.tga` file and downsampled it.
 
 ### [Download](/static/img/cello_original.tga)
 
-## Objects
+## Image Object
 
 Cello objects start as standard C structures which we then add our runtime 
 information to. We must define our C structures without `typedef`'ing them. For 
@@ -91,7 +98,7 @@ You'll notice the C type of the Cello runtime type object is `var`. In Cello
 use it to mean _a pointer compatible with the Cello runtime_.
 
 For basic types this is all that is required to interact with Cello. We can 
-allocate already allocate objects of this type either on the heap or on the 
+already allocate objects of this type either on the heap or on the 
 stack, show them, compare them, put them in collections, and much more.
     
     /* Allocate on Stack or Heap */
@@ -113,7 +120,7 @@ In fact almost all of the main type classes in Cello provide default
 implementations - but the real power of Cello comes when we start to customize 
 these type class implementations.
 
-## Instances
+## Image Destructor
 
 Our C structure `struct Image` has a pointer to some memory which might be 
 allocated by some other function. If we want to avoid memory leaks we need to 
@@ -125,23 +132,23 @@ use of Cello to define a custom destructor for the `Image` type.
       free(i->data);
     }
 
-You'll notice we can cast the input variable `self` to the C type 
-`struct Image*`. This is possible because Cello `var` are fully compatible with 
+We can cast the input variable `self` to the C type `struct Image*`. This is 
+possible because Cello `var` are fully compatible with 
 standard C pointers. So if you have a Cello `var` pointer you know it is of a 
 certain C type (such as in the destructor here), it is completely safe to cast 
 it to that type and use the members directly. All we do then is call `free` on 
 the data pointer.
 
-To register this destructors with Cello we pass it to the `Cello` macro as an 
+To register this destructor with Cello we pass it to the `Cello` macro as an 
 `Instance` of the `New` type class. Because we defined no custom constructor we 
-just pull that entry into the type class as `NULL`.
+just put `NULL` as that entry into the instance.
 
     var Image = Cello(Image, Instance(New, NULL, Image_Del));
       
 Now when the Cello Garbage Collector comes to deallocate our `Image` objects it 
 will call this destructor and free any memory that has been allocated by it.
 
-## Interoperation
+## Reading Images
 
 We want to write a `.tga` parser to read in data for the `Image` type. Rather 
 than read from the C `FILE*` type we're going to read from a Cello `var` type 
@@ -150,7 +157,8 @@ that implements the `Stream` class. This will allow us to read not just from
 processes, and a lot more. The Cello functions `sread` and `swrite` are used to 
 read and write data from _file-like_ objects. 
 
-Here are some functions for reading and writing 3-channel TGA files.
+Here are some functions I've prepared for reading and writing 3-channel TGA 
+files.
 
     void Image_Load_TGA(struct Image* self, var stream) {
 
@@ -221,14 +229,15 @@ scope exit just like in Python. The `with` macro can even be stacked nicely.
     }
     
 Also notice that because of the Cello Garbage Collector we don't need to delete 
-`img` explicitly, and because the destructor for `img` will be called we don't 
-have to clean up the memory it references either.
+eother of the two file objects or `img` explicitly, and because the destructor 
+for `img` will be called we don't have to clean up the memory it references 
+either.
 
-## Duck Typing
+## Getting and Setting Pixels
 
-Duck typing is the idea that an object is defined by it's behaviours and 
-properties rather than it's type (if it walks like a duck and it quacks like a 
-duck then it is a duck).
+Cello has something called Duck typing. This is the idea that an object is 
+defined by it's behaviours and properties rather than it's type (if it walks 
+like a duck and it quacks like a duck then it is a duck).
 
 The `Get` type class is usually used by collections such as `Table` or `Array` 
 to get and set entries, but we can also use it to `get` and `set` pixels in our 
@@ -295,7 +304,7 @@ pointers.
       Instance(New, NULL, Image_Del),
       Instance(Get, Image_Get, Image_Set, NULL, NULL));
 
-## Algorithm
+## Glitching the Image
       
 Now we can get onto defining our actual glitching routine. The algorithm will 
 be very simple. Starting from some pixel `p` with some color `c`, we first read 
@@ -322,7 +331,7 @@ on the raw input.
 
       uint64_t dir = 0;
 
-      for (int i = 0; i < 20000; i++) {
+      for (uint64_t i = 0; i < 20000; i++) {
 
         var temp = get(self, point);
         set(self, point, color);
@@ -432,7 +441,22 @@ gif.
 
 And there you have it, some glitch art made with Cello!
 
-## Reference
+## Conclusion
+
+In this short introduction to Cello we made use of various features of Cello to 
+easily create some glitch art. We created some new Cello objects, defined some 
+type classes for them, made use of the Garbage Collector to clean up our 
+resources once they were done, and used a couple of constructs from the Cello 
+standard library.
+
+I hope this guide has shown some of the potential for the high level things in 
+Cello, how it easily interoperates with standard C, and that Cello programming 
+can be fun.
+
+If you're interested in learning more please check out the rest of the 
+[learning resources](/learn).
+
+## Full Source Code
 
 Here is the final program in all its glory.
 
@@ -526,7 +550,7 @@ Here is the final program in all its glory.
 
       uint64_t dir = 0;
 
-      for (int i = 0; i < 20000; i++) {
+      for (uint64_t i = 0; i < 20000; i++) {
 
         var temp = get(self, point);
         set(self, point, color);

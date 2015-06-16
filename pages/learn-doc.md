@@ -74,6 +74,7 @@ The `examples` and `methods` entries should be provided as `NULL` terminated arr
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[Box](/learn/box)</span> | &nbsp; &nbsp;   _Unique Pointer_
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[File](/learn/file)</span> | &nbsp; &nbsp;   _Operating System File_
 * <span class="docitem">[Filter](/learn/filter)</span> | &nbsp; &nbsp;   _Filtered Iterable_
 * <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Floating Point Object_

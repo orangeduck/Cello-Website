@@ -3,55 +3,23 @@
 
 ### Methods
 
-__$__
+__swap__
 
-    #define $(T, ...)
-    #define $I(X)
-    #define $F(X)
-    #define $S(X)
-    #define $R(X)
-    #define $B(X)
+    void swap(var self, var obj);
 
-Allocate memory for the given type `T` on the stack and copy in the given arguments `...` as struct members. Shorthand constructors exist for native types:
-
-* `$I -> Int` `$F -> Float` `$S -> String`
-* `$R -> Ref` `$B -> Box`
-
-
-
-__alloc__
-
-    #define alloc_stack(T)
-    var alloc(var type);
-    var alloc_raw(var type);
-    var alloc_root(var type);
-
-Allocate memory for a given `type`. To avoid the Garbage Collector completely use `alloc_raw`, to register the allocation as a root use `alloc_root`. In the case of raw or root allocations the corresponding `dealloc` function should be used when done. Memory allocated with `alloc_stack` is not managed by the Garbage Collector.
-
-__dealloc__
-
-    void dealloc(var self);
-    void dealloc_raw(var self);
-    void dealloc_root(var self);
-
-Deallocate memory for object `self` manually. If registered with the Garbage Collector then entry will be removed. If the `raw` variation is used memory will be deallocated without going via the Garbage Collector.
+Swap the object `self` for the object `obj`.
 
 ### Examples
 
 __Usage__
 
-    /* Allocation deallocated by Garbage Collector */
-    var x = alloc(Int);
-    construct(x, $I(10));
-    
-
-__Avoid Garbage Collection__
-
-    /* Allocation must be manually deallocated */
-    var x = alloc_raw(Int);
-    construct(x, $I(10));
-    destruct(x);
-    dealloc_raw(x);
+    var x = $S("Hello");
+    var y = $S("World");
+    show(x); /* Hello */
+    show(y); /* World */
+    swap(x, y);
+    show(x); /* World */
+    show(y); /* Hello */
     
 
 
@@ -59,21 +27,19 @@ __Avoid Garbage Collection__
   </div>
   <div class="col-xs-6 col-md-6">
 
-# Alloc
-__Memory Allocation__
+# Swap
+__Swapable__
 
-The `Alloc` class can be used to override how memory is allocated for a given data type. By default memory is allocated using `calloc` along with the `Size` class to determine the amount of memory to allocate.
+The `Swap` class can be used to override the behaviour of swapping two objects. By default the `Swap` class simply swaps the memory of the two objects passed in as parameters making use of the `Size` class. In almost all cases this default behaviour should be fine, even if the objects have custom assignment functions.
 
-A custom allocator should be careful to also initialise the header for the allocated memory using the function `header_init`. Cello objects without a header wont be recognised as such as so will throw errors when used with Cello functions.
-
-Allocated memory is automatically registered with the garbage collector unless the functions `alloc_raw` and `dealloc_raw` are used.
+Swapping can be used internally by various collections and algorithms.
 
 ### Definition
 
-    struct Alloc {
-      var (*alloc)(void);
-      void (*dealloc)(var);
+    struct Swap {
+      void (*swap)(var, var);
     };
+    
 
 ### Derivers
 
@@ -98,10 +64,10 @@ Allocated memory is automatically registered with the garbage collector unless t
 * <span class="docitem">[Thread](/learn/thread)</span> | &nbsp; &nbsp;   _Concurrent Execution_
 * <span class="docitem">[Tree](/learn/tree)</span> | &nbsp; &nbsp;   _Balanced Binary Tree_
 * <span class="docitem">[Tuple](/learn/tuple)</span> | &nbsp; &nbsp;   _Basic Collection_
+* <span class="docitem">[Type](/learn/type)</span> | &nbsp; &nbsp;   _Metadata Object_
 * <span class="docitem">[Zip](/learn/zip)</span> | &nbsp; &nbsp;   _Multiple Iterator_
 ### Implementers
 
-* <span class="docitem">[Type](/learn/type)</span> | &nbsp; &nbsp;   _Metadata Object_
 
 * * *
 

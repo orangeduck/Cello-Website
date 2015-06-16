@@ -35,9 +35,7 @@ __Usage 2__
       $S("Bonjour"));
     
     var y = new(Tuple);
-    foreach (item in filter(x, $(Function, mem_hello))) {
-      push(y, item);
-    }
+    assign(y, filter(x, $(Function, mem_hello)));
     show(y); /* tuple("Hello World", "Hello Dan") */
     
 
@@ -68,6 +66,7 @@ The `Filter` type can be used to filter the results of some iterable. Given a ca
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
 * <span style="width:50px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 

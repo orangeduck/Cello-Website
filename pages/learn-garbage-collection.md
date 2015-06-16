@@ -12,8 +12,8 @@ Garbage collectable objects are allocated via the `new` function and can be
 disabled at compile time using the flag `-DCELLO_NGC` without affecting the 
 standard library, which uses `del` either way to manage its memory. When 
 disabled, memory must be manually managed with `new` and `del`. To allocate 
-memory while avoiding the Garbage Collector without completely disabling it the 
-`new_raw` and `del_raw` functions can be used.
+memory while avoiding the Garbage Collector (without completely disabling it) 
+the `new_raw` and `del_raw` functions can be used.
 
 There are a few things to be aware of when using the Cello Garbage Collector:
 
@@ -27,8 +27,8 @@ thread in Cello has its own Garbage Collector which runs locally, so objects
 should not be allocated in one thread, and only reachable from another. To 
 store Cello objects in global/static locations or inside non-Cello structures 
 the `new_root` function should be used, and the corresponding objects deleted 
-manually with `del`. Due to these limitations it can be better to think of the 
-Cello Garbage Collector as a kind of lazy 
+manually with `del_root`. Due to these limitations it can be better to think of 
+the Cello Garbage Collector as a kind of lazy 
 [RAII](http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization) 
 which calls object destructors _some time_ after the object goes out of scope.
 
@@ -37,7 +37,7 @@ which calls object destructors _some time_ after the object goes out of scope.
 By default the Cello Garbage collector just scans the memory of an object to 
 find pointers to other Cello objects it has allocated, but this behaviour can 
 be overridden by implementing the `Mark` class. If you create a Cello type that 
-does it's own memory allocation and stores Cello Objects inside of that memory  
+does it's own memory allocation and stores Cello Objects inside of that memory 
 you can define this class to allow it to interact correctly with the GC.
 
 * __Real Time Collection__

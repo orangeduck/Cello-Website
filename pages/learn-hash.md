@@ -54,6 +54,7 @@ By default an object is hashed by using its raw memory with the [Murmurhash](htt
 ### Derivers
 
 * <span class="docitem">[Box](/learn/box)</span> | &nbsp; &nbsp;   _Unique Pointer_
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[File](/learn/file)</span> | &nbsp; &nbsp;   _Operating System File_
 * <span class="docitem">[Filter](/learn/filter)</span> | &nbsp; &nbsp;   _Filtered Iterable_
 * <span class="docitem">[Function](/learn/function)</span> | &nbsp; &nbsp;   _Function Object_

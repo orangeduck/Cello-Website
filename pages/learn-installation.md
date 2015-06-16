@@ -53,13 +53,12 @@ To check you have `gcc` installed open a terminal and type:
       gcc (rubenvb-4.7.2-release) 4.7.2
       ...
 
-You should see something similar to the above. Once this is the case, browse to 
-the directory in which you unzipped the source distribution and run the 
-following:
+If it doesn't throw an error you've installed it successfully. Once this is the 
+case, browse to  the directory in which you unzipped the source distribution 
+and run the following:
     
     $ ls
-      INSTALL.md  Makefile   examples tests
-      LICENSE.md  README.md  include  src   
+      LICENSE.md  Makefile  README.md  examples  include  src  tests
     $ make
       ...
     

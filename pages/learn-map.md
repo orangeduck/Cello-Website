@@ -70,6 +70,7 @@ One downside of `Map` is that the `iter_type` becomes unknown (there is no way t
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
 * <span style="width:50px; float:left;">[Call](/learn/call)</span>`call` 

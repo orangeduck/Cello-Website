@@ -4,22 +4,25 @@
 
 # Best Improvements of Cello 2.0
 
-## Interoperation
+## Fat Pointers
 
 The complete internal workings of Cello have been rewritten and now it uses the 
 concept of [fat pointers](/learn/a-fat-pointer-library) to ensure Cello 
 Pointers are fully compatible with standard C pointers. This is a massive win 
-for interop with standard C because it means you can use Cello objects with 
-standard C functions and types. No longer are you forced to use typeless 
+for interoperation with standard C because it means you can use Cello objects 
+with standard C functions and types. No longer are you forced to use typeless 
 pointers when you don't want to and Cello really does work _on top_ of normal 
 C, not orthogonal to it.
-    
-Additionally the overhead of declaring a structure Cello compatible has been 
-reduced from 20 or 30 lines of code to just one. Not only this but there are a
-huge number of operations Cello has defaults for now. In one line of code you 
-can suddenly make it so that an object is usable across the whole Cello 
-infrastructure including garbage collection, data structures, IO, and much 
-more.
+
+## Type Definitions
+
+The overhead of declaring a structure Cello compatible has been reduced from 20 
+or 30 lines of code to just one. Not only this but there are a huge number of 
+operations Cello has defaults for now. In one line of code you can suddenly 
+make it so that an object is usable across the whole Cello infrastructure 
+including garbage collection, data structures, IO, and much more. Combined with 
+C compatibility now you there is really nothing to lose by making your C 
+structures Cello compatible. One line and you're ready to go.
 
 
 ## Performance
@@ -77,10 +80,30 @@ All of the documentation is now built into Cello and can be accessed via
 the `help` function. Even the website documentation is generated using a simple 
 C script.
 
+## Documentation
 
+Cello Documentation is now built into the language. In fact - the website 
+documentation is just generated using a simple Cello script. Having the 
+documentation available from the library is nice (you can just call `help` on 
+some type), but more importantly because the code and documentation is in the 
+same place there is less chance of it getting out of sync - all pull requests 
+go to the main repo.
+
+## Iterables
+
+The new version of Cello has python3 style iterables. Although the syntax isn't 
+as nice as python this does mean you can do neat things like use slices, 
+filters, and maps on any iterable type. Special care has also been taken to 
+ensure these types can be constructed on the stack so the overhead should be as 
+small as possible.
 
 ## Garbage Collection
 
+One of the things I really wanted to try to add to Cello was optional Garbage 
+Collection. Previously I had sworn that it would be impossible, but I started 
+to get a few inklings about how it might be done (in some form or other) and 
+after following on from those I managed to find a compromise that adds a kind 
+of Garbage Collection for Cello objects and is both simple, and portable. 
 Having [Garbage Collection](/learn/garbage-collection) is a big win for 
 usability. And the fact that the Garbage Collection is optional means it can 
 be turned off for performance critical sections or ignored where it isn't 

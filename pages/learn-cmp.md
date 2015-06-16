@@ -103,6 +103,7 @@ This class to used to test for _value_ equality between objects, I.E. if they re
 ### Derivers
 
 * <span class="docitem">[Box](/learn/box)</span> | &nbsp; &nbsp;   _Unique Pointer_
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[File](/learn/file)</span> | &nbsp; &nbsp;   _Operating System File_
 * <span class="docitem">[Filter](/learn/filter)</span> | &nbsp; &nbsp;   _Filtered Iterable_
 * <span class="docitem">[Function](/learn/function)</span> | &nbsp; &nbsp;   _Function Object_
@@ -110,9 +111,7 @@ This class to used to test for _value_ equality between objects, I.E. if they re
 * <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Apply Function to Iterable_
 * <span class="docitem">[Mutex](/learn/mutex)</span> | &nbsp; &nbsp;   _Mutual Exclusion Lock_
 * <span class="docitem">[Process](/learn/process)</span> | &nbsp; &nbsp;   _Operating System Process_
-* <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_
 * <span class="docitem">[Ref](/learn/ref)</span> | &nbsp; &nbsp;   _Shared Pointer_
-* <span class="docitem">[Slice](/learn/slice)</span> | &nbsp; &nbsp;   _Partial Iterable_
 * <span class="docitem">[Zip](/learn/zip)</span> | &nbsp; &nbsp;   _Multiple Iterator_
 ### Implementers
 
@@ -120,6 +119,8 @@ This class to used to test for _value_ equality between objects, I.E. if they re
 * <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Floating Point Object_
 * <span class="docitem">[Int](/learn/int)</span> | &nbsp; &nbsp;   _Integer Object_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
+* <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_
+* <span class="docitem">[Slice](/learn/slice)</span> | &nbsp; &nbsp;   _Partial Iterable_
 * <span class="docitem">[String](/learn/string)</span> | &nbsp; &nbsp;   _String Object_
 * <span class="docitem">[Table](/learn/table)</span> | &nbsp; &nbsp;   _Hash table_
 * <span class="docitem">[Thread](/learn/thread)</span> | &nbsp; &nbsp;   _Concurrent Execution_

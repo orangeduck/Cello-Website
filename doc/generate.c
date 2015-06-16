@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
     List,    Array,    Table,  Range,
     Slice,   File,     Mutex,  Thread,
     Process, Function, GC,     Zip,
-    Map,     Filter);
+    Map,     Filter,   Exception);
 
   var classes = tuple(
     Doc,     Help,    Cast,    Size,
@@ -76,12 +76,12 @@ int main(int argc, char** argv) {
     Resize,  C_Str,   C_Int,   C_Float, 
     Stream,  Pointer, Call,    Format,  
     Show,    Current, Start,   Lock,    
-    Mark);
+    Mark,    Swap);
   
   var defaults = tuple(
     Cast, Size,   Alloc, 
     New,  Assign, Copy,
-    Cmp,  Hash);
+    Cmp,  Hash,   Swap);
 
   sort_by(types,    type_name_cmp);
   sort_by(classes,  type_name_cmp);

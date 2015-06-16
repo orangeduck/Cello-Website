@@ -12,15 +12,20 @@ following:
     
     int main(int argc, char** argv) {
       println("Cello World!");
+      return 1;
     }
     
-You should be able to compile this with the following command 
+You should be able to compile this with something like the following command 
 
     $ gcc -std=gnu99 cello_world.c -lCello -o cello_world
     
-If you are using linux you might need to link some additional libraries
+On __Linux__ you might need to link some additional libraries
 
     $ gcc -std=gnu99 cello_world.c -lCello -lm -lpthread -o cello_world
+
+On __Windows__ you might need to link to the `DbgHelp` library.
+
+    $ gcc -std=gnu99 cello_world.c -lCello -lDbgHelp -o cello_world
 
 This should create a program called `cello_world` you can then execute
 

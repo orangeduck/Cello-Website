@@ -36,10 +36,9 @@ and techniques. Much of it is Object Oriented (such as IO), while other parts
 are Template based (such as STL). The C++ standard library is like a huge messy 
 toolbox.
 
-The Cello standard library has been desgined from scratch. It is much smaller 
+The Cello standard library has been designed from scratch. It is much smaller 
 and modern, with consistent ideas and design. It is designed using Composition 
-rather than Inheritence. It much closer resembles the design of the Go or 
-Haskell standard libraries.
+rather than Inheritance.
 
 Cello also comes with a basic form of Garbage Collection.
 
@@ -54,10 +53,10 @@ __Cello Cons__
 
 __Cello Pros__
 
-* Consistent & Clean Syntax
+* Basic Garbage Collection
 * Consistent & Clean Standard Library
 * Powerful Runtime with Reflection
-* More Simple Extension to C
+* A Simple Extension to C
 
 
 ### Cello vs ObjC
@@ -88,9 +87,8 @@ __Cello Cons__
 
 __Cello Pros__
 
-* Nicer Syntax
-* Simple, Modern Standard Library
-* Composition based design
+* Basic Garbage Collection
+* Composition Based Design
 * Exceptions instead of Error Codes
 
 * * *

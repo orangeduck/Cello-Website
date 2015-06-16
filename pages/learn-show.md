@@ -106,6 +106,7 @@ See [printf](http://www.cplusplus.com/reference/cstdio/printf/) for more informa
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[Box](/learn/box)</span> | &nbsp; &nbsp;   _Unique Pointer_
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Floating Point Object_
 * <span class="docitem">[GC](/learn/gc)</span> | &nbsp; &nbsp;   _Garbage Collector_
 * <span class="docitem">[Int](/learn/int)</span> | &nbsp; &nbsp;   _Integer Object_

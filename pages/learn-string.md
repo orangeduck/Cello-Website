@@ -57,6 +57,7 @@ For strings allocated on the heap a number of extra operations are provided over
 * <span style="width:50px; float:left;">[Cast](/learn/cast)</span>`cast` 
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
 * <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 

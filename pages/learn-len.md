@@ -39,6 +39,7 @@ The `Len` class can be implemented by any type that has a length associated with
 ### Implementers
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[List](/learn/list)</span> | &nbsp; &nbsp;   _Linked List_
 * <span class="docitem">[Map](/learn/map)</span> | &nbsp; &nbsp;   _Apply Function to Iterable_
 * <span class="docitem">[Range](/learn/range)</span> | &nbsp; &nbsp;   _Integer Sequence_

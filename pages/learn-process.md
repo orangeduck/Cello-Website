@@ -40,12 +40,13 @@ The `Process` type is a wrapper for an operating system process as constructed b
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
 * <span style="width:50px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:50px; float:left;">[Format](/learn/format)</span>`format_to` `format_from` 
 * <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:50px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
+* <span style="width:50px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `join` `running` 
 * <span style="width:50px; float:left;">[Stream](/learn/stream)</span>`sopen` `sclose` `sseek` `stell` `sflush` `seof` `sread` `swrite` 
 
 * * *

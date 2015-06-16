@@ -54,14 +54,15 @@ The `Zip` type can be used to combine multiple iterables into one which is then 
 ### Derives
 
 * <span style="width:50px; float:left;">[Alloc](/learn/alloc)</span>`$` `alloc` `dealloc` 
-* <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 
 * <span style="width:50px; float:left;">[Cast](/learn/cast)</span>`cast` 
 * <span style="width:50px; float:left;">[Cmp](/learn/cmp)</span>`cmp` `eq` `neq` `gt` `lt` `ge` `le` 
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
+* <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 
 * <span style="width:50px; float:left;">[Doc](/learn/doc)</span>`name` `brief` `description` `definition` 
 * <span style="width:50px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` `key_type` `val_type` 
 * <span style="width:50px; float:left;">[Iter](/learn/iter)</span>`foreach` `iter_init` `iter_next` `iter_type` 

@@ -51,6 +51,7 @@ The `Ref` type is a basic wrapper around a C pointer. It can be used as a type a
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
 * <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 

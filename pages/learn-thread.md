@@ -64,12 +64,13 @@ The `Thread` type provides a basic primitive for concurrent execution. It acts a
 ### Derives
 
 * <span style="width:50px; float:left;">[Alloc](/learn/alloc)</span>`$` `alloc` `dealloc` 
-* <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 
 * <span style="width:50px; float:left;">[Cast](/learn/cast)</span>`cast` 
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
+* <span style="width:50px; float:left;">[Assign](/learn/assign)</span>`assign` 
 * <span style="width:50px; float:left;">[C_Int](/learn/c_int)</span>`c_int` 
 * <span style="width:50px; float:left;">[Call](/learn/call)</span>`call` 
 * <span style="width:50px; float:left;">[Cmp](/learn/cmp)</span>`cmp` `eq` `neq` `gt` `lt` `ge` `le` 
@@ -79,7 +80,7 @@ The `Thread` type provides a basic primitive for concurrent execution. It acts a
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[Mark](/learn/mark)</span>`mark` 
 * <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
-* <span style="width:50px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
+* <span style="width:50px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `join` `running` 
 
 * * *
 

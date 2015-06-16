@@ -21,7 +21,7 @@ __Starting & Stopping__
 # GC
 __Garbage Collector__
 
-The `GC` type provides an interface to the Cello Garbage Collector. One instance of this class is created for each thread and can be retrieved using the `current` function. The Garbage Collector can be stopped and started using `start` and `stop` and objects can be added or removed from the Garbage Collector using `set` and `rem`.
+The `GC` type provides an interface to the Cello Garbage Collector. One instance of this type is created for each thread and can be retrieved using the `current` function. The Garbage Collector can be stopped and started using `start` and `stop` and objects can be added or removed from the Garbage Collector using `set` and `rem`.
 
 ### Derives
 
@@ -32,6 +32,7 @@ The `GC` type provides an interface to the Cello Garbage Collector. One instance
 * <span style="width:50px; float:left;">[Copy](/learn/copy)</span>`copy` 
 * <span style="width:50px; float:left;">[Hash](/learn/hash)</span>`hash` `hash_data` 
 * <span style="width:50px; float:left;">[Size](/learn/size)</span>`size` 
+* <span style="width:50px; float:left;">[Swap](/learn/swap)</span>`swap` 
 ### Implements
 
 * <span style="width:50px; float:left;">[Current](/learn/current)</span>`current` 
@@ -39,7 +40,7 @@ The `GC` type provides an interface to the Cello Garbage Collector. One instance
 * <span style="width:50px; float:left;">[Get](/learn/get)</span>`get` `set` `mem` `rem` `key_type` `val_type` 
 * <span style="width:50px; float:left;">[New](/learn/new)</span>`new` `del` `construct` `destruct` 
 * <span style="width:50px; float:left;">[Show](/learn/show)</span>`show` `look` `print` `scan` 
-* <span style="width:50px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `wait` `running` 
+* <span style="width:50px; float:left;">[Start](/learn/start)</span>`with` `start` `stop` `join` `running` 
 
 * * *
 

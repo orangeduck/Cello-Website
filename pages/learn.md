@@ -35,6 +35,7 @@ __Types__
 
 * <span class="docitem">[Array](/learn/array)</span> | &nbsp; &nbsp;   _Sequential Container_
 * <span class="docitem">[Box](/learn/box)</span> | &nbsp; &nbsp;   _Unique Pointer_
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[File](/learn/file)</span> | &nbsp; &nbsp;   _Operating System File_
 * <span class="docitem">[Filter](/learn/filter)</span> | &nbsp; &nbsp;   _Filtered Iterable_
 * <span class="docitem">[Float](/learn/float)</span> | &nbsp; &nbsp;   _Floating Point Object_
@@ -87,6 +88,7 @@ __Classes__
 * <span class="docitem">[Sort](/learn/sort)</span> | &nbsp; &nbsp;   _Sortable_
 * <span class="docitem">[Start](/learn/start)</span> | &nbsp; &nbsp;   _Can be started or stopped_
 * <span class="docitem">[Stream](/learn/stream)</span> | &nbsp; &nbsp;   _File-like_
+* <span class="docitem">[Swap](/learn/swap)</span> | &nbsp; &nbsp;   _Swapable_
 
 
   </div>

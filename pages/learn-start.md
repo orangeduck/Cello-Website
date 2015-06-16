@@ -21,9 +21,9 @@ __stop__
 
 Stop the object `self`.
 
-__wait__
+__join__
 
-    void wait(var self);
+    void join(var self);
 
 Block and wait for the object `self` to stop.
 
@@ -66,13 +66,14 @@ The main nicety of the `Start` class is that it allows use of the `with` macro w
     struct Start {
       void (*start)(var);
       void (*stop)(var);
-      void (*wait)(var);
+      void (*join)(var);
       bool (*running)(var);
     };
     
 
 ### Implementers
 
+* <span class="docitem">[Exception](/learn/exception)</span> | &nbsp; &nbsp;   _Exception Object_
 * <span class="docitem">[File](/learn/file)</span> | &nbsp; &nbsp;   _Operating System File_
 * <span class="docitem">[GC](/learn/gc)</span> | &nbsp; &nbsp;   _Garbage Collector_
 * <span class="docitem">[Mutex](/learn/mutex)</span> | &nbsp; &nbsp;   _Mutual Exclusion Lock_
