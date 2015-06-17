@@ -11,9 +11,9 @@ Construct a `Slice` object on the stack over iterable `I`.
 
 __reverse__
 
-    #define reversed(I)Construct a `Slice` object that iterates over iterable `I` in reverse order.
+    #define reverse(I)
 
-(null)
+Construct a `Slice` object that iterates over iterable `I` in reverse order.
 
 ### Examples
 
