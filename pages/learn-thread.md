@@ -14,7 +14,7 @@ __Usage__
     
     var x = new(Thread, $(Function, set_value));
     call(x, i);
-    wait(x);
+    join(x);
     
     show(i); /* 1 */
     
@@ -45,7 +45,7 @@ __Exclusive Resource__
     }
     
     foreach (t in threads) {
-      wait(deref(t));
+      join(deref(t));
     }
     
     show(total); /* 3 */

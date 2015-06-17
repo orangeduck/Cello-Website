@@ -26,7 +26,7 @@ __print__
     int println_with(const char* fmt, var args);
     int print_to_with(var out, int pos, const char* fmt, var args);
 
-Print the format string `fmt` either to `stdout` or to the object `out` at positions `pos`.
+Print the format string `fmt` either to `stdout` or to the object `out` at positions `pos`. Returns new position in output.
 
 __scan__
 
@@ -37,7 +37,7 @@ __scan__
     int scanln_with(const char* fmt, var args);
     int scan_from_with(var input, int pos, const char* fmt, var args);
 
-Scan the format string `fmt` either from `stdout` or from the object `input` at position `pos`.
+Scan the format string `fmt` either from `stdout` or from the object `input` at position `pos`. Returns new position in output.
 
 ### Examples
 
