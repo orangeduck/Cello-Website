@@ -10,6 +10,12 @@ import markdown
 app = Flask(__name__)
 app.root_path = os.path.dirname(__file__)
 
+import logging
+from logging import FileHandler 
+file_handler = FileHandler(app.root_path+'/error.log')
+file_handler.setLevel(logging.WARNING)
+app.logger.addHandler(file_handler)
+
 try:
     cache = MemcachedCache(['127.0.0.1:11211'])
 except RuntimeError:
@@ -38,7 +44,7 @@ def index(page="home", section=None):
          "queries-and-pitfalls",
          "garbage-collection",
          "best-improvements-of-cello-2.0"] + 
-         open('./doc/object-list.md').read().lower().split(' ')):
+         open(app.root_path+'/doc/object-list.md').read().lower().split(' ')):
         
         section = "-"+section
         
@@ -74,4 +80,4 @@ def index(page="home", section=None):
     return render_template('page.html', content=content, title=title)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
