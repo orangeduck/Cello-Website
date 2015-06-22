@@ -27,6 +27,12 @@ On __Windows__ you might need to link to the `DbgHelp` library.
 
     $ gcc -std=gnu99 cello_world.c -lCello -lDbgHelp -o cello_world
 
+Or if the `DbgHelp` library can't be found then it's likely that Cello has 
+compiled without stack trace support. In this case you should use the 
+`-DCELLO_NSTRACE` flag instead.
+
+    $ gcc -std=gnu99 cello_world.c -lCello -DCELLO_NSTRACE -o cello_world
+    
 This should create a program called `cello_world` you can then execute
 
     $ ./cello_world
@@ -34,8 +40,13 @@ This should create a program called `cello_world` you can then execute
 
 If you have errors:
 
-* You should double check you have [installed](installation) the library correctly.
+* You should double check you have [installed](installation) the library 
+correctly.
 * You may need to run `ldconfig` to refresh your library cache.
+* You must make sure the flags you compile with are the same as the ones used 
+to compile Cello itself. If you are unsure what these were you can run 
+`make examples` in the Cello source directory and see what flags it uses in 
+that case.
 
 * * *
 
