@@ -180,7 +180,8 @@ the Cello GC, and then calls the user program:
     
     #define main(...) \
       main(int argc, char** argv) { \
-        var stk = None; Cello_GC_Init(&stk); \
+        var stk = NULL; \
+        Cello_GC_Init(&stk); \
         return Cello_Main(argc, argv); \
       }; \
       int Cello_Main(int argc, char** argv)

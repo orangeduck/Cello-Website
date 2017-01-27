@@ -419,7 +419,7 @@ our `for` loop.
     if (i % 100 is 0) {
       var filename = new(String);
       print_to(filename, 0, "./frames_cello/%04d.tga", $I(i / 100));
-      with (f in new(File, filename, $S("wb")) {
+      with (f in new(File, filename, $S("wb"))) {
         Image_Save_TGA(self, f);
       }
     }
@@ -576,7 +576,7 @@ Here is the final program in all its glory.
         if (i % 100 is 0) {
           var filename = new(String);
           print_to(filename, 0, "./frames_cello/%04d.tga", $I(i / 100));
-          with (f in new(File, filename, $S("wb")) {
+          with (f in new(File, filename, $S("wb"))) {
             Image_Save_TGA(self, f);
           }
         }
@@ -620,3 +620,4 @@ Here is the final program in all its glory.
   </div>
   <div class="col-xs-2 col-md-2"></div>
   </div>
+  

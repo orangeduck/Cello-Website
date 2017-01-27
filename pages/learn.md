@@ -15,6 +15,7 @@ Here are several resources for getting started with Cello.
 
 Here are several articles related to the creation and inner workings of Cello.
 
+* [Hacking C for fun and Learning (30 min talk)](https://www.youtube.com/watch?v=bVxfwsgO00o)
 * [Best Improvements of Cello 2.0](/learn/best-improvements-of-cello-2.0)
 * [A Fat Pointer Library](/learn/a-fat-pointer-library)
 * [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)

@@ -28,7 +28,7 @@ simply too unreliable to get programmers (or malicious users) to provide this
 extra information accurately.
 
 Walter's proposal was simple. Introduce some new syntax for passing a 
-_Fat Pointer_. This is just a pointer with the additional peice of information 
+_Fat Pointer_. This is just a pointer with the additional piece of information 
 saying how many elements are in the array. Now this wouldn't do anything to fix 
 existing C code, but would hopefully improve future C, and because 
 _Fat Pointers_ would still just be pointers of a sort, it wouldn't break 

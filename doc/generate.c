@@ -357,6 +357,7 @@ int main(int argc, char** argv) {
       "\n"
       "Here are several articles related to the creation and inner workings of Cello.\n"
       "\n"
+      "* [Hacking C for fun and Learning (30 min talk)](https://www.youtube.com/watch?v=bVxfwsgO00o)\n"
       "* [Best Improvements of Cello 2.0](/learn/best-improvements-of-cello-2.0)\n"
       "* [A Fat Pointer Library](/learn/a-fat-pointer-library)\n"
       "* [Cello vs C++ vs ObjC](/learn/cello-vs-cpp-vs-objc)\n"

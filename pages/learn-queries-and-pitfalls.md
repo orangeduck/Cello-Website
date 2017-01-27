@@ -83,7 +83,7 @@ Instead of...
       return false;
     }
     
-Instead only return from outside of the `try` block.
+only return from outside of the `try` block.
     
     bool success = true;
     
@@ -237,3 +237,4 @@ subject.
   </div>
   <div class="col-xs-2 col-md-2"></div>
   </div>
+  
