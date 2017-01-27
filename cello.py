@@ -8,7 +8,7 @@ import os
 import markdown
 
 app = Flask(__name__)
-app.root_path = os.path.dirname(__file__)
+app.root_path = os.path.dirname(os.path.realpath(__file__))
 
 import logging
 from logging import FileHandler 
@@ -33,6 +33,8 @@ def index(page="home", section=None):
     
     if not (page in ["home", "learn"]): page = "home"
     
+    print('test', os.path.join(app.root_path, 'doc', 'object-list.md'))
+    
     if (page in ["learn"] and 
         section  in 
         ["installation",
@@ -44,7 +46,7 @@ def index(page="home", section=None):
          "queries-and-pitfalls",
          "garbage-collection",
          "best-improvements-of-cello-2.0"] + 
-         open(app.root_path+'/doc/object-list.md').read().lower().split(' ')):
+         open(os.path.join(app.root_path, 'doc', 'object-list.md')).read().lower().split(' ')):
         
         section = "-"+section
         

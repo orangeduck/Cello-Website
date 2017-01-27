@@ -9,9 +9,9 @@ __lock__
 
 Wait until a lock can be aquired on object `self`.
 
-__lock_try__
+__trylock__
 
-    bool lock_try(var self);
+    bool trylock(var self);
 
 Try to acquire a lock on object `self`. Returns `true` on success and `false` if the resource is busy.
 
@@ -45,7 +45,7 @@ The `Lock` class can be implemented by types to limit the access to them. For ex
     struct Lock {
       void (*lock)(var);
       void (*unlock)(var);
-      bool (*lock_try)(var);
+      bool (*trylock)(var);
     };
     
 
