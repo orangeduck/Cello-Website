@@ -292,7 +292,7 @@ The reason we return `new(Color, $(Color, r, g, b))` instead of just
 allocation on the stack of the called function and gets a pointer to it. When 
 we return this value the memory it points to will already be deallocated as the 
 function has returned. For more information see 
-[this](http://127.0.0.1:5000/learn/queries-and-pitfalls#returning-stack-objects) 
+[this](/learn/queries-and-pitfalls#returning-stack-objects) 
 part of the FAQ.
 
 Like before we need to register these functions with the `Cello` macro for the 
