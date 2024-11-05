@@ -46,7 +46,7 @@ __Usage 2__
 # Map
 __Apply Function to Iterable__
 
-The `Map` type is an iterable that applies some callable to to each item in another iterable and returns the result. This can be useful to make more concise iteration when there are callback functions available.
+The `Map` type is an iterable that applies some callable to each item in another iterable and returns the result. This can be useful to make more concise iteration when there are callback functions available.
 
 If the mapping callable is a purely side-effect callable it is possible to use the `call` function on the `Map` object directly for a quick way to perform the iteration.
 
