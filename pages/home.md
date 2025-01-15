@@ -166,7 +166,7 @@ those who want to explore what is possible in C.
 * __How does it work?__
 
 I recommend reading 
-[A Fat Pointer Library](/learn/fatpointer) to get an overview of how Cello 
+[A Fat Pointer Library](/learn/a-fat-pointer-library) to get an overview of how Cello 
 works.You can also peek at the source code, which I'm told is fairly readable, 
 or ask me any questions you like via e-mail.
 
